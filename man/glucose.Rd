@@ -1,0 +1,47 @@
+\name{glucose}
+\alias{glucose}
+\docType{data}
+\title{Glucose measurements by different methods}
+\description{
+  74 persons in 5 centres in Finland had blood glucose measured by 11
+  different methods, based on 4 different types of blood. Each person
+  had blood sampled at 0, 30, 60 and 120 min after a 75 g glucose load.
+  }
+\usage{data(glucose)}
+\format{
+  A data frame with 1302 observations on the following 6 variables.
+  \describe{
+    \item{\code{meth}}{Method of measurement. A factor with 11 levels:
+      \code{n.plas1} \code{n.plas2} \code{h.cap} \code{h.blood}
+      \code{h.plas} \code{h.serum} \code{m.plas} \code{m.serum}
+      \code{o.cap} \code{s.serum} \code{k.plas}.} 
+    \item{\code{type}}{Type of blood sample. A factor with 4 levels:
+      \code{blood} \code{plasma} \code{serum} \code{capil}} 
+    \item{\code{item}}{Person id.}
+    \item{\code{time}}{Time of blood sampling. Minutes since glucose load.}
+    \item{\code{cent}}{Center of sampling. Except for the two first
+      methods, \code{n.plas1} and \code{n.plas2}, samples were analyzed
+      at the centres too}
+    \item{\code{y}}{Glucose measurement in mmol/l.}
+    }
+  }
+\source{
+  The study was conducted at the National Public Health Institute in
+  Helsinki by Jaana Lindstrom.
+  }
+\references{
+  B Carstensen, J Lindstrom, J Sundvall, K Borch-Johnsen1, J Tuomilehto
+  & the DPS Study Group: Measurement of Blood Glucose: Comparison
+  between different Types of Specimens. Annals of Clinical Biochemistry,
+  to appear.  
+  }
+\examples{
+  data( glucose )
+  str( glucose )
+  # Use only plasma and serum as methods and make a Bland-Altman plot
+  gluc <- subset( glucose, type \%in\% c("plasma","serum") )
+  gluc$meth <- gluc$type
+  gluc$repl <- gluc$time
+  BA.plot( gluc )
+  }
+\keyword{datasets}

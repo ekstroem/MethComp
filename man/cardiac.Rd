@@ -1,0 +1,48 @@
+\name{cardiac}
+\alias{cardiac}
+\docType{data}
+\title{Measurement of cardiac output by two different methods.}
+\description{
+ For each subject cardiac output is measured repeatedly (three to six times) by
+ impedance cardiography (IC) and radionuclide ventriculography (RV).
+}
+\usage{data(cardiac)}
+\format{
+  A data frame with 120 observations on the following 4 variables.
+  \describe{
+    \item{\code{meth}}{a factor with levels \code{IC} \code{RV}}
+    \item{\code{item}}{a numeric vector giving the item number.}
+    \item{\code{repl}}{a numeric vector with replicate number.}
+    \item{\code{y}}{the measuremnts of cardiac output.}
+  }
+}
+\details{
+ It is not entirely clear from the source whether the replicates are
+ exchangeable  within (method,item) or whether they represent pairs of
+ measurements. From the description it looks as if replicates are linked
+ between methods, but in the paper they are treated as if they were not.
+}
+\source{
+ The dataset is adapted from table 4 in: JM Bland and DG Altman: Measuring
+ agreement in method comparison studies. Statistical Methods in Medical
+ Research, 8:136-160, 1999. Originally supplied to Bland \& Altman by
+ Dr LS Bowling, see: Bowling LS, Sageman WS, O'Connor SM, Cole R, Amundson DE.
+ Lack of agreement between measurement of ejection fraction by impedance
+ cardiography versus radionuclide ventriculography. Critical Care Medicine 1993;
+ 21: 1523-27.
+}
+\examples{
+data(cardiac)
+cardiac <- Meth(cardiac)
+summary(cardiac)
+# Visually check exchangeability
+plot( cardiac )
+plot( perm.repl( cardiac ) )
+BA.est(cardiac)
+# Run MCmcmc using BRugs for an insufficient amount of iterations
+\dontrun{card.mi.ir <- MCmcmc( cardiac,
+                               beta=FALSE, random=c("mi","ir"),
+                               n.iter=100, trace=T )
+print( card.mi.ir )}
+}
+\keyword{datasets}

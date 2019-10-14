@@ -1,0 +1,314 @@
+Version 1.22
+
+o Platform checking in MCmcmc updated, and checks for platform and
+  package availability is now subsequent to printing of a BUGS program
+  using argument code.only=TRUE
+
+Version 1.21
+
+o Bug in converting a MCmcmc object correctly to MethComp format if
+  more than 2 methods were present. Now fixed.
+
+Version 1.20
+
+o VC.est.fixed updated with the possibility of having the MxI random
+  effects correlated within items.
+
+o A *SERIOUS* bug in VC.est.fixed and VC.est.random have been
+  corrected: The estimated residual variances were shown in
+  alphabetical order of the method names instead of in the same order
+  as the method levels. Hence analyses by AltReg and BA.est prior to
+  version 1.20 in datasets where method names are not in alphabetical
+  order will be wrong.
+
+Version 1.19
+
+o New 'predict' method for Passing-Bablok regression (PBreg). It 
+  follows the syntax of predict.lm (to an extent) and allows for
+  calculation of confidence intervals.
+
+o Updated plot method for PBreg - now shows correct confidence boundaries
+  for the fit.  
+
+o DA.reg updated so that the LoA is included too. Documentation
+  accordingly updated.
+
+Version 1.18
+
+o Use of the alpha= argument crashed lines.MethComp (and all the
+  functions that call this). Fixed.
+
+o Checking for coda, R2WinBUGS and rjags improved to produce fewer
+  weird error messages.
+
+Version 1.17
+
+o An argument mult=FALSE is added to BA.plot (and to plot.MethComp,
+  lines.MethComp and points.Methcomp), which for Bland-Altman plots
+  plots ratios on a log-scale instead of differences on a linear scale.
+
+o The ridiculous functions min.Meth, max.Meth and median.Meth removed
+  again. Only mean.Meth and sort.Meth that takes means / sorts
+  measurements within item/replicate are preserved.
+
+Version 1.16
+
+o mean.Meth was not exported, it is now.
+
+Version 1.15
+
+o BA.plot is now in a new version essentially usng the facilities
+  available from at MethComp-object derived from DA.reg.
+  The old version is still available as AB.plot.
+
+o JAGS is now recognized as a value for the program= argument to
+  MCmcmc. Jags and rjags is required to be installed of course.
+
+o More intuitive example in the Deming help page, thanks to Roland Fuss.
+
+Version 1.14
+
+o Further bug-fixes in VC.est.random getting the estimated variances
+  right. (CTEk)
+
+Version 1.13
+
+o Bug-fixes in VC.est.random getting the estimated variances right. (CTEk)
+
+Version 1.12
+
+o Complete rewrite of BA.plot, the old still available, the new
+  version is so far called AB.plot. AB.plot creates a MethComp object
+  and uses plot.MethComp to make the Bland-Altman plot. The old
+  workhorse BlandAltman will still be available for direct use.  This
+  also involved changes in the output object from AltReg. (BxC)
+
+o Amendment of plot.MethComp, to allow for increasing sd etc.
+
+o Amendment of DA.reg to allow increasing sd, change in the returned
+  object.
+
+o New functions DA2y and y2DA to convert between linear relation
+  between difference and average and linear relation between y1 and y2.
+
+Version 1.11
+
+o Added the dataset Ancona, collected at the MethComp course in Ancona
+  on 28 September 2011.
+
+o Changed the mode of the "random.raters" argument to logical
+  throughout, preventing side effects of crap coding.
+
+o DA.reg now returns the intercept and the slope of the differences as
+  a function of the averages.
+
+o A convenience function DA2y is added, converting the regression of
+  the differences on the averages to the lines linking y1 and y2.
+
+Version 1.10
+
+o Removed warning from VC.est's call to lme wth a -1 in the model
+  formula (which returns 0 d.f. for the fixed item parameters).
+
+o BA.est named the 3rd column in the result as "sd", whereas all other
+  functions returned the name of the column as "sd.pred". This caused a
+  crash when using lines.MethComp, which assumes that "sd.pred" is the
+  name of the third column. Now all called "sd.pred".
+
+Version 1.9
+
+o Incorporation of the effects of random.rates in the calculation of
+  prediction limits by BA.est.
+
+Version 1.8
+
+o Claus Ekstrøm added the possibility of random raters to VC.est.
+  In reality a new function is added, VC.est.random, the old is
+  renamed to VC.est.fixed, and a wrapper VC.est is introduced.
+
+o Printing of MCmcmc objects crashed because the inverse
+  transformation was apllied also in cases where it was non-existent.
+
+Version 1.7
+
+o VarCorr is now explicitly called as the version the from nlme, so
+  that it is not accidentally masked by the one for lme4 if that sould
+  be loaded.
+
+Version 1.6
+
+o Printing of the transformation used (if any) is now working.
+
+o Added Passing-Bablok regression, written by Michal Figurski, functions
+  PBreg, with a print and a plot method for the resulting "PBreg" class.
+
+Version 1.5
+
+o Fixed the real bug which was in Meth. Now removes the columns with
+  measurements by different methods when converting from a wide-form
+  data frame to a Meth object.
+
+Version 1.4
+
+o Fixed a bug in DA.reg, preventing transformed analysis to be made if
+  original wide data were carried over to the Meth object.
+
+Version 1.3
+
+o Fixed a few bugs in MethComp that prevented plotting of MethComp
+  applied to MCMmcmc objects
+
+o Enhanced DA.reg slightly to also show the estimated dependency of
+  the residual sd. on the avearge.
+
+Version 1.2
+
+o Added Passing-Bablok regression, written by Michal Figursky, functions
+  PBreg, with a print and a plotmethod for the resulting "PBreg" class.
+
+Version 1.1.0
+
+o Removed the possibility to explicitly give the working directory for the
+  BUGS program. Due to problems in R2WinBUGS's openbugs function.
+
+Version 1.0.1
+
+o Improved output from Meth.
+
+o Argument names have been made consistent between plot.MethComp and
+  plot.MCmcmc, the common ones are now called 'points=', 'wh.cmp='.
+
+Version 1.0.0
+
+o Meth function, defining a Meth object have been rewritten, using a different
+  syntax. Now allowing vectors to be combined into a Meth object, and arbitratry
+  columns of a dataframe to be selected for the four essential columns of a
+  Meth object.
+
+In version 0.6.0
+
+o Transform= argument added to BA.est, AltReg og MCmcmc
+
+o MethComp-class, defined by a MethComp function added, handling printing
+  and plotting of results from BA.est, AltReg and MCmcmc.
+
+Version 0.5.2
+
+o The way the two methods are ordered in BA.plot is reversed. Like in BA.est and
+  VC.est, the FIRST method is now the reference; LoA are thus for M2-M1.
+
+o summary.Meth() gives the median and range of measurements for each method too.
+
+o The result from AltReg now have names for the dimnames to improve readability.
+
+o A sample function for sampling the items from Meth object is added.
+
+Version 0.5.1
+
+o A Meth class has been defined, making sure that meth, item and repl
+  all are factors. It has summary, print, plot, subset and summary methods.
+  The summary method was formerly called tab.repl.
+
+o A function has.repl() testing wheter a data frame has replicates or not.
+
+o A DA.reg function added which estimates a linear relation between methods
+  from the regression of the differences on the averages.
+
+o plot.MethComp is now a proper S3 method for MethComp objects.
+  The former functions plot.MethComp and plot.VarComp have been renamed
+  plotMethComp and plotVarComp and are called by plot.MethComp via the
+  what= argument.
+
+o A function check.MethComp added, which gives convergence diagnostics
+  for a MethComp object, and optionally calls the trace.MethComp and
+  post.MethComp functions.
+
+o summary methods for output from BA.est, AltReg og MethComp,
+  which produces roughly same-style layout.
+
+--------------------------------------------------------------------------------
+
+Changes in 0.4.2
+
+o Three new datasets from published papers added: VitCap, PEFR and
+  Enzyme.
+
+
+Changes in 0.4.1
+
+o Argument random= in MethComp has been replaced by the arguments
+  linked=, IxR, MxI.
+
+o Aregument varMxI= added to MethComp allowing to constrain matrix
+  effects to have identical variances across methods.
+
+Changes in 0.4.0
+
+o AltReg for fitting the general model iteratively is added.
+  The estimation workhorse is now separated from BA.est to a special
+  utility function VC.est, taht estimates in constant bias models.
+
+o VC.est has been taken out from BA.est to form a separate workhorse
+  also usable in the estimation iteration in AltReg. By default (also
+  in BA.est) the variance of the matrix effect is now constant across
+  methods.
+
+Changes in 0.3.0
+
+o New functions trace.MethComp and post.MethComp, giving the trace and
+  posterior densities for the parameters separately for the four chains.
+
+o It is now possible to use BRugs(OpenBugs) for the simulations, by
+  specifying program="OpenBugs", "OB" or "Brugs" (case insensitive)
+  in the call to MethComp. If nothing is specified MethComp will check
+  if BRugs is installed and if so use it, otherwise attempt to use WinBUGS.
+
+Changes in 0.2.2
+
+o The BA.est function has been changed so that the LoA are based on
+  p/m 2.00 instead of p/m 1.96.
+
+Changes in 0.2.0
+
+o The MethComp function revised and made somewhat modular. Default is
+  now 4 chains, using different starting values for the variance components.
+
+o The BA.est function is now used to generate sensible (and diverse) starting
+  values for the variance components.
+
+o A MethComp object is now of class mcmc.list, in order to allow use
+  of the diagnostic tools from the coda package. Thus the posterior is now in
+  a mcmc.list object (a list of matrices), transformed from the raw output
+  mcmc.list object.
+
+o R2WinBUGS and coda are not required any more, only suggested. Hence the
+  BlandAltman plots etc. can be used without trouble loading the package even
+  when R2WinBUGS and coda are not installed.
+
+Changes in 0.1.19
+
+o Typos in the documentation fixed (to some extent).
+
+o plot.VarComp now takes range(grid) as the extent of the x-axes.
+
+o Error in column naming in to.wide fixed.
+
+Changes in 0.1.16
+
+o BA.est has been expanded to handle different matrix effects (item by
+  method) between methods if the number of methods exceeds 2. Thanks to
+  advice from Peter Dalgaard.
+
+o plot.meth now displays plots correctly. An argument to display the variable
+  names inside the panels have been added.
+
+o BlandAltman (and hence BA.plot) has been enhanced to accept axis
+  specifications from limx, limy, eqax and ymax.
+
+o BA.plot now does not give par() suggestions any more.
+
+Changes in 0.1.13
+
+o The default for the y-limit in the BlandAltman function now defaults to
+  that the y-axis should have the same extent as the x-axis, symmetrically
+  around 0, unless the differences or the limits of agreement are larger.

@@ -1,0 +1,175 @@
+\name{BA.est}
+\alias{BA.est}
+\alias{bias.BA.est}
+\alias{VC.est}
+\title{Bias and variance components for a Bland-Altman plot.}
+\description{
+  A variance component model is fitted to method comparison data with replicate
+  measurements in each method by item stratum. The purpose is to simplify the
+  construction of a correct Bland-Altman-plot when replicate measurements are
+  available, and to give the REML-estimates of the relevant variance components.
+  }
+\usage{
+  BA.est( data, linked=TRUE, IxR=has.repl(data),
+                             MxI=has.repl(data),
+                          corMxI=FALSE,
+                          varMxI=TRUE,
+                          IxR.pr=FALSE,
+                            bias=TRUE, alpha=0.05,
+                Transform = NULL,
+                trans.tol = 1e-6,
+                random.raters = FALSE,
+                lmecontrol = lmeControl(msMaxIter=300),
+                weightfunction = c("mean", "median")
+ )
+  \method{bias}{BA.est}( obj, ref=1, \dots )
+  VC.est( data,
+           IxR = has.repl(data), linked = IxR,
+           MxI = has.repl(data), matrix = MxI,
+        corMxI = FALSE,
+        varMxI = TRUE,
+          bias = TRUE,
+         print = FALSE,
+ random.raters = FALSE,
+    lmecontrol = lmeControl(msMaxIter=300)
+ )
+}
+\arguments{
+  \item{data}{A \code{\link{Meth}} object representing method comparison data
+    with replicate measurements, i.e. with columns \code{meth},
+    \code{item}, \code{repl} and \code{y}.}
+  \item{linked}{Logical. Are replicates linked within item across methods?}
+  \item{IxR}{Logical. Should an item by repl interaction be included in
+    the model. This is needed when the replicates are linked within item
+    across methods, so it is just another name for the \code{linked} argument.
+    If \code{linked=} is given, this is ignored.}
+  \item{MxI}{Logical. Should the method by item interaction (matrix effect) be
+    included in the model.}
+  \item{matrix}{Logical. Alias for \code{MxI}.}
+  \item{corMxI}{Logical. Should the method by item interaction allow
+    coorelated effects within item. Ignored if only two methods
+    are compared.}
+  \item{varMxI}{Logical. Should the method by item interaction have a
+    variance that varies between methods. Ignored if only two methods
+    are compared.}
+  \item{IxR.pr}{Logical. Should the item by repl interaction variation be included in
+                the prediction standard deviation?}
+  \item{bias}{Logical. Should a systematic bias between methods be estimated?
+    If \code{FALSE} no bias between methods are assumed, i.e.
+    \eqn{\alpha_m=0, m=1,\ldots M}{alpha_m=0, m=1,...,M}.}
+  \item{alpha}{Numerical. Significance level. By default the value 2 is
+    used when computing prediction intervals, otherwise the
+    \eqn{1-\alpha/2}{1-alpha/2} t-quantile is used. The number of
+    d.f. is taken as the number of units minus the number of items minus
+    the number of methods minus 1 (\eqn{I-M-1}{I-M-1}).}
+  \item{Transform}{Transformation applied to data (\code{y}) before analysis.
+                   See \code{\link{check.trans}} for possible values.}
+  \item{trans.tol}{Numerical. The tolerance used to check whether the supplied
+                   transformation and its inverse combine to the identity.}
+  \item{random.raters}{Logical. Should methods/raters be considered as
+    random. Defaults to \code{FALSE} which corresponds to a fixed effect
+    of methods/raters.}
+  \item{lmecontrol}{A list of control parameters passed on to \code{lme}.}
+  \item{weightfunction}{Function to weigh variance components for random
+    raters. Defaults to \code{mean} but can also be \code{median}.}
+  \item{obj}{A \code{BA.est} object from which to extract the biases between
+             methods.}
+  \item{ref}{Numeric or character. The reference method for the biases: the
+             method with bias 0.}
+	\item{print}{Logical. Should the estimated bias and variance components be
+	  printed?}
+  \item{\dots}{Further arguments passed on. Currently ignored.}
+  }
+\details{
+  The model fitted is:
+  \deqn{y=\alpha_m + \mu_i + c_{mi} + a_{ir} + e_{mir},
+        \quad \mathrm{var}(c_{mi})=\tau_m^2,
+        \quad \mathrm{var}(a_{ir})=\omega^2,
+        \quad \mathrm{var}(e_{mir})=\sigma_m^2,
+         }{y=alpha_m + mu_i + c_mi + a_ir + e_ir,
+             var(c_mi)=tau_m^2,
+             var(a_ir)=omega^2,
+             var(e_mir)=sigma_m^2}
+  We can only fit separate variances for the \eqn{\tau s}{tau's} if more than
+  two methods are compared (i.e. \code{nM} > 2), hence varMxI is ignored when
+  \code{nM}==2.
+
+  The function \code{VC.est} is the workhorse; \code{BA.est} just calls
+  it.  \code{VC.est} figures out which model to fit by \code{lme},
+  extracts results and returns estimates. \code{VC.est} is also used as
+  part of the fitting algorithm in \code{\link{AltReg}}, where each
+  iteration step requires fit of this model. The function \code{VC.est}
+  is actually just a wrapper for the functions \code{VC.est.fixed} that
+  handles the case with fixed methods (usually 2 or three) i.e. the
+  classical method comparison problem, and \code{VC.est.random} that
+  handles the situation where "methods" are merely a random sample of
+  raters from some population of raters; and therefore are regarded as
+  random.
+  }
+
+\value{
+  \code{BA.est} returns an object of class \code{c("\link{MethComp}","BA.est")},
+  a list with four elements
+  \code{Conv}, \code{VarComp}, \code{LoA}, \code{RepCoef};
+  \code{VC.est} returns (invisibly!) a list with elements
+  \code{Bias}, \code{VarComp}, \code{Mu}, \code{RanEff}.
+  These list components are:
+  \item{Conv}{3-dimensional array with dimensions "To", "From" and unnamed.
+              The first two dimensions have the methods compared as levels,
+              the last one \code{c("alpha","beta","sd.pred","LoA: lower","upper")}.
+              It represents the
+              mean conversions between methods and the prediction standard
+              deviation.
+
+	      Where "To" and "From" take the same value the value
+              of the "sd" component is \eqn{\sqrt{2}}{sqrt(2)} times the
+              residual variation for the method. If \code{IxR.pr=TRUE} the
+              variation between replicates are included too,
+              i.e. \eqn{\sqrt{2(\sigma_m^2+\omega^2)} }
+	                {sqrt[2(sigma_m^2+omega^2)]}. }
+  \item{VarComp}{A matrix of variance components (on the SD scale)
+                 with methods as rows and variance components "IxR", "MxI" and
+                 "res" as columns.}
+  \item{LoA}{Four-column matrix with mean difference, lower and upper limit of
+             agreement and prediction SD. Each row in the matrix represents
+             a pair of methods.}
+  \item{RepCoef}{Two-column matrix of repeatability SDs and repeatability
+                 coefficients. The SDs are the standard deviation of the
+                 difference between two measurements by the same method on the
+                 item under identical circumstances; the repeatability
+                 coefficient the numerical extent of the prediction interval
+                 for this difference, i.e. \eqn{2\sqrt{2}}{2*sqrt(2)}
+                 times the sd.}
+  \item{Mu}{Estimates of the item-specific parameters.}
+  \item{RanEff}{Estimates of the random effects from the model (BLUPS).
+                This is a (possibly empty) list with possible elements named
+                \code{MxI} and \code{IxR} according to whether these random
+                effects are in the model.}
+  The returned object has an attribute, \code{Transform} with the
+  transformation applied to data before analysis, and its inverse --- see
+  \code{\link{choose.trans}}.
+  }
+\references{Carstensen, Simpson & Gurrin: Statistical models for assessing
+            agreement in method comparison studies with replicate measurements,
+            The International Journal of Biostatistics: Vol. 4 : Iss. 1,
+            Article 16.
+            \url{http://www.bepress.com/ijb/vol4/iss1/16}.}
+\author{Bendix Carstensen}
+\seealso{\code{\link{BA.plot}},
+         \code{\link{perm.repl}}}
+\examples{
+data( ox )
+ox <- Meth( ox )
+summary( ox )
+BA.est( ox )
+BA.est( ox, linked=FALSE )
+BA.est( ox, linked=TRUE, Transform="pctlogit" )
+\dontrun{
+data( sbp )
+BA.est( sbp )
+BA.est( sbp, linked=FALSE )
+# Check what you get from VC.est
+str( VC.est( sbp ) )}
+}
+\keyword{models}
+\keyword{design}

@@ -1,0 +1,33 @@
+\name{milk}
+\alias{milk}
+\docType{data}
+\title{Measurement of fat content of human milk by two different methods.}
+\description{
+ Fat content of human milk determined by measurement of glycerol released by
+ enzymic hydrolysis of triglycerides (Trig) and measurement by the Standard
+ Gerber method (Gerber). Units are (g/100 ml).
+}
+\usage{data(milk)}
+\format{
+  A data frame with 90 observations on the following 3 variables.
+  \describe{
+    \item{\code{meth}}{a factor with levels \code{Gerber} \code{Trig}}
+    \item{\code{item}}{sample id}
+    \item{\code{y}}{a numeric vector}
+  }
+}
+\source{
+ The dataset is adapted from table 3 in: JM Bland and DG Altman: Measuring
+ agreement in method comparison studies. Statistical Methods in Medical
+ Research, 8:136-160, 1999. See: Lucas A, Hudson GJ, Simpson P, Cole TJ,
+ Baker BA. An automated enzymic micromethod for the measurement of fat in human
+ milk. Journal of Dairy Research 1987; 54: 487-92.
+}
+\examples{
+data(milk)
+str(milk)
+milk <- Meth(milk)
+plot(milk)
+abline(0,1)
+}
+\keyword{datasets}

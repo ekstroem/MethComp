@@ -1,0 +1,95 @@
+\name{Meth.sim}
+\alias{Meth.sim}
+\title{
+  Simulate a dataframe containing replicate measurements on the same
+  items using different methods.
+  }
+\description{
+  Simulates a dataframe representing data from a method comparison
+  study. It is returned as a \code{\link{Meth}} object.
+  }
+\usage{
+  Meth.sim( Ni = 100,
+            Nm = 2,
+            Nr = 3,
+            nr = Nr,
+         alpha = rep(0,Nm),
+          beta = rep(1,Nm),
+      mu.range = c(0, 100),
+      sigma.mi = rep(5,Nm),
+      sigma.ir = 2.5,
+     sigma.mir = rep(5,Nm),
+        m.thin = 1,
+        i.thin = 1 )
+  }
+\arguments{
+  \item{Ni}{The number of items (patient, animal, sample, unit etc.)}
+  \item{Nm}{The number of methods of measurement.}
+  \item{Nr}{The (maximal) number of replicate measurements for each
+            (item,method) pair.}
+  \item{nr}{The minimal number of replicate measurements for each
+            (item,method) pair. If \code{nr<Nr}, the number of replicates for
+            each (meth,item) pair is uniformly distributed on the points
+            \code{nr:Nr}, otherwise \code{nr} is ignored. Different number of
+            replicates is only meaningful if replicates are not linked, hence
+            \code{nr} is also ignored when \code{sigma.ir>0}.}
+  \item{alpha}{A vector of method-specific intercepts for the linear equation
+               relating the "true" underlying item mean measurement to the mean
+               measurement on each method.}
+  \item{beta}{A vector of method-specific slopes for the linear equation
+              relating the "true" underlying item mean measurement to the mean
+              measurement on each method.}
+  \item{mu.range}{The range across items of the "true" mean measurement.
+                  Item means are uniformly spaced across the range.
+                  If a vector length \code{Ni} is given, the values of that
+                  vector will be used as "true" means.}
+  \item{sigma.mi}{A vector of method-specific standard deviations for a method
+                  by item random effect.  Some or all components can be zero.}
+  \item{sigma.ir}{Method-specific standard deviations for the item
+                  by replicate random effect.}
+  \item{sigma.mir}{A vector of method-specific residual standard deviations for
+                   a method by item by replicate random effect (residual
+		   variation).
+                   All components must be greater than zero.}
+  \item{m.thin}{Fraction of the observations from each method to keep.}
+  \item{i.thin}{Fraction of the observations from each item to keep. If both
+                \code{m.thin} and \code{i.thin} are given the thinning is by their
+                componentwise product.}
+  }
+\details{
+  Data are simulated according to the following model for an observation
+  \eqn{y_{mir}}{y_mir}:
+  \deqn{y_{mir} = \alpha_m + \beta_m(\mu_i+b_{ir} + c_{mi}) + e_{mir}}{y_mir = alpha_m + beta_m*(mu_i+b_ir+c_mi) + e_mir}
+  where \eqn{b_{ir}}{b_ir} is a random \code{item} by \code{repl} interaction
+  (with standard deviation for method \eqn{m} the corresponding component of the
+  vector \eqn{\sigma_ir}{sigma_ir}), \eqn{c_{mi}}{c_mi} is a random \code{meth}
+  by \code{item} interaction (with standard deviation for method \eqn{m} the
+  corresponding component of the vector \eqn{\sigma_mi}{sigma_mi}) and
+  \eqn{e_{mir}}{e_mir} is a residual error term (with standard deviation
+  for method \eqn{m}{m} the corresponding component of the vector
+  \eqn{\sigma_mir}{sigma_mir}).  The \eqn{\mu_i}{mu_i}'s are uniformly spaced
+  in a range specified by \code{mu.range}.
+  }
+\value{
+  A \code{\link{Meth}} object, i.e. dataframe
+  with columns \code{meth}, \code{item}, \code{repl} and \code{y},
+  representing results from a method comparison study.
+  }
+\author{
+  Lyle Gurrin, University of Melbourne,
+  \url{http://www.epi.unimelb.edu.au/about/staff/gurrin-lyle}
+  
+  Bendix Carstensen, Steno Diabetes Center,
+  \url{http://BendixCarstensen.com}
+  }
+\seealso{\code{\link{summary.Meth}},
+         \code{\link{plot.Meth}},
+         \code{\link{MCmcmc}}}
+\examples{
+  Meth.sim( Ni=4, Nr=3 )
+  xx <- Meth.sim( Nm=3, Nr=5, nr=2, alpha=1:3, beta=c(0.7,0.9,1.2), m.thin=0.7 )
+  summary( xx )
+  plot( xx )
+  }
+\keyword{datagen}
+\keyword{manip}

@@ -1,0 +1,47 @@
+\name{hba1c}
+\alias{hba1c}
+\docType{data}
+\title{Measurements of HbA1c from Steno Diabetes Center}
+\description{
+Three analysers (machines) for determination of HbA1c (glycosylated haemoglobin)
+were tested on samples from 38 individuals. Each had drawn a venous and capillary
+blood sample. These were analysed on five different days.
+}
+\usage{data(hba1c)}
+\format{
+  A data frame with 835 observations on the following 6 variables.
+  \describe{
+    \item{\code{dev}}{Type of machine used.
+          A factor with levels \code{BR.V2}, \code{BR.VC} and \code{Tosoh}.}
+    \item{\code{type}}{Type of blood analysed (capillary or venous).
+          A factor with levels \code{Cap} \code{Ven}}
+    \item{\code{item}}{Person-id. A numeric vector}
+    \item{\code{d.samp}}{Day of sampling.}
+    \item{\code{d.ana}}{Day of laboratory analysis.}
+    \item{\code{y}}{The measured value of HbA1c.}
+  }
+}
+\details{
+In the terminology of method comparison studies, methods is the
+cross-classification of \code{dev} and \code{type}, and replicate is
+\code{d.ana}. It may be of interest to look at the effect of time between
+\code{d.ana} and \code{d.samp}, i.e. the time between sampling and analysis.
+}
+\source{
+Bendix Carstensen, Steno Diabetes Center.
+}
+\references{
+These data were analysed as example in:
+Carstensen: Comparing and predicting between several methods of measurement,
+Biostatistics 5, pp. 399--413, 2004.
+}
+\examples{
+data(hba1c)
+str(hba1c)
+hb1  <- with( hba1c,
+              Meth( meth = interaction(dev,type),
+                    item = item,
+                    repl = d.ana-d.samp,
+                       y = y, print=TRUE ) )
+}
+\keyword{datasets}

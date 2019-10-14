@@ -1,0 +1,217 @@
+\name{MCmcmc}
+\alias{MCmcmc}
+\alias{print.MCmcmc}
+\alias{summary.MCmcmc}
+\alias{subset.MCmcmc}
+\alias{mcmc.MCmcmc}
+\title{Fit a model for method comparison studies using WinBUGS}
+\description{
+  A model linking each of a number of methods of measurement linearly to the
+  "true" value is set up in BUGS and run via the function
+  \code{\link[R2WinBUGS]{bugs}} from the \code{R2WinBUGS} package.
+  }
+\usage{
+  MCmcmc( data,
+          bias = "linear",
+           IxR = has.repl(data), linked = IxR,
+           MxI = TRUE,           matrix = MxI,
+        varMxI = nlevels(factor(data$meth)) > 2,
+      n.chains = 4,
+        n.iter = 2000,
+      n.burnin = n.iter/2,
+        n.thin = ceiling((n.iter-n.burnin)/1000),
+bugs.directory = getOption("bugs.directory"),
+         debug = FALSE,
+bugs.code.file = "model.txt",
+       clearWD = TRUE,
+     code.only = FALSE,
+      ini.mult = 2,
+      list.ini = TRUE,
+           org = FALSE,
+       program = "JAGS",
+     Transform = NULL,
+     trans.tol = 1e-6,
+           ... )
+\method{summary}{MCmcmc}( object, alpha=0.05, \dots)
+\method{print}{MCmcmc}( x, digits=3, alpha=0.05, \dots )
+\method{subset}{MCmcmc}( x, subset=NULL, allow.repl=FALSE, chains=NULL, \dots )
+\method{mcmc}{MCmcmc}( x, \dots )
+  }
+\arguments{
+ \item{data}{Data frame with variables \code{meth}, \code{item}, \code{repl}
+             and \code{y}, possibly a \code{\link{Meth}} object.
+             \code{y} represents a measurement on an \code{item}
+             (typically patient or sample) by method \code{meth}, in replicate
+             \code{repl}.}
+ \item{bias}{Character. Indicating how the bias between methods should be
+             modelled. Possible values are \code{"none"}, \code{"constant"},
+             \code{"linear"} and \code{"proportional"}. Only the first three
+             letters are significant. Case insensitive.}
+ \item{IxR}{Logical. Are the replicates linked across methods, i.e. should
+            a random \code{item} by \code{repl} be included in the model.}
+ \item{linked}{Logical, alias for \code{IxR}.}
+ \item{MxI}{Logical, should a \code{meth} by \code{item} effect be included
+            in the model?}
+ \item{matrix}{Logical, alias for \code{MxI}.}
+ \item{varMxI}{Logical, should the method by item effect have method-specific
+   variances. Ignored if only two methods are compared.}
+  \item{n.chains}{How many chains should be run by WinBUGS --- passed on
+    to \code{bugs}.}
+  \item{n.iter}{How many total iterations --- passed on to \code{bugs}.}
+  \item{n.burnin}{How many of these should be burn-in --- passed on to \code{bugs}.}
+  \item{n.thin}{How many should be sampled --- passed on to \code{bugs}.}
+  \item{bugs.directory}{Where is WinBUGS (>=1.4) installed --- passed on
+    to \code{bugs}. The default is to use a parameter from
+    options(). If you use this routinely, this is most conveniently set in
+    your \code{.Rprofile} file.}
+  \item{debug}{Should WinBUGS remain open after running --- passed on to
+    \code{bugs}.}
+  \item{clearWD}{Should the working directory be cleared for junk files after
+                 the running of WinBUGS --- passed on to \code{bugs}.}
+  \item{bugs.code.file}{Where should the bugs code go?}
+  \item{code.only}{Should \code{MCmcmc} just create a bugs code file and a set
+                   of inits? See the \code{list.ini} argument.}
+  \item{ini.mult}{Numeric. What factor should be used to randomly perturb the
+                  initial values for the variance components, see below in details.}
+  \item{list.ini}{List of lists of starting values for the chains, or logical
+        indicating whether starting values should be generated.
+        If \code{TRUE} (the default), the function \code{\link{VC.est}} will
+        be used to generate
+        initial values for the chains. \code{list.ini} is a list of length
+        \code{n.chains}. Each element of which is a list with the following
+        vectors as elements:
+        \describe{
+         \item{\code{mu}}{- length I}
+         \item{\code{alpha}}{- length M}
+         \item{\code{beta}}{- length M}
+         \item{\code{sigma.mi}}{- length M - if M is 2 then length 1}
+         \item{\code{sigma.ir}}{- length 1}
+         \item{\code{sigma.mi}}{- length M}
+         \item{\code{sigma.res}}{- length M}}
+        If \code{code.only==TRUE}, \code{list.ini} indicates
+        whether a list of initial values is returned (invisibly) or not.
+        If \code{code.only==FALSE}, \code{list.ini==FALSE} is ignored.
+        }
+  \item{org}{Logical. Should the posterior of the original model parameters be
+             returned too? If \code{TRUE}, the \code{MCmcmc} object will have
+             an attribute, \code{original}, with the posterior of the parameters
+             in the model actually simulated.}
+  \item{program}{Which program should be used for the MCMC simulation.
+                 Possible values are "\code{BRugs}", "\code{openbugs}",
+		 "\code{ob}" (openBUGS/BRugs), "\code{winbugs}",
+		 "\code{wb}" (WinBUGS), "\code{jags}" (JAGS). Case
+		 insensitive. Defaults to "\code{JAGS}" since: 1) JAGS
+		 is available on all platforms and 2) JAGS seems to be
+		 faster than BRugs on (some) windows machines.}
+  \item{Transform}{Transformation of data (\code{y}) before analysis.
+                   See \code{\link{choose.trans}}.}
+  \item{trans.tol}{The tolerance used to check whether the supplied
+                   transformation and its inverse combine to the identity.}
+  \item{...}{Additional arguments passed on to \code{\link[R2WinBUGS]{bugs}}.}
+  \item{object}{An \code{MCmcmc} object}
+  \item{alpha}{1 minus the the confidence level}
+  \item{x}{An \code{MCmcmc} object}
+  \item{digits}{Number of digits after the decimal point when printing.}
+  \item{subset}{Numerical, character or list giving the variables to keep.
+                If numerical, the variables in the \code{MCmcmc} object with
+                these numbers are selected. If character, each element of the
+                character vector is "grep"ed against the variable names, and
+                the matches are selected to the subset. If a list each element
+                is used in turn, numerical and character elements can be mixed.}
+  \item{allow.repl}{Should duplicate columns be allowed in the result?}
+  \item{chains}{Numerical vector giving the number of the chains to keep.}
+  }
+\details{
+  The model set up for an observation \eqn{y_{mir}}{y_mir} is:
+  \deqn{y_{mir} = \alpha_m + \beta_m(\mu_i+b_{ir} + c_{mi}) +
+    e_{mir}}{y_mir = alpha_m + beta_m*(mu_i+b_ir+c_mi) + e_mir}
+  where \eqn{b_{ir}}{b_ir} is a random \code{item} by \code{repl} interaction (included if
+  \code{"ir" \%in\% random}) and \eqn{c_{mi}}{c_mi} is a random \code{meth} by \code{item}
+  interaction (included if \code{"mi" \%in\% random}). The \eqn{\mu_i}{mu_i}'s are
+  parameters in the model but are not monitored --- only the \eqn{\alpha}{alpha}s,
+  \eqn{\beta}{beta}s and the variances of \eqn{b_{ir}}{b_{ir}},
+  \eqn{c_{mi}}{c_{mi}} and \eqn{e_{mir}}{e_{mir}} are monitored and
+  returned. The estimated parameters are only determined up to a linear
+  transformation of the \eqn{\mu}{mu}s, but the linear functions linking
+  methods are invariant. The identifiable conversion parameters are:
+  \deqn{\alpha_{m\cdot k}=\alpha_m - \alpha_k \beta_m/\beta_k, \quad
+    \beta_{m\cdot k}=\beta_m/\beta_k}{alpha_m|k=alpha_m-alpha_k
+    beta_m/beta_k,  beta_m|k=beta_m/beta_k}
+  The posteriors of these are derived and included in the \code{posterior}, which
+  also will contain the posterior of the variance components (the SDs, that is).
+  Furthermore, the posterior of the point where the conversion lines intersects
+  the identity as well as the prediction SDs between any pairs of methods are
+  included.
+
+  The function \code{summary.MCmcmc} method gives estimates of the conversion
+  parameters that are consistent. Clearly,
+  \deqn{\mathrm{median}(\beta_{1\cdot 2})=
+      1/\mathrm{median}(\beta_{2\cdot 1})}{median(beta.1.2)=1/median(beta.2.1)}
+  because the inverse is a monotone transformation, but there is no guarantee
+  that
+  \deqn{\mathrm{median}(\alpha_{1\cdot 2})= \mathrm{median}(-\alpha_{2\cdot 1}/
+    \beta_{2\cdot 1})}{median(alpha.1.2)=median(-alpha.2.1/beta.2.1)}
+  and hence no guarantee that the parameters derived as posterior medians
+  produce conversion lines that are the same in both directions. Therefore,
+  \code{summary.MCmcmc} computes the estimate for \eqn{\alpha_{2\cdot 1}}{alpha.2.1} as
+  \deqn{(\mathrm{median}(\alpha_{1\cdot 2})-\mathrm{median}(\alpha_{2\cdot 1})
+  /\mathrm{median}(\beta_{2\cdot 1}))/2}{(median(alpha.1.2)-median(alpha.2.1)/
+  median(beta.2.1))/2}
+  and the estimate of \eqn{\alpha_{1\cdot 2}}{alpha.1.2} correspondingly. The
+  resulting parameter estimates defines the same lines.
+  }
+\value{
+  If \code{code.only==FALSE}, an object of class \code{MCmcmc} which is
+  a  \code{\link[coda]{mcmc.list}} object of the relevant parameters, i.e. the
+  posteriors of the conversion parameters and the variance components transformed
+  to the scales of each of the methods.
+
+  Furthermore, the object have the following attributes:
+  \item{random}{Character vector indicating which random effects ("ir","mi")
+                were included in the model.}
+  \item{methods}{Character vector with the method names.}
+  \item{data}{The data frame used in the analysis. This is
+              used in \code{\link{plot.MCmcmc}} when plotting points.}
+  \item{mcmc.par}{A list giving the number of chains etc. used to
+                  generate the object.}
+  \item{original}{If \code{org=TRUE}, an \code{\link[coda]{mcmc.list}} object
+                  with the posterior of the original model parameters, i.e.
+                  the variance components and the unidentifiable mean parameters.}
+  \item{Transform}{The transformation used to the measurements before the
+                   analysis.}
+  If \code{code.only==TRUE}, a list containing the initial values is
+           generated.
+  }
+\references{
+  B Carstensen: Comparing and predicting between several methods
+  of measurement, Biostatistics, 5, pp 399-413, 2004
+  }
+\author{Bendix Carstensen, Steno Diabetes Center,
+  \url{http://BendixCarstensen.com},
+  Lyle Gurrin, University of Melbourne,
+  \url{http://www.epi.unimelb.edu.au/about/staff/gurrin-lyle}.
+  }
+\seealso{
+  \code{\link{BA.plot}},
+  \code{\link{plot.MCmcmc}},
+  \code{\link{print.MCmcmc}},
+  \code{\link{check.MCmcmc}}
+  }
+\examples{
+data( ox )
+str( ox )
+ox <- Meth( ox )
+# Writes the BUGS program to your console
+MCmcmc( ox, MI=TRUE, IR=TRUE, code.only=TRUE, bugs.code.file="" )
+
+### What is written here is not necessarily correct on your machine.
+# ox.MC <- MCmcmc( ox, MI=TRUE, IR=TRUE, n.iter=100, program="JAGS" )
+# ox.MC <- MCmcmc( ox, MI=TRUE, IR=TRUE, n.iter=100 )
+#  data( ox.MC )
+#   str( ox.MC )
+# print( ox.MC )
+}
+\keyword{models}
+\keyword{design}
+\keyword{regression}
+\keyword{nonlinear}
