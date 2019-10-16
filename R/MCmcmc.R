@@ -1,3 +1,5 @@
+#' @importFrom coda varnames
+#' @export
 MCmcmc <-
 function( data,
           bias = "linear",

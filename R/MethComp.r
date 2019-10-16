@@ -1,3 +1,8 @@
+#' @import stats
+#' @import utils
+#' @import graphics
+#' @import grDevices
+#' @export
 MethComp <-
 function( obj )
 {
@@ -45,6 +50,7 @@ return( res )
 ################################################################################
 ## print method for MethComp
 ################################################################################
+#' @export
 print.MethComp <-
 function( x, digits=3, ... )
 {
@@ -75,6 +81,7 @@ if( !is.null( x$VarComp ) )
 ################################################################################
 ## plot, lines and points for MethComp
 ################################################################################
+#' @export
 plot.MethComp <-
 function( x,
       wh.comp = 1:2,
@@ -298,6 +305,7 @@ box()
 ################################################################################
 ## lines.MethComp
 ################################################################################
+#' @export
 lines.MethComp <-
 function( x,
       wh.comp = getOption("MethComp.wh.comp"),

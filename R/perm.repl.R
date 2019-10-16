@@ -1,3 +1,4 @@
+#' @export
 perm.repl <-
 function( data )
 {

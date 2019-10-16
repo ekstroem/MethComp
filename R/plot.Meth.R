@@ -1,6 +1,5 @@
 #' @importFrom graphics abline points text box axis plot par
 #' @importFrom stats sd
-#' @export plot.Meth
 plot.Meth <-
 function( x,
       which = NULL,

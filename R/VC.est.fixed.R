@@ -1,4 +1,4 @@
-#' @export VC.est.fixed
+#' @export
 VC.est.fixed <-
 function( data,
            IxR = has.repl(data), linked = IxR,
@@ -187,7 +187,7 @@ names( Bias ) <- levels( meth )
 Mu <- summ[grep("item",rownames(summ)),1]
 
 # The two-way random interactions
-vc <- nlme:::VarCorr( m1 )
+vc <- nlme::VarCorr( m1 )
 tau <- matrix( NA, Nm, if(corMxI) Nm else 1 )
 tau.ch <- vc[grep("meth",rownames(vc)),-1,drop=FALSE]
 if(        MxI )                  tau[    ,1] <- as.numeric( tau.ch[    ,1] )

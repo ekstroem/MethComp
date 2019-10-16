@@ -1,3 +1,4 @@
+#' @export
 Meth.sim <-
 function( Ni = 100,
           Nm = 2,

@@ -1,3 +1,4 @@
+#' @export
 sample.Meth <-
 function( x,
         how = "random",

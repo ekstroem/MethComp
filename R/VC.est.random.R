@@ -177,7 +177,7 @@ names( Bias ) <- levels( meth )
 Mu <- summ[grep("item",rownames(summ)),1]
 
 # The two-way random interactions
-vc <- nlme:::VarCorr( m1 )
+vc <- nlme::VarCorr( m1 )
 xi <- as.numeric( vc[grep("^meth(.+)",rownames(vc)),2][1] )
 
 if ( varMxI & MxI ) tau <- as.numeric( tail(vc[grep("^meth(.+)",rownames(vc)),2], nlevels(meth)) )

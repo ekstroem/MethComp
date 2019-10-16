@@ -1,3 +1,4 @@
+#' @export 
 DA.reg <-
 function( data,
      Transform = NULL,    # Transformation to be applied to y
@@ -94,6 +95,7 @@ return( invisible( res ) )
 }
 }
 
+#' @export
 DA2y <-
 function( a=0, b=0, s=NA )
 {
@@ -112,6 +114,7 @@ colnames( res ) <- c("int","slope","sd")
 invisible( res )
 }
 
+#' @export
 y2DA <-
 function( A=0, B=1, S=NA )
 {

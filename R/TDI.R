@@ -1,3 +1,5 @@
+#' @importFrom stats qnorm pnorm uniroot
+#' @export
 TDI <-
 function( y1, y2, p = 0.05, boot=1000, alpha = 0.05 )
 {

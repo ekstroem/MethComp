@@ -1,3 +1,6 @@
+#' @importFrom graphics mtext lines
+#' @importFrom grDevices grey
+#' @importFrom stats density 
 plot.VarComp <-
 function( x,
         which,
