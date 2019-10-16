@@ -4,6 +4,14 @@
 trace <- function (obj, ...) UseMethod("trace")
 post  <- function (obj, ...) UseMethod("post")
 
+
+
+
+#
+#
+#
+
+#' @export trace.MCmcmc
 trace.MCmcmc <-
 function( obj, what="sd",
        scales = c("same","free"),
@@ -11,7 +19,7 @@ function( obj, what="sd",
        aspect = "fill",
           ... )
 {
-require( coda )
+# require( coda )
 # Expand scales so a single value is sufficient
 scales <- c(scales,scales)
 # Decide which function to invoke
@@ -151,7 +159,7 @@ function( obj, what="sd",
        aspect = "fill",
           ... )
 {
-require( coda )
+# require( coda )
 scales <- c(scales,scales)
 # Decide on coloring
 col <- if( check ) rainbow(length(obj)) # number of chains
@@ -242,6 +250,7 @@ lattice::densityplot( obj,
              ... )
 }
 
+#' @export pairs.MCmcmc
 pairs.MCmcmc <-
 function( x, what = "sd",
            subset = NULL,

@@ -445,6 +445,7 @@ else
 ################################################################################
 ## choose.trans
 ################################################################################
+#' @export
 choose.trans <-
 function( tr )
 # Function to allow a character argument to choose a transformation and the

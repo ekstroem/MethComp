@@ -1,3 +1,4 @@
+#' @export 
 abconv <-
 function( a1, b1=1:4, a2=NULL, b2=NULL,
           col.names=c("alpha.2.1","beta.2.1","id.2.1") )

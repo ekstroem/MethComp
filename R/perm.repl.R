@@ -46,6 +46,7 @@ data <- data[order(ord),]
 if( was.Meth ) Meth( data, print=FALSE ) else data
 }
 
+#' @export
 has.repl <-
 function( data )
 {

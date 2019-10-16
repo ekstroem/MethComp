@@ -1,5 +1,9 @@
 # A function that returns the values of some of the crap
 # association measures proposed in the literature
+
+
+
+#' @export
 corr.measures <-
 function( x, y )
 {
@@ -24,6 +28,7 @@ res
 }
 
 # Functions to point at the middle or the extremes
+#' @export
 middle <-
 function( w, rm=1/3 )
 {
@@ -31,6 +36,7 @@ qnt <- quantile( w, probs=0:1 + c(1,-1)*rm/2 )
 w > qnt[1] & w < qnt[2]
 }
 
+#' @export 
 ends <-
 function( w, rm=1/3 )
 {
