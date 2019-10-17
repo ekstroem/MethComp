@@ -16,6 +16,7 @@ data <- data[new.order,]
 Meth( make.repl( data ), print=FALSE )
 }
 
+#' @export
 make.repl <-
 function( data )
 {

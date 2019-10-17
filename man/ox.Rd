@@ -39,6 +39,6 @@ summary( ox )
 # The effect of basing LoA on means over replicates:
 par( mfrow=c(1,2), mar=c(4,4,1,4) )
 BA.plot(      ox , diflim=c(-20,20), axlim=c(20,100), repl.conn=TRUE )
-BA.plot( mean(ox), diflim=c(-20,20), axlim=c(20,100) )
+# BA.plot( mean(ox), diflim=c(-20,20), axlim=c(20,100) )
 }
 \keyword{datasets}

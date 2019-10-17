@@ -58,12 +58,12 @@
   x <- PBreg(a)
   print(x)
   par(mfrow=c(2,2))
-  plot(x, s=1:4)
+#  plot(x, s=1:4)
 
   ## Or the same using "Meth" object
   a <- Meth(a, y=1:2)
   x <- PBreg(a)
   print(x)
   par(mfrow=c(2,2))
-  plot(x, s=1:4)
+#  plot(x, s=1:4)
 }

@@ -1,3 +1,4 @@
+#' @export subset.MCmcmc
 subset.MCmcmc <-
 function( x, subset=NULL, allow.repl=FALSE, chains=NULL, ... )
 {
