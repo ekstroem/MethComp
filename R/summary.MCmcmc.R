@@ -2,7 +2,7 @@ summary.MCmcmc <-
 function( object, alpha=0.05,
           ... )
 {
-Got.coda <- requireNamespace( coda )
+Got.coda <- requireNamespace( "coda" )
 if( !Got.coda )
   stop( "Using the summary.MCmcmc function requires that\n",
         "the package 'coda' is installed.\n",
@@ -88,7 +88,7 @@ function( x,
       alpha = 0.05,
         ... )
 {
-Got.coda <- requireNamespace( coda )
+Got.coda <- requireNamespace( "coda" )
 if( !Got.coda )
   stop( "Using the print.MCmcmc function requires that\n",
         "the package 'coda' is installed.\n",

@@ -3,7 +3,8 @@
 #' @importFrom stats density 
 
 
-#' 
+#' @method plot VarComp
+#' @S3method plot VarComp
 #' @export plot.VarComp
 plot.VarComp <-
 function( x,
