@@ -144,14 +144,14 @@ flush.console()
 # Run bugs
 
 # Check the availability of required package
-Got.coda  <- require( coda )
+Got.coda  <- requireNamespace( coda )
 Got.r2win <-
 Got.brugs <-
 Got.jags  <-
 Got.pr    <- FALSE
-if( tolower(substr(program,1,1)) %in% c("b","o","w") ) Got.r2win <- require( R2WinBUGS, quietly=TRUE )
-if( tolower(substr(program,1,1)) %in% c("b","o"    ) ) Got.brugs <- require( BRugs    , quietly=TRUE )
-if( tolower(substr(program,1,1)) %in% c("j"        ) ) Got.jags  <- require( rjags    , quietly=TRUE )
+if( tolower(substr(program,1,1)) %in% c("b","o","w") ) Got.r2win <- requireNamespace( R2WinBUGS, quietly=TRUE )
+if( tolower(substr(program,1,1)) %in% c("b","o"    ) ) Got.brugs <- requireNamespace( BRugs    , quietly=TRUE )
+if( tolower(substr(program,1,1)) %in% c("j"        ) ) Got.jags  <- requireNamespace( rjags    , quietly=TRUE )
 if( !Got.coda |
     !( Got.jags | Got.r2win ) )
   stop( "Using the MCmcmc function for estimation requires that\n",
