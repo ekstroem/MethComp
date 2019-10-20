@@ -144,7 +144,7 @@ flush.console()
 # Run bugs
 
 # Check the availability of required package
-Got.coda  <- requireNamespace( "coda" )
+Got.coda  <- TRUE # requireNamespace( "coda" )
 Got.r2win <-
 Got.brugs <-
 Got.jags  <-
@@ -184,7 +184,7 @@ if(  is.null(bugs.directory) &&
 if( program == "jags"  )
 {
 cat("Initialization and burn-in:\n")
-m <- jags.model( file = bugs.code.file,
+m <- rjags::jags.model( file = bugs.code.file,
                  data = data.list,
              n.chains = n.chains,
                 inits = list.ini,
@@ -197,7 +197,7 @@ res <- rjags::coda.samples( m,
 }
 
 if( program %in% c("winbugs","openbugs")  )
-res <- bugs(  data = data.list,
+res <- openbugs::bugs(  data = data.list,
 parameters.to.save = names( list.ini[[1]] ),
              inits = list.ini,
         model.file = bugs.code.file,
@@ -212,8 +212,8 @@ parameters.to.save = names( list.ini[[1]] ),
 
 # and read the result into an mcmc.list object
 # --- different approach for WinBUGS and OpenBUGS
-if( program == "winbugs"  )
-  res <- read.bugs( res, quiet=TRUE )
+#if( program == "winbugs"  )
+#  res <- read.bugs( res, quiet=TRUE )
 if( program == "openbugs" )
   res <- sims.array.2.mcmc.list( res$sims.array )
 

@@ -9,7 +9,7 @@ function( x,
       col.pts = "black", pch.pts = 16, cex.pts = 0.8,
           ... )
 {
-Got.coda <- requireNamespace( "coda" )
+Got.coda <- TRUE # requireNamespace( "coda" )
 if( !Got.coda )
   stop( "Using the plot.MCmcmc function requires that\n",
         "the package 'coda' is installed.\n",

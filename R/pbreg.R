@@ -71,8 +71,7 @@ PBreg <- function(x, y=NULL, conf.level=0.05, wh.meth=1:2) {
 
 
 #' @method predict PBreg
-#' @S3method predict PBreg
-#' @export predict.PBreg
+#' @export
 predict.PBreg <- function(object, newdata = object$model$x, interval="confidence", level=0.95,...) {
     S    = object$S
     ch   = object$adj["Ss"]

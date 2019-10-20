@@ -4,8 +4,7 @@
 
 
 #' @method plot VarComp
-#' @S3method plot VarComp
-#' @export plot.VarComp
+#' @export
 plot.VarComp <-
 function( x,
         which,
@@ -20,7 +19,7 @@ function( x,
      VC.names = "first",
           ... )
 {
-Got.coda <- require( coda )
+Got.coda <- requireNamespace( "coda" )
 if( !Got.coda )
   stop( "Using the plot.VarComp function requires that\n",
         "the package 'coda' is installed.\n",

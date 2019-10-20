@@ -250,9 +250,11 @@ lattice::densityplot( obj,
              ... )
 }
 
+
+
 #' @method pairs MCmcmc
-#' @S3method pairs MCmcmc
 #' @export pairs.MCmcmc
+#'
 pairs.MCmcmc <-
 function( x, what = "sd",
            subset = NULL,
