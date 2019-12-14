@@ -1,4 +1,61 @@
-
+#' Create a Meth object representing a method comparison study
+#'
+#' Creates a dataframe with columns \code{meth}, \code{item}, (\code{repl}) and \code{y}.
+#' 
+#' In order to perform analyses of method comparisons it is convenient to have a
+#' dataframe with classifying factors, \code{meth}, \code{item}, and possibly
+#' \code{repl} and the response variable \code{y}. This function creates such a
+#' dataframe, and gives it a class, \code{Meth}, for which there is a number of
+#' methods: \code{summary} - tabulation, \code{plot} - plotting and a couple of
+#' analysis methods.
+#'
+#' If there are replicates in the values of \code{item} it is assumed
+#' that those observations represent replicate measurements and different
+#' replicate numbers are given to those.
+#'
+#' @param data A data frame
+#' @param meth Vector of methods, numeric, character or factor. Can also be a number or character referring to a column in \code{data}. 
+#' @param item Vector of items, numeric, character or factor. Can also be a number or character referring to a column in \code{data}. 
+#' @param repl Vector of replicates, numeric, character or factor. Can also be a number or character referring to a column in \code{data}. 
+#' @param y Vector of measurements. Can also be a character or numerical vector pointing to columns in \code{data} which contains the measurements by different methods or a dataframe with columns representing  measurements by different methods. In this case the argument \code{meth} is ignored, and the names of the columns are taken as method names.
+#' @param print Logical: Should a summary result be printed?
+#' @param keep.vars Logical. Should the remaining variables from the dataframe \code{data} be transferred to the \code{Meth} object. 
+#'
+#' @return The \code{Meth} function returns a \code{Meth} object which is a   dataframe with columns \code{meth}, \code{item}, (\code{repl}) and \code{y}. \code{summary.Meth} returns a table classified by method and no. of replicate measurements, extended with columns of the total number of items, total number of observations and the range of the measurements.
+#' 
+#' @examples
+#' data(fat)
+#' # Different ways of selecting columns and generating replicate numbers
+#' Sub1 <- Meth(fat,meth=2,item=1,repl=3,y=4,print=TRUE)
+#' Sub2 <- Meth(fat,2,1,3,4,print=TRUE)
+#' Sub3 <- Meth(fat,meth="Obs",item="Id",repl="Rep",y="Sub",print=TRUE)
+#' summary( Sub3 )
+#' plot( Sub3 )
+#' 
+#' # Use observation in different columns as methods
+#' data( CardOutput )
+#' head( CardOutput )
+#' sv <- Meth( CardOutput, y=c("Svo2","Scvo2") )
+#' # Note that replicates are generated if a non-unique item-id is used
+#' sv <- Meth( CardOutput, y=c("Svo2","Scvo2"), item="Age" )
+#' str( sv )
+#' # A summary is not created if the the first argument (data=) is not used:
+#' sv <- Meth( y=CardOutput[,c("Svo2","Scvo2")], item=CardOutput$VO2 )
+#' summary(sv)
+#' 
+#' # Sample items
+#' ssv <- sample.Meth( sv, how="item", N=8 )
+#' 
+#' # More than two methods
+#' data( sbp )
+#' plot( Meth( sbp ) )
+#' # Creating non-unique replicate numbers per (meth,item) creates a warning:
+#' data( hba1c )
+#' hb1  <- with( hba1c,
+#'               Meth( meth=dev, item=item, repl=d.ana-d.samp, y=y, print=TRUE ) )
+#' hb2  <- with( subset(hba1c,type=="Cap"),
+#'               Meth( meth=dev, item=item, repl=d.ana-d.samp, y=y, print=TRUE ) )
+#' 
 #' @export Meth
 Meth <-
 function( data = NULL,

@@ -1,6 +1,4 @@
-#' @rdname subset
-#' @method subset MCmcmc
-#' @export 
+#' @export
 subset.MCmcmc <-
 function( x, subset=NULL, allow.repl=FALSE, chains=NULL, ... )
 {

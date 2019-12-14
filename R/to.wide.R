@@ -1,3 +1,25 @@
+#' Functions to convert between long and wide representations of data
+#'
+#' These functions are merely wrappers for \code{\link{reshape}}.
+#' Given the complicated syntax of \code{reshape} and the particularly simple
+#' structure of this problem, the functions facilitate the conversion
+#' enormously.
+#'
+#' If \code{data} represents method comparisons with exchangeable  replicates within method, the transformation to wide format does not necessarily make sense.
+#'
+#' @param data A \code{\link{Meth}} object.
+#' @param warn Logical. Should a warning be printed when replicates are taken as items?
+#'
+#' @return A data frame with the reshaped data
+#' @examples
+#'
+#' data( milk )
+#' str( milk )
+#' mw <- to.wide( milk )
+#' str( mw )
+#' ( mw <- subset( mw, as.integer(item) < 3 ) )
+#' to.long( mw, 3:4 )
+#' 
 #' @importFrom stats reshape
 #' @export to.wide
 to.wide <-
@@ -27,6 +49,28 @@ res
 }
 
 
+#' Functions to convert between long and wide representations of data
+#'
+#' These functions are merely wrappers for \code{\link{reshape}}.
+#' Given the complicated syntax of \code{reshape} and the particularly simple
+#' structure of this problem, the functions facilitate the conversion
+#' enormously.
+#'
+#' If \code{data} represents method comparisons with exchangeable  replicates within method, the transformation to wide format does not necessarily make sense.
+#'
+#' @param data A \code{\link{Meth}} object.
+#' @param vars The variables representing measurements by different methods. Either a character vector of names, or a numerical vector with the number of the variables in the dataframe.
+#'
+#' @return A data frame with the reshaped data
+#' @examples
+#' 
+#' data( milk )
+#' str( milk )
+#' mw <- to.wide( milk )
+#' str( mw )
+#' ( mw <- subset( mw, as.integer(item) < 3 ) )
+#' to.long( mw, 3:4 )
+#' 
 #' @importFrom stats reshape
 #' @export to.long
 to.long <-

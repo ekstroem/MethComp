@@ -220,6 +220,8 @@ lattice::densityplot( obj,
              ... )
 }
 
+
+#' @export
 post.mean <-
 function( obj,
         check = TRUE,
@@ -252,9 +254,7 @@ lattice::densityplot( obj,
 
 
 
-#' @method pairs MCmcmc
-#' @export pairs.MCmcmc
-#'
+#' @export
 pairs.MCmcmc <-
 function( x, what = "sd",
            subset = NULL,

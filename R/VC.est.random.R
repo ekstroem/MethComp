@@ -1,7 +1,6 @@
 #' @importFrom nlme lme lmeControl pdIdent varIdent ranef pdBlocked pdDiag pdSymm
 #' @importFrom utils tail
 #' @importFrom stats residuals
-#' @export VC.est.random
 VC.est.random <-
 function( data,
            IxR = has.repl(data), linked = IxR,

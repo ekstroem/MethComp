@@ -19,7 +19,7 @@ on.exit( options(oo) )
 # the call depending on whether or not random raters
 # are assumed
 if( random.raters )
-  return( MethComp::VC.est.random( data = data,
+  return( VC.est.random( data = data,
                                      IxR = IxR,
                                      MxI = MxI,
                                   varMxI = varMxI,
@@ -27,7 +27,7 @@ if( random.raters )
                                    print = print,
                               lmecontrol = lmecontrol ) )
 else
-  return( MethComp::VC.est.fixed ( data = data,
+  return( VC.est.fixed ( data = data,
                                      IxR = IxR,
                                      MxI = MxI,
                                   corMxI = corMxI,

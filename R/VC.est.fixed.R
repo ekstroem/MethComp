@@ -1,4 +1,3 @@
-#' @export
 VC.est.fixed <-
 function( data,
            IxR = has.repl(data), linked = IxR,
