@@ -300,3 +300,371 @@ NULL
 
 
 
+#' Relative renal function by Scintigraphy
+#' 
+#' Measurements of the relative kidney function (=renal function) for 111
+#' patients. The percentage of the total renal function present in the left
+#' kidney is determined by one reference method, \code{DMSA} (static) and by
+#' one of two dynamic methods, \code{DTPA} or \code{EC}.
+#' 
+#' 
+#' @name scint
+#' @docType data
+#' @format A data frame with 222 observations on the following 5 variables:
+#' \describe{ \item{\code{meth}}{Measurement method, a factor with levels
+#' \code{DMSA}, \code{DTPA}, \code{EC}.} \item{\code{item}}{Patient
+#' identification.} \item{\code{y}}{Percentage of total kidney function in the
+#' left kidney.} \item{\code{age}}{Age of the patient.} \item{\code{sex}}{Sex
+#' of the patient, a factor with levels \code{F}, \code{M}.} }
+#' @source F. C. Domingues, G. Y. Fujikawa, H. Decker, G. Alonso, J. C.
+#' Pereira, P. S. Duarte: Comparison of Relative Renal Function Measured with
+#' Either 99mTc-DTPA or 99mTc-EC Dynamic Scintigraphies with that Measured with
+#' 99mTc-DMSA Static Scintigraphy.  International Braz J Urol Vol. 32 (4):
+#' 405-409, 2006
+#' @keywords datasets
+#' @examples
+#' 
+#'   data(scint)
+#'   str(scint)
+#'   # Make a Bland-Altman plot for each of the possible comparisons:
+#'   par(mfrow=c(1,2),mgp=c(3,1,0)/1.6,mar=c(3,3,1,3))
+#'   BA.plot(scint,comp.levels=c(1,2),ymax=15,digits=1,cex=2)
+#'   BA.plot(scint,comp.levels=c(1,3),ymax=15,digits=1,cex=2)
+#'   
+NULL
+
+
+#' Systolic blood pressure measured by three different methods.
+#' 
+#' For each subject (\code{item}) there are three replicate measurements by
+#' three methods (two observers, J and R and the automatic machine, S). The
+#' replicates are linked within (method,item).
+#' 
+#' 
+#' @name sbp
+#' @docType data
+#' @format A data frame with 765 observations on the following 4 variables:
+#' \describe{ \item{\code{meth}}{Methods, a factor with levels
+#' \code{J}(observer 1), \code{R}(observer 2) and \code{S}(machine)}
+#' \item{\code{item}}{Person id, numeric.} \item{\code{repl}}{Replicate
+#' number, a numeric vector} \item{\code{y}}{Systolic blood pressure
+#' masurement, a numeric vector} }
+#' @seealso \code{\link{sbp.MC}}
+#' @source The dataset is adapted from table 1 in: JM Bland and DG Altman:
+#' Measuring agreement in method comparison studies. Statistical Methods in
+#' Medical Research, 8:136-160, 1999. Originally supplied to Bland \& Altman by
+#' E. O'Brien, see: Altman DG, Bland JM. The analysis of blood pressure data.
+#' In O'Brien E, O'Malley K eds. Blood pressure measurement. Amsterdam:
+#' Elsevier, 1991: 287-314.
+#' @keywords datasets
+#' @examples
+#' 
+#' data(sbp)
+#' par( mfrow=c(2,2), mar=c(4,4,1,4) )
+#' BA.plot( sbp, comp=1:2 )
+#' BA.plot( sbp, comp=2:3 )
+#' BA.plot( sbp, comp=c(1,3) )
+#' \dontrun{ BA.est( sbp, linked=TRUE ) }
+#' 
+NULL
+
+
+
+#' Measurement of cardiac output by two different methods.
+#' 
+#' For each subject cardiac output is measured repeatedly (three to six times)
+#' by impedance cardiography (IC) and radionuclide ventriculography (RV).
+#' 
+#' It is not entirely clear from the source whether the replicates are
+#' exchangeable within (method,item) or whether they represent pairs of
+#' measurements. From the description it looks as if replicates are linked
+#' between methods, but in the paper they are treated as if they were not.
+#' 
+#' @name cardiac
+#' @docType data
+#' @format A data frame with 120 observations on the following 4 variables.
+#' \describe{ \item{\code{meth}}{a factor with levels \code{IC} \code{RV}}
+#' \item{\code{item}}{a numeric vector giving the item number.}
+#' \item{\code{repl}}{a numeric vector with replicate number.}
+#' \item{\code{y}}{the measuremnts of cardiac output.} }
+#' @source The dataset is adapted from table 4 in: JM Bland and DG Altman:
+#' Measuring agreement in method comparison studies. Statistical Methods in
+#' Medical Research, 8:136-160, 1999. Originally supplied to Bland \& Altman by
+#' Dr LS Bowling, see: Bowling LS, Sageman WS, O'Connor SM, Cole R, Amundson
+#' DE.  Lack of agreement between measurement of ejection fraction by impedance
+#' cardiography versus radionuclide ventriculography. Critical Care Medicine
+#' 1993; 21: 1523-27.
+#' @keywords datasets
+#' @examples
+#' 
+#' data(cardiac)
+#' cardiac <- Meth(cardiac)
+#' summary(cardiac)
+#' # Visually check exchangeability
+#' plot( cardiac )
+#' plot( perm.repl( cardiac ) )
+#' BA.est(cardiac)
+#' # Run MCmcmc using BRugs for an insufficient amount of iterations
+#' \dontrun{card.mi.ir <- MCmcmc( cardiac,
+#'                                beta=FALSE, random=c("mi","ir"),
+#'                                n.iter=100, trace=T )
+#' print( card.mi.ir )}
+#' 
+NULL
+
+
+
+#' Glucose measurements by different methods
+#' 
+#' 74 persons in 5 centres in Finland had blood glucose measured by 11
+#' different methods, based on 4 different types of blood. Each person had
+#' blood sampled at 0, 30, 60 and 120 min after a 75 g glucose load.
+#' 
+#' 
+#' @name glucose
+#' @docType data
+#' @format A data frame with 1302 observations on the following 6 variables.
+#' \describe{ \item{\code{meth}}{Method of measurement. A factor with 11
+#' levels: \code{n.plas1} \code{n.plas2} \code{h.cap} \code{h.blood}
+#' \code{h.plas} \code{h.serum} \code{m.plas} \code{m.serum} \code{o.cap}
+#' \code{s.serum} \code{k.plas}.} \item{\code{type}}{Type of blood sample. A
+#' factor with 4 levels: \code{blood} \code{plasma} \code{serum} \code{capil}}
+#' \item{\code{item}}{Person id.} \item{\code{time}}{Time of blood sampling.
+#' Minutes since glucose load.} \item{\code{cent}}{Center of sampling. Except
+#' for the two first methods, \code{n.plas1} and \code{n.plas2}, samples were
+#' analyzed at the centres too} \item{\code{y}}{Glucose measurement in
+#' mmol/l.} }
+#' @references B Carstensen, J Lindstrom, J Sundvall, K Borch-Johnsen1, J
+#' Tuomilehto & the DPS Study Group: Measurement of Blood Glucose: Comparison
+#' between different Types of Specimens. Annals of Clinical Biochemistry, to
+#' appear.
+#' @source The study was conducted at the National Public Health Institute in
+#' Helsinki by Jaana Lindstrom.
+#' @keywords datasets
+#' @examples
+#' 
+#'   data( glucose )
+#'   str( glucose )
+#'   # Use only plasma and serum as methods and make a Bland-Altman plot
+#'   gluc <- subset( glucose, type %in% c("plasma","serum") )
+#'   gluc$meth <- gluc$type
+#'   gluc$repl <- gluc$time
+#'   BA.plot( gluc )
+#'   
+NULL
+
+
+#' Peak Expiratory Flow Rate (PEFR) measurements with Wright peak flow and mini
+#' Wright peak flow meter.
+#' 
+#' Measurement of PEFR with Wright peak flow and mini Wright peak flow meter on
+#' 17 individuals.
+#' 
+#' 
+#' @name PEFR
+#' @docType data
+#' @format A data frame with 68 observations on the following 3 variables.
+#' \describe{ \item{\code{meth}}{a factor with levels \code{Wright} and
+#' \code{Mini}, representing measurements by a Wright peak flow meter and a
+#' mini Wright meter respectively, in random order.}
+#' \item{\code{item}}{Numeric vector, the person ID.} \item{\code{y}}{Numeric
+#' vector, the measurements, i.e. PEFR for the two measurements with a Wright
+#' peak flow meter and a mini Wright meter respectively. The measurement unit
+#' is l/min.} \item{\code{repl}}{Numeric vector, replicate number. Replicates
+#' are exchangeable within item.} }
+#' @source J. M. Bland and D. G. Altman (1986) Statistical Methods for
+#' Assessing Agreement Between Two Methods of Clinical Measurement, Lancet.
+#' 1986 Feb 8;1(8476):307-10.
+#' @keywords datasets
+#' @examples
+#' 
+#' data(PEFR)
+#' PEFR <- Meth(PEFR)
+#' summary(PEFR)
+#' plot(PEFR)
+#' plot(perm.repl(PEFR))
+#' 
+NULL
+
+
+#' Measurements of subcutaneous and visceral fat
+#' 
+#' 43 persons had Subcutaneous and Visceral fat thickness measured at Steno
+#' Diabetes Center in 2006 by two observers; all measurements were done three
+#' times. The interest is to compare the measurements by the two observers.
+#' Persons are items, observers are methods, the three replicates are
+#' exchangeable within (person,observer)=(item,method)
+#' 
+#' 
+#' @name fat
+#' @docType data
+#' @format A data frame with 258 observations on the following 6 variables.
+#' \describe{ \item{\code{Id}}{Person id.} \item{\code{Obs}}{Observers, a
+#' factor with levels \code{KL} and \code{SL}.} \item{\code{Rep}}{Replicate
+#' --- exchangeable within person and observer.}
+#' \item{\code{Sub}}{Subcutaneous fat measured in cm.}
+#' \item{\code{Vic}}{Visceral fat measured in cm.} }
+#' @keywords datasets
+#' @examples
+#' 
+#' data(fat)
+#' str(fat)
+#' vic <- Meth( fat, meth=2, item=1, repl="Rep", y="Vic" )
+#' str(vic)
+#' BA.est( vic, linked=FALSE )
+#' 
+NULL
+
+
+#' Measurements of HbA1c from Steno Diabetes Center
+#' 
+#' Three analysers (machines) for determination of HbA1c (glycosylated
+#' haemoglobin) were tested on samples from 38 individuals. Each had drawn a
+#' venous and capillary blood sample. These were analysed on five different
+#' days.
+#' 
+#' In the terminology of method comparison studies, methods is the
+#' cross-classification of \code{dev} and \code{type}, and replicate is
+#' \code{d.ana}. It may be of interest to look at the effect of time between
+#' \code{d.ana} and \code{d.samp}, i.e. the time between sampling and analysis.
+#' 
+#' @name hba1c
+#' @docType data
+#' @format A data frame with 835 observations on the following 6 variables.
+#' \describe{ \item{\code{dev}}{Type of machine used.  A factor with levels
+#' \code{BR.V2}, \code{BR.VC} and \code{Tosoh}.} \item{\code{type}}{Type of
+#' blood analysed (capillary or venous).  A factor with levels \code{Cap}
+#' \code{Ven}} \item{\code{item}}{Person-id. A numeric vector}
+#' \item{\code{d.samp}}{Day of sampling.} \item{\code{d.ana}}{Day of
+#' laboratory analysis.} \item{\code{y}}{The measured value of HbA1c.} }
+#' @references These data were analysed as example in: Carstensen: Comparing
+#' and predicting between several methods of measurement, Biostatistics 5, pp.
+#' 399--413, 2004.
+#' @source Bendix Carstensen, Steno Diabetes Center.
+#' @keywords datasets
+#' @examples
+#' 
+#' data(hba1c)
+#' str(hba1c)
+#' hb1  <- with( hba1c,
+#'               Meth( meth = interaction(dev,type),
+#'                     item = item,
+#'                     repl = d.ana-d.samp,
+#'                        y = y, print=TRUE ) )
+#' 
+NULL
+
+
+
+#' A MCmcmc object from the hba1c data
+#' 
+#' This object is included for illustrative purposes. It is a result of a
+#' 5-hour run using MCmcmc, with \code{n.iter=100000}.
+#' 
+#' The data are the venous measurements from the \code{\link{hba1c}} dataset,
+#' using the day of analysis as replicate. Measurements are taken to be linked
+#' within replicate (=day of analysis).
+#' 
+#' @name hba.MC
+#' @docType data
+#' @format The format is a \code{\link{MCmcmc}} object.
+#' @keywords datasets
+#' @examples
+#' 
+#' data(hba.MC)
+#' attr(hba.MC,"mcmc.par")
+#' # print.MCmcmc(hba.MC)
+#' # One of the chains is really fishy (it's the first one)
+#' # trace.MCmcmc(hba.MC)
+#' # trace.MCmcmc(hba.MC,"beta")
+#' # Try to have a look, excluding the first chain
+#' # hba.MCsub <- subset.MCmcmc(hba.MC,chains=-1)
+#' # trace.MCmcmc(hba.MCsub)
+#' # trace.MCmcmc(hba.MCsub,"beta")
+#' # A MCmcmc object also has class mcmc.list, so we can use the
+#' # coda functions for covergence diagnostics:
+#' # acfplot( subset.MCmcmc(hba.MC, subset="sigma"))
+#' 
+NULL
+
+
+#' A MCmcmc object from the sbp data
+#' 
+#' This object is included for illustrative purposes. It is a result of using
+#' \code{\link{MCmcmc}}, with \code{n.iter=100000} on the dataset
+#' \code{\link{sbp}} from this package.
+#' 
+#' The basic data are measurements of systolic blood pressure from the
+#' \code{\link{sbp}} dataset. Measurements are taken to be linked within
+#' replicate.  The code used to generate the object was: \preformatted{
+#' library(MethComp) data( sbp ) spb <- Meth( sbp ) sbp.MC <- MCmcmc( sbp,
+#' linked=TRUE, n.iter=100000, program="JAGS" ) ) }
+#' 
+#' @name sbp.MC
+#' @docType data
+#' @format The format is a \code{\link{MCmcmc}} object.
+#' @keywords datasets
+#' @examples
+#' 
+#' data(sbp.MC)
+#' # How was the data generated
+#' attr(sbp.MC,"mcmc.par")
+#' 
+#' # Traceplots
+#' trace.MCmcmc(sbp.MC)
+#' trace.MCmcmc(sbp.MC,"beta")
+#' 
+#' # A MCmcmc object also has class mcmc.list, so we can use the
+#' # standard coda functions for convergence diagnostics:
+#' acfplot( subset.MCmcmc(sbp.MC,subset="sigma") )
+#' 
+#' # Have a look at the correlation between the 9 variance parameters
+#' pairs.MCmcmc( sbp.MC )
+#' 
+#' # Have a look at whether the MxI variance components are the same between methods:
+#' \dontrun{
+#' pairs.MCmcmc( sbp.MC, subset=c("mi"), eq=TRUE,
+#'               panel=function(x,y,...)
+#'                     {
+#'                     abline(0,1)
+#'                     abline(v=median(x),h=median(y),col="gray")
+#'                     points(x,y,...)
+#'                     }
+#'              ) }
+#' 
+NULL
+
+
+#' Measurements of plasma volume measured by two different methods.
+#' 
+#' For each subject (\code{item}) the plasma volume is expressed as a
+#' percentage of the expected value for normal individuals. Two alternative
+#' sets of normal values are used, named Nadler and Hurley respectively.
+#' 
+#' 
+#' @name plvol
+#' @docType data
+#' @format A data frame with 198 observations on the following 3 variables.
+#' \describe{ \item{\code{meth}}{a factor with levels \code{Hurley} and
+#' \code{Nadler}} \item{\code{item}}{a numeric vector} \item{\code{y}}{a
+#' numeric vector} }
+#' @source The datset is adapted from table 2 in: JM Bland and DG Altman:
+#' Measuring agreement in method comparison studies. Statistical Methods in
+#' Medical Research, 8:136-160, 1999. Originally supplied to Bland \& Altman by
+#' C Dore, see: Cotes PM, Dore CJ, Liu Yin JA, Lewis SM, Messinezy M, Pearson
+#' TC, Reid C.  Determination of serum immunoreactive erythropoietin in the
+#' investigation of erythrocytosis. New England Journal of Medicine 1986; 315:
+#' 283-87.
+#' @keywords datasets
+#' @examples
+#' 
+#' data(plvol)
+#' str(plvol)
+#' plot( y[meth=="Nadler"]~y[meth=="Hurley"],data=plvol,
+#'       xlab="Plasma volume (Hurley) (pct)",
+#'       ylab="Plasma volume (Nadler) (pct)" )
+#' abline(0,1)
+#' par( mar=c(4,4,1,4) )
+#' BA.plot(plvol)
+#' 
+NULL
