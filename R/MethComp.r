@@ -445,7 +445,40 @@ else
 ################################################################################
 ## choose.trans
 ################################################################################
-#' @export
+
+#' Functions to handle transformations of measuremnt results.
+#' 
+#' Choose a function and inverse based on a text string; check whether two
+#' functions actually are each others inverse.
+#' 
+#' 
+#' @aliases choose.trans check.trans
+#' @param tr A character string, or a list of two functions, they should be
+#' each other's inverse. Names of the list are ignored.
+#' @param trans A list of two functions, each other's inverse.
+#' @param y Vector of numerical values where the functions should be each
+#' other's inverse.
+#' @param trans.tol Numerical constant indication how precise the evaulation
+#' should be.
+#' @return \code{choose.trans} returns a named list with two elements "trans"
+#' and "inv", both functions which are each other's inverse. This is intended
+#' to be stored as an attribute \code{"Transform"} with the resulting object
+#' and used in plotting and reporting. All results will be on the transformed
+#' scale. If the \code{tr} argument to \code{choose.trans} is a character
+#' constant, the appropriate named list of two functions will be generated.
+#' Possibilities are: "exp", "log", "logit", "pctlogit" (transforms percentages
+#' by the logit), "sqrt", "sq" (square), "cll" (complementary log-minus-log),
+#' "ll" (log-minus-log).  If there is no match \code{NULL} is returned, which
+#' will correspond to no transformation.
+#' 
+#' \code{check.trans} returns nothing.
+#' @author Bendix Carstensen, Steno Diabetes Center,
+#' \url{http://www.biostat.ku.dk/~bxc}.
+#' @examples
+#' 
+#' choose.trans( "logit" )
+#' 
+#' @export choose.trans
 choose.trans <-
 function( tr )
 # Function to allow a character argument to choose a transformation and the
