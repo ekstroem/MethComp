@@ -1,3 +1,9 @@
+#' Perform Deming regression
+#' 
+#' @param x
+#' @param y
+#'
+#'
 #' @importFrom stats complete.cases var cov quantile
 #' @export Deming
 Deming <-
