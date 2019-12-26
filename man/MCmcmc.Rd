@@ -2,10 +2,6 @@
 % Please edit documentation in R/MCmcmc.R
 \name{MCmcmc}
 \alias{MCmcmc}
-\alias{print.MCmcmc}
-\alias{summary.MCmcmc}
-\alias{subset.MCmcmc}
-\alias{mcmc.MCmcmc}
 \title{Fit a model for method comparison studies using WinBUGS}
 \usage{
 MCmcmc(

@@ -446,20 +446,13 @@ else
 ## choose.trans
 ################################################################################
 
-#' Functions to handle transformations of measuremnt results.
+#' Functions to handle transformations of measurement results.
 #' 
-#' Choose a function and inverse based on a text string; check whether two
-#' functions actually are each others inverse.
+#' Choose a function and inverse based on a text string
 #' 
-#' 
-#' @aliases choose.trans check.trans
+#' @aliases choose.trans
 #' @param tr A character string, or a list of two functions, they should be
 #' each other's inverse. Names of the list are ignored.
-#' @param trans A list of two functions, each other's inverse.
-#' @param y Vector of numerical values where the functions should be each
-#' other's inverse.
-#' @param trans.tol Numerical constant indication how precise the evaulation
-#' should be.
 #' @return \code{choose.trans} returns a named list with two elements "trans"
 #' and "inv", both functions which are each other's inverse. This is intended
 #' to be stored as an attribute \code{"Transform"} with the resulting object
@@ -471,7 +464,6 @@ else
 #' "ll" (log-minus-log).  If there is no match \code{NULL} is returned, which
 #' will correspond to no transformation.
 #' 
-#' \code{check.trans} returns nothing.
 #' @author Bendix Carstensen, Steno Diabetes Center,
 #' \url{http://www.biostat.ku.dk/~bxc}.
 #' @examples
@@ -525,6 +517,22 @@ invisible( ltr )
 ################################################################################
 ## check.trans
 ################################################################################
+
+#' Functions to handle transformations of measurement results.
+#' 
+#' Check whether two functions actually are each others inverse.
+#' 
+#' @param trans A list of two functions, each other's inverse.
+#' @param y Vector of numerical values where the functions should be each
+#' other's inverse.
+#' @param trans.tol Numerical constant indication how precise the evaulation
+#' should be.
+#' 
+#' @return \code{check.trans} returns nothing.
+#' @author Bendix Carstensen, Steno Diabetes Center,
+#' \url{http://www.biostat.ku.dk/~bxc}.
+#' 
+#' @export check.trans
 check.trans <-
 function( trans, y, trans.tol=10e-6 )
 {

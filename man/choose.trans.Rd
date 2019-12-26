@@ -2,22 +2,13 @@
 % Please edit documentation in R/MethComp.R
 \name{choose.trans}
 \alias{choose.trans}
-\alias{check.trans}
-\title{Functions to handle transformations of measuremnt results.}
+\title{Functions to handle transformations of measurement results.}
 \usage{
 choose.trans(tr)
 }
 \arguments{
 \item{tr}{A character string, or a list of two functions, they should be
 each other's inverse. Names of the list are ignored.}
-
-\item{trans}{A list of two functions, each other's inverse.}
-
-\item{y}{Vector of numerical values where the functions should be each
-other's inverse.}
-
-\item{trans.tol}{Numerical constant indication how precise the evaulation
-should be.}
 }
 \value{
 \code{choose.trans} returns a named list with two elements "trans"
@@ -30,12 +21,9 @@ Possibilities are: "exp", "log", "logit", "pctlogit" (transforms percentages
 by the logit), "sqrt", "sq" (square), "cll" (complementary log-minus-log),
 "ll" (log-minus-log).  If there is no match \code{NULL} is returned, which
 will correspond to no transformation.
-
-\code{check.trans} returns nothing.
 }
 \description{
-Choose a function and inverse based on a text string; check whether two
-functions actually are each others inverse.
+Choose a function and inverse based on a text string
 }
 \examples{
 

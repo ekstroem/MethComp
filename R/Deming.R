@@ -1,14 +1,16 @@
 #' Perform Deming regression
 #' 
-#' @param x
-#' @param y
-#'
+#' @param x a numeric vector 
+#' @param y a numeric vector
+#' @param vr
+#' @param sdr
+#' @param boot
+#' @param keep.boot
+#' @param alpha significance level
 #'
 #' @importFrom stats complete.cases var cov quantile
-#' @export Deming
-Deming <-
-function( x, y, vr=sdr^2, sdr=sqrt(vr), boot=FALSE, keep.boot=FALSE, alpha=0.05 )
-{
+#' @export
+Deming <- function( x, y, vr=sdr^2, sdr=sqrt(vr), boot=FALSE, keep.boot=FALSE, alpha=0.05 ) {
 if( missing( vr ) & missing( sdr ) ) var.ratio <- 1
 else var.ratio <- vr
 vn <- c( deparse( substitute( x ) ),

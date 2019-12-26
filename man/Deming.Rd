@@ -15,7 +15,11 @@ Deming(
 )
 }
 \arguments{
-\item{y}{}
+\item{x}{a numeric vector}
+
+\item{y}{a numeric vector}
+
+\item{alpha}{significance level}
 }
 \description{
 Perform Deming regression

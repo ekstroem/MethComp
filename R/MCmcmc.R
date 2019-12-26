@@ -38,7 +38,6 @@
 #' median(beta.2.1))/2} and the estimate of \eqn{\alpha_{1\cdot 2}}{alpha.1.2}
 #' correspondingly. The resulting parameter estimates defines the same lines.
 #' 
-#' @aliases MCmcmc print.MCmcmc summary.MCmcmc subset.MCmcmc mcmc.MCmcmc
 #' @param data Data frame with variables \code{meth}, \code{item}, \code{repl}
 #' and \code{y}, possibly a \code{\link{Meth}} object.  \code{y} represents a
 #' measurement on an \code{item} (typically patient or sample) by method
