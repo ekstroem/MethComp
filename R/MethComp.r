@@ -1,3 +1,44 @@
+#' Summarize conversion equations and prediction intervals between methods.
+#' 
+#' Takes the results from \code{\link{BA.est}}, \code{\link{DA.reg}},
+#' \code{\link{AltReg}} or \code{\link{MCmcmc}} and returns a \code{MethComp}
+#' object, suitable for displaying the relationship between methods in print pr
+#' graphic form.
+#' 
+#' Using \code{MethComp} on the results from \code{\link{BA.est}} or
+#' \code{\link{AltReg}} is not necessary, as these two functions already return
+#' objetcs of class \code{MethComp}.
+#' 
+#' @param obj A \code{MethComp} or \code{\link{MCmcmc}} object.
+#' @return \code{MethComp} returns a \code{MethComp} object, which is a list
+#' with three elements, \code{Conv}, a three-way array giving the linear
+#' conversion equations between methods, \code{VarComp}, a two-way array
+#' classified by methods and variance components and \code{data}, a copy of the
+#' original \code{\link{Meth}} object supplied --- see the description under
+#' \code{\link{BA.est}}.
+#' 
+#' A \code{MethComp} object has an attribute \code{Transform}, which is either
+#' NULL, or a named list with elements \code{trans} and \code{inv}, both of
+#' which are functions. The first is the transformation applied to measurements
+#' before analysis; the results are all given on the transformed scale. The
+#' second is the inverse transformation; this is only used when plotting the
+#' resulting relationship between methods.
+#' 
+#' The methods \code{print}, \code{plot}, \code{lines} and \code{points} return
+#' nothing.
+#' @author Bendix Carstensen, Steno Diabetes Center, \email{bxc@@steno.dk}.
+#' @seealso \code{\link{BA.est}} \code{\link{AltReg}} \code{\link{MCmcmc}}
+#' @keywords design
+#' @examples
+#' 
+#' data( ox )
+#' BA.ox <- BA.est( ox, linked=TRUE )
+#' print( BA.ox )
+#' \dontrun{
+#' AR.ox <- AltReg( ox, linked=TRUE  )
+#' print( AR.ox )
+#' plot( AR.ox ) }
+#' 
 #' @import stats
 #' @import utils
 #' @import graphics

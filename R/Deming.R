@@ -1,12 +1,70 @@
-#' Perform Deming regression
+#' Regression with errors in both variables (Deming regression)
+#'
+#' The formal model underlying the procedure is based on a so called functional
+#'  relationship:
+#'  \deqn{x_i=\xi_i + e_{1i}, \qquad y_i=\alpha + \beta \xi_i + e_{2i}}{x_i=k_i + e_1i, y_i=alpha + beta k_i + e_2i}
+#'  with \eqn{\mathrm{var}(e_{1i})=\sigma}{var(e_1i)=s},
+#'       \eqn{\mathrm{var}(e_{2i})=\lambda\sigma}{var(e_2i)=VR*s},
+#'  where \eqn{\lambda}{VR} is the known variance ratio.
+#'
+#'  The estimates of the residual variance is based on a weighting of
+#'  the sum of squared deviations in both directions, divided by \eqn{n-2}{n-2}.
+#'  The ML estimate would use \eqn{2n}{2n} instead, but in the model we actually
+#'  estimate \eqn{n+2}{n+2} parameters --- \eqn{\alpha, \beta}{alpha, beta} and
+#'  the \eqn{n}{n} \eqn{\xi s}{k_i's}.
+#'  This is not in Peter Sprent's book (see references).
 #' 
-#' @param x a numeric vector 
-#' @param y a numeric vector
-#' @param vr
-#' @param sdr
-#' @param boot
-#' @param keep.boot
-#' @param alpha significance level
+#' @param x a numeric variable 
+#' @param y a numeric variable
+#' @param vr The assumed known ratio of the (residual) variance of the \code{y}s relative to that of the \code{x}s. Defaults to 1.
+#' @param sdr do. for standard deviations. Defaults to 1. \code{vr} takes precedence if both are given.
+#' @param boot Should bootstrap estimates of standard errors of parameters be done? If \code{boot==TRUE}, 1000 bootstrap samples are done, if \code{boot} is numeric, \code{boot} samples are made.
+#' @param keep.boot Should the 4-column matrix of bootstrap samples be returned? If \code{TRUE}, the summary is printed, but the matrix is returned invisibly. Ignored if \code{boot=FALSE}
+#' @param alpha What significance level should be used when displaying confidence intervals?
+#'
+#' @return If \code{boot==FALSE} a named vector with components
+#'  \code{Intercept}, \code{Slope}, \code{sigma.x}, \code{sigma.y}, where \code{x}
+#'  and \code{y} are substituted by the variable names.
+#'
+#'  If \code{boot==TRUE} a matrix with rows \code{Intercept},
+#'  \code{Slope}, \code{sigma.x}, \code{sigma.y}, and colums giving the estimates,
+#'  the bootstrap standard error and the bootstrap estimate and c.i. as the 0.5,
+#'  \eqn{\alpha/2}{alpha/2} and \eqn{1-\alpha/2}{1-alpha/2} quantiles of the sample.
+#'  
+#'  If \code{keep.boot==TRUE} this summary is printed, but a matrix with columns
+#'  \code{Intercept},
+#'  \code{Slope}, \code{sigma.x}, \code{sigma.y} and \code{boot} rows is returned.
+#'
+#' @references Peter Sprent: Models in Regression, Methuen & Co., London 1969, ch.3.4.
+#'  
+#'  WE Deming: Statistical adjustment of data, New York: Wiley, 1943.
+#'
+#' @author Bendix Carstensen, Steno Diabetes Center, \email{bxc@steno.dk}, \url{http://BendixCarstensen.com}
+#'
+#' @examples
+#'
+#' 
+#' # 'True' values 
+#' M <- runif(100,0,5)
+#' # Measurements:
+#' x <- M + rnorm(100)
+#' y <- 2 + 3 * M + rnorm(100,sd=2)
+#' # Deming regression with equal variances, variance ratio 2.
+#' Deming(x,y)
+#' Deming(x,y,vr=2)
+#' Deming(x,y,boot=TRUE)
+#' bb <- Deming(x,y,boot=TRUE,keep.boot=TRUE)
+#' str(bb)
+#' # Plot data with the two classical regression lines
+#' plot(x,y)
+#' abline(lm(y~x))
+#' ir <- coef(lm(x~y))
+#' abline(-ir[1]/ir[2],1/ir[2])
+#' abline(Deming(x,y,sdr=2)[1:2],col="red")
+#' abline(Deming(x,y,sdr=10)[1:2],col="blue")
+#' # Comparing classical regression and "Deming extreme"
+#' summary(lm(y~x))
+#' Deming(x,y,vr=1000000)
 #'
 #' @importFrom stats complete.cases var cov quantile
 #' @export

@@ -99,18 +99,6 @@
 #' @param trans.tol The tolerance used to check whether the supplied
 #' transformation and its inverse combine to the identity.
 #' @param ... Additional arguments passed on to \code{\link[R2WinBUGS]{bugs}}.
-#' @param object An \code{MCmcmc} object
-#' @param alpha 1 minus the the confidence level
-#' @param x An \code{MCmcmc} object
-#' @param digits Number of digits after the decimal point when printing.
-#' @param subset Numerical, character or list giving the variables to keep.  If
-#' numerical, the variables in the \code{MCmcmc} object with these numbers are
-#' selected. If character, each element of the character vector is "grep"ed
-#' against the variable names, and the matches are selected to the subset. If a
-#' list each element is used in turn, numerical and character elements can be
-#' mixed.
-#' @param allow.repl Should duplicate columns be allowed in the result?
-#' @param chains Numerical vector giving the number of the chains to keep.
 #' @return If \code{code.only==FALSE}, an object of class \code{MCmcmc} which
 #' is a \code{\link[coda]{mcmc.list}} object of the relevant parameters, i.e.
 #' the posteriors of the conversion parameters and the variance components
