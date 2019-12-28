@@ -1,4 +1,5 @@
-#' @export VC.est
+#' 
+#' 
 VC.est <-
 function( data,
            IxR = has.repl(data), linked = IxR,

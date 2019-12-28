@@ -84,7 +84,7 @@ initial values for the variance components, see below in details.}
 
 \item{list.ini}{List of lists of starting values for the chains, or logical
 indicating whether starting values should be generated.  If \code{TRUE} (the
-default), the function \code{\link{VC.est}} will be used to generate initial
+default), the function VC.est will be used to generate initial
 values for the chains. \code{list.ini} is a list of length \code{n.chains}.
 Each element of which is a list with the following vectors as elements:
 \describe{ \item{\code{mu}}{- length I} \item{\code{alpha}}{- length M}

@@ -1,5 +1,9 @@
-#' @importFrom graphics abline points text box axis plot par
+#' Plot Meth obejct
+#'
 #' @importFrom stats sd
+#' @importFrom graphics abline points text box axis plot par
+#' @rdname plot
+#' @export
 plot.Meth <-
 function( x,
       which = NULL,

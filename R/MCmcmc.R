@@ -4,7 +4,8 @@
 #' "true" value is set up in BUGS and run via the function
 #' \code{\link[R2WinBUGS]{bugs}} from the \code{R2WinBUGS} package.
 #' 
-#' The model set up for an observation \eqn{y_{mir}}{y_mir} is: \deqn{y_{mir} = \alpha_m + \beta_m(\mu_i+b_{ir} + c_{mi}) + }{y_mir = alpha_m + beta_m*(mu_i+b_ir+c_mi) + e_mir}\deqn{ e_{mir}}{y_mir = alpha_m + beta_m*(mu_i+b_ir+c_mi) + e_mir} where \eqn{b_{ir}}{b_ir} is a random
+#' The model set up for an observation \eqn{y_{mir}}{y_mir} is: 
+#' \deqn{y_{mir} = \alpha_m + \beta_m(\mu_i+b_{ir} + c_{mi}) + }{y_mir = alpha_m + beta_m*(mu_i+b_ir+c_mi) + e_mir}\deqn{ e_{mir}}{y_mir = alpha_m + beta_m*(mu_i+b_ir+c_mi) + e_mir} where \eqn{b_{ir}}{b_ir} is a random
 #' \code{item} by \code{repl} interaction (included if \code{"ir" %in% random})
 #' and \eqn{c_{mi}}{c_mi} is a random \code{meth} by \code{item} interaction
 #' (included if \code{"mi" %in% random}). The \eqn{\mu_i}{mu_i}'s are
@@ -14,7 +15,8 @@
 #' monitored and returned. The estimated parameters are only determined up to a
 #' linear transformation of the \eqn{\mu}{mu}s, but the linear functions
 #' linking methods are invariant. The identifiable conversion parameters are:
-#' \deqn{\alpha_{m\cdot k}=\alpha_m - \alpha_k \beta_m/\beta_k, \quad }{alpha_m|k=alpha_m-alpha_k beta_m/beta_k, beta_m|k=beta_m/beta_k}\deqn{\beta_{m\cdot k}=\beta_m/\beta_k}{alpha_m|k=alpha_m-alpha_k beta_m/beta_k, beta_m|k=beta_m/beta_k} The posteriors of these are derived and included in
+#' \deqn{\alpha_{m\cdot k}=\alpha_m - \alpha_k \beta_m/\beta_k, \quad }{alpha_m|k=alpha_m-alpha_k beta_m/beta_k, beta_m|k=beta_m/beta_k}\deqn{\beta_{m\cdot k}=\beta_m/\beta_k}{alpha_m|k=alpha_m-alpha_k beta_m/beta_k, beta_m|k=beta_m/beta_k} 
+#' The posteriors of these are derived and included in
 #' the \code{posterior}, which also will contain the posterior of the variance
 #' components (the SDs, that is).  Furthermore, the posterior of the point
 #' where the conversion lines intersects the identity as well as the prediction
@@ -74,7 +76,7 @@
 #' initial values for the variance components, see below in details.
 #' @param list.ini List of lists of starting values for the chains, or logical
 #' indicating whether starting values should be generated.  If \code{TRUE} (the
-#' default), the function \code{\link{VC.est}} will be used to generate initial
+#' default), the function VC.est will be used to generate initial
 #' values for the chains. \code{list.ini} is a list of length \code{n.chains}.
 #' Each element of which is a list with the following vectors as elements:
 #' \describe{ \item{\code{mu}}{- length I} \item{\code{alpha}}{- length M}
@@ -115,6 +117,7 @@
 #' components and the unidentifiable mean parameters.} \item{Transform}{The
 #' transformation used to the measurements before the analysis.} If
 #' \code{code.only==TRUE}, a list containing the initial values is generated.
+#'
 #' @author Bendix Carstensen, Steno Diabetes Center,
 #' \url{http://BendixCarstensen.com}, Lyle Gurrin, University of Melbourne,
 #' \url{http://www.epi.unimelb.edu.au/about/staff/gurrin-lyle}.

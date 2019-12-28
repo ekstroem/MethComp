@@ -22,8 +22,6 @@ object or a data frame of exactly 2 columns.}
 
 \item{wh.meth}{Which of the methods from the \code{Meth} object are used in
 the regression.}
-
-\item{list()}{other parameters, currently ignored.}
 }
 \value{
 \code{PBreg} returns an object of class \code{"PBreg"}, for which

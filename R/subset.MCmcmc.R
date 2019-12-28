@@ -1,4 +1,17 @@
-
+#' Subset MCmcmc object
+#'
+#' @param x object to be subsetted.
+#' @param subset Numerical, character or list giving the variables to keep.
+#'                If numerical, the variables in the \code{MCmcmc} object with
+#'                these numbers are selected. If character, each element of the
+#'                character vector is "grep"ed against the variable names, and
+#'                the matches are selected to the subset. If a list each element
+#'                is used in turn, numerical and character elements can be mixed.
+#' @param allow.repl Logical. Should duplicate columns be allowed in the result?
+#' @param chains Numerical vector giving the number of the chains to keep.
+#' @param ... further arguments to be passed to or from other methods.
+#'
+#' @rdname subset
 #' @export subset.MCmcmc
 subset.MCmcmc <-
 function( x, subset=NULL, allow.repl=FALSE, chains=NULL, ... ) {

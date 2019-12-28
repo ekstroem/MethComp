@@ -1,3 +1,10 @@
+#' Summary for Meth obect
+#'
+#' @param object A \code{Meth} object.
+#' @param ... Parameters passed on to both the panel function plotting methods against each other, as well as to those plotting differences against means.
+#'
+#' rdname summary
+#' @export
 summary.Meth <-
 function( object, ... )
 {
