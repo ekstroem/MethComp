@@ -1,3 +1,136 @@
+#' Bland-Altman plot of differences versus averages.
+#' 
+#' For two vectors of equal length representing measurements of the same
+#' quantity by two different methods, the differences are plotted versus the
+#' average. The limits of agreement (prediction limits for the differences) are
+#' plotted, optionally a regression of differences of means is given too. Works
+#' with \code{\link{Meth}} and \code{\link{MethComp}} objects too.
+#' 
+#' A plot of the relationship between the methods is produced; either a
+#' Bland-Altman plot of the differences versus averages, or a 45 degree
+#' rotation as a conversion between the methods. If \code{model=NULL} a simple
+#' regression of averages on differences is made by calling \code{DA.reg}, and
+#' the specified conversion plotted.
+#' 
+#' @param y1 Numerical vector of measurements by 1st method. Can also be a
+#' \code{\link{Meth}} or a \code{\link{MethComp}} object, see details.
+#' @param y2 Numerical vector of measurements by 2nd method. Must of same
+#' length as \code{x}. Ignored if a \code{\link{Meth}} or a
+#' \code{\link{MethComp}} objects is given for \code{y1}.
+#' @param meth.names Label for the method names.
+#' @param wh.comp Which methods should be compared. Either numerical or
+#' character.
+#' @param pl.type What type of plot should be made, \code{"BA"} for differences
+#' versus averages, \code{"conv"} for method 1 versus method 2.
+#' @param dif.type How should difference depend on the averages. \code{"const"}
+#' or \code{"lin"}.
+#' @param sd.type How should the standard deviation depend on the averages.
+#' \code{"const"} or \code{"lin"}.
+#' @param model Should a variance component model be used to compute the limits
+#' of agreement? If \code{NULL} a simple analysis is made; other possibilities
+#' are \code{"exch"} or \code{"linked"} for exchangeable or linked replicates.
+#' @param eqax Should the axes be identical? If a Bland-Altman plot is drawn,
+#' the axis for the differences will have the same extent as the axis for the
+#' averages, but centered on 0 (see \code{diflim}).
+#' @param axlim The limits of the axes.
+#' @param diflim The limits of the difference axis.
+#' @param grid Should a grid be drawn? If numeric it indicates the places where
+#' the grid is drawn.
+#' @param N.grid How many grid-lines should be drawn.
+#' @param col.grid What should be the color of the grid?
+#' @param points Logical. Should the observed points be drawn?
+#' @param col.points What color should they have?
+#' @param cex.points How large should they be?
+#' @param pch.points What plot character for the points
+#' @param lwd Numerical vector of 3, giving the width of the conversion line
+#' (mean difference) and the limits of agreement.
+#' @param col.lines What color should the lines have.
+#' @param repl.conn Should replicate measurements be connected (within items)?
+#' @param col.conn Color of connecting lines.
+#' @param lwd.conn Width of connecting lines.
+#' @param xlab x-axis label.
+#' @param ylab y-axis label.
+#' @param eqn Logical. Should the equations linking the methods be shown on the
+#' plot? If a Bland-Altman plot is made, both the equations linking the methods
+#' and the equation for the differences versus the averages are shown.
+#' @param col.eqn Color for equations
+#' @param font.eqn Font for equations
+#' @param digits How many digits after the decimal point should be used when
+#' showing the equations.
+#' @param Transform Transformation applied to data prior to analysis. Plots are
+#' made on the original scale after back-transformation.
+#' @param mult Logical. If TRUE, ratios of measurement instead of differences
+#' will be plotted in the Bland-Altman plot on a logarithmic axis, and limits
+#' of agreement will be given on this scale?  This gives the same analysis as
+#' using \code{Transform="log"}, but a different plot. Using another
+#' transformation than the log is accommodated, but no LoA is shown on the
+#' axis.
+#' @param alpha 1 minus the confidence level. If \code{NULL} a multiplier of 2
+#' is used for constructing prediction limits, otherwise a t-quantile with d.f.
+#' equal th number of items minus 1.
+#' @param ... Further parameters passed on to \code{\link{plot.MethComp}}
+#' @return An object of class \code{\link{MethComp}} and either \code{DA.reg}
+#' (if \code{model=NULL}) or \code{BA.est} (if \code{model} is character).
+#' @author Bendix Carstensen \email{bxc@@steno.dk},
+#' \url{http://BendixCarstensen.com}.
+#' @seealso \code{\link{BA.est}}, \code{\link{DA.reg}}, \code{\link{MCmcmc}}.
+#' @references JM Bland and DG Altman: Statistical methods for assessing
+#' agreement between two methods of clinical measurement, Lancet, i, 1986, pp.
+#' 307-310.
+#' 
+#' JM Bland and DG Altman. Measuring agreement in method comparison studies.
+#' Statistical Methods in Medical Research, 8:136-160, 1999.
+#' 
+#' B Carstensen: Comparing methods of measurement: Extending the LoA by
+#' regression. Stat Med. 2010 Feb 10;29(3):401-10.
+#' @keywords models design
+#' @examples
+#' 
+#' data( ox )
+#' ox <- Meth( ox )
+#' # The simplest possible Bland-Altman plot
+#' BA.plot( ox )
+#' 
+#' ## With bells and whistles, comparing the naive and model
+#' par( mfrow=c(2,2) )
+#' BA.plot( ox, model=NULL, repl.conn=TRUE, col.lines="blue",
+#'          axlim=c(0,100), diflim=c(-50,50), xaxs="i", yaxs="i",
+#'          las=1, eqn=TRUE, dif.type="lin", pl.type="BA", sd.type="lin",
+#'          grid=1:9*10, digits=3,font.eqn=1)
+#' par(new=TRUE)
+#' BA.plot( ox, model="linked", repl.conn=TRUE, col.lines="red",
+#'          axlim=c(0,100), diflim=c(-50,50), xaxs="i", yaxs="i",
+#'          las=1, eqn=FALSE, dif.type="lin", pl.type="BA", sd.type="lin",
+#'         grid=1:0*10, digits=3)
+#' BA.plot( ox, model=NULL, repl.conn=TRUE, col.lines="blue",
+#'          axlim=c(0,100), diflim=c(-50,50), xaxs="i", yaxs="i",
+#'          las=1, eqn=TRUE, dif.type="lin", pl.type="conv", sd.type="lin",
+#'         grid=1:9*10, digits=3,font.eqn=1)
+#' par(new=TRUE)
+#' BA.plot( ox, model="linked", repl.conn=TRUE, col.lines="red",
+#'          axlim=c(0,100), diflim=c(-50,50), xaxs="i", yaxs="i",
+#'          las=1, eqn=FALSE, dif.type="lin", pl.type="conv", sd.type="lin",
+#'          grid=1:9*10, digits=3)
+#' # The same again, but now logit-transformed
+#' BA.plot( ox, model=NULL, repl.conn=TRUE, col.lines="blue",
+#'          axlim=c(0,100), diflim=c(-50,50), xaxs="i", yaxs="i",
+#'          las=1, eqn=TRUE, dif.type="lin", pl.type="BA", sd.type="lin",
+#'          grid=1:9*10, digits=3,font.eqn=1,Transform="pctlogit")
+#' par(new=TRUE)
+#' BA.plot( ox, model="linked", repl.conn=TRUE, col.lines="red",
+#'          axlim=c(0,100), diflim=c(-50,50), xaxs="i", yaxs="i",
+#'          las=1, eqn=FALSE, dif.type="lin", pl.type="BA", sd.type="lin",
+#'          grid=1:0*10, digits=3,Transform="pctlogit")
+#' BA.plot( ox, model=NULL, repl.conn=TRUE, col.lines="blue",
+#'          axlim=c(0,100), diflim=c(-50,50), xaxs="i", yaxs="i",
+#'          las=1, eqn=TRUE, dif.type="lin", pl.type="conv", sd.type="lin",
+#'          grid=1:9*10, digits=3,font.eqn=1,Transform="pctlogit")
+#' par(new=TRUE)
+#' BA.plot( ox, model="linked", repl.conn=TRUE, col.lines="red",
+#'          axlim=c(0,100), diflim=c(-50,50), xaxs="i", yaxs="i",
+#'          las=1, eqn=FALSE, dif.type="lin", pl.type="conv", sd.type="lin",
+#'          grid=1:9*10, digits=3,Transform="pctlogit")
+#' 
 #' @export BA.plot
 BA.plot <-
 function( y1, y2, meth.names = NULL,

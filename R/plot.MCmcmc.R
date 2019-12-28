@@ -1,3 +1,57 @@
+#' Plot estimated conversion lines and formulae.
+#' 
+#' Plots the pairwise conversion formulae between methods from a
+#' \code{\link{MCmcmc}} object.
+#' 
+#' 
+#' @param x A \code{\link{MCmcmc}} object
+#' @param axlim The limits for the axes in the panels
+#' @param wh.cmp Numeric vector or vector of method names.  Which of the
+#' methods should be included in the plot?
+#' @param lwd.line Numerical vector of length 2. The width of the conversion
+#' line and the prediction limits. If the second values is 0, no prediction
+#' limits are drawn.
+#' @param col.line Numerical vector of length 2. The color of the conversion
+#' line and the prediction limits.
+#' @param lty.line Numerical vector of length 2. The line types of the
+#' conversion line and the prediction limits.
+#' @param eqn Should the conversion equations be printed on the plot?. Defaults
+#' to \code{TRUE}.
+#' @param digits How many digits after the decimal point shoudl be used when
+#' printing the conversion equations.
+#' @param grid Should a grid be drawn? If a numerical vector is given, the grid
+#' is drawn at those values.
+#' @param col.grid What color should the grid have?
+#' @param points Logical or character. Should the points be plotted. If
+#' \code{TRUE} or \code{"repl"} paired values of single replicates are plotted.
+#' If \code{"perm"}, replicates are randomly permuted within (item, method)
+#' befor plotting. If \code{"mean"}, means across replicates within item,
+#' method are formed and plotted.
+#' @param col.pts What color should the observation have.
+#' @param pch.pts What plotting symbol should be used.
+#' @param cex.pts What scaling should be used for the plot symbols.
+#' @param ... Parameters to pass on. Currently not used.
+#' @return Nothing.  The lower part of a (M-1) by (M-1) matrix of plots is
+#' drawn, showing the pairwise conversion lines. In the corners of each is
+#' given the two conversion equations together with the prediction standard
+#' error.
+#' @seealso \code{\link{MCmcmc}}, \code{\link{print.MCmcmc}}
+#' @keywords models design regression
+#' @examples
+#' 
+#' \dontrun{data( hba1c )}
+#' \dontrun{str( hba1c )}
+#' \dontrun{hba1c <- transform( subset( hba1c, type=="Ven" ),
+#'                     meth = dev,
+#'                     repl = d.ana )}
+#' \dontrun{hb.res <- MCmcmc( hba1c, n.iter=50 )}
+#' \dontrun{data( hba.MC )}
+#' \dontrun{str( hba.MC )}
+#' \dontrun{par( ask=TRUE )}
+#' \dontrun{plot( hba.MC )}
+#' \dontrun{plot( hba.MC, pl.obs=TRUE )}
+#' 
+#' @export
 plot.MCmcmc <-
 function( x,
         axlim = range( attr(x,"data")$y, na.rm = TRUE ),

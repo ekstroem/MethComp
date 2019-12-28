@@ -1,3 +1,4 @@
+#' @export
 summary.MCmcmc <-
 function( object, alpha=0.05,
           ... )
@@ -82,6 +83,7 @@ invisible( list( conv.array = conv.array,
                    mean.par = mean.par ) )
 }
 
+#' @export
 print.MCmcmc <-
 function( x,
      digits = 3,

@@ -1,17 +1,16 @@
+
 #' @export subset.MCmcmc
 subset.MCmcmc <-
-function( x, subset=NULL, allow.repl=FALSE, chains=NULL, ... )
-{
+function( x, subset=NULL, allow.repl=FALSE, chains=NULL, ... ) {
 # A small utility function
-char.2.num <-
-function( x, sbs )
-{
-sb <- numeric(0)
-for( i in 1:length(sbs))
-    sb <- c(sb, grep( sbs[i], varnames(x) ) )
-sb
-}
-
+  char.2.num <-
+  function( x, sbs ) {
+  sb <- numeric(0)
+  for( i in 1:length(sbs))
+      sb <- c(sb, grep( sbs[i], varnames(x) ) )
+  sb
+  }
+ 
 if( is.numeric(chains) )
   {
   chains <- (1:attributes(x)$mcmc.par$n.chains)[chains]
