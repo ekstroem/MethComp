@@ -1,5 +1,7 @@
 #' Subset MCmcmc object
 #'
+#' Subset MCmcmc object
+#'
 #' @param x object to be subsetted.
 #' @param subset Numerical, character or list giving the variables to keep.
 #'                If numerical, the variables in the \code{MCmcmc} object with
@@ -12,7 +14,7 @@
 #' @param ... further arguments to be passed to or from other methods.
 #'
 #' @rdname subset
-#' @export subset.MCmcmc
+#' @export
 subset.MCmcmc <-
 function( x, subset=NULL, allow.repl=FALSE, chains=NULL, ... ) {
 # A small utility function

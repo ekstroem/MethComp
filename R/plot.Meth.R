@@ -1,5 +1,28 @@
 #' Plot Meth obejct
 #'
+#' @param x A \code{Meth} object.
+#' @param which A vector of indices or names of methods to plot. If \code{NULL}
+#' all methods in the object are plotted.
+#' @param col.LoA What color should be used for the limits of agreement.
+#' @param col.pt What color should be used for the points.
+#' @param cex.name Character expansion factor for plotting method names
+#' @param var.range The range of both axes in the scatter plot and the x-axis
+#' in the Bland-Altman plot be?
+#' @param diff.range The range of yaxis in the Bland-Altman plot. Defaults to a
+#' range as the x-axis, but centered around 0.
+#' @param var.names If logical: should the individual panels be labelled with
+#' the variable names?. If character, then the values of the character will be
+#' used to label the methods.
+#' @param pch Plot character for points.
+#' @param cex Plot charcter expansion for points.
+#' @param Transform Transformation used to the measurements prior to plotting.
+#' Function or character, see \code{\link{choose.trans}} for possible values.
+#' @param ... parameters passed on
+#' to both the panel function plotting methods against each other, as well as
+#' to those plotting differences against means.
+#' @return A plot as a side effect
+#' @author Bendix Carstensen, \email{bxc@@steno.dk}
+#'
 #' @importFrom stats sd
 #' @importFrom graphics abline points text box axis plot par
 #' @rdname plot

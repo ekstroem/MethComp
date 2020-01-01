@@ -4,7 +4,6 @@
 \alias{trace.MCmcmc}
 \alias{check.MCmcmc}
 \alias{post.MCmcmc}
-\alias{pairs.MCmcmc}
 \title{Functions to graphically assess the convergence of the MCMC-simulation in a
 MCmcmc object}
 \usage{

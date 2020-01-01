@@ -12,6 +12,42 @@
   ...
 )
 }
+\arguments{
+\item{object}{an object of class \code{"PBreg"}.}
+
+\item{newdata}{an optional vector of new values of \code{x} to make predictions for. If omitted, the fitted values will be used.}
+
+\item{interval}{type of interval calculation - either \code{confidence} or \code{none}. The former is the default.}
+
+\item{level}{String. The type of interval to compute. Either "tolerance" or "confidence" (the default).}
+
+\item{...}{Not used}
+}
+\value{
+If \code{interval} is \code{"confidence"} this function returns a data frame with three columns: "fit", "lwr" and "upr" - similarly to \code{predict.lm}.
+
+If \code{interval} is \code{"none"} a vector of predicted values is returned.
+}
 \description{
-Predict results from PBreg object
+A predict method for the \code{"PBreg"} class object, that is a result of Passing-Bablok regression.
+}
+\examples{
+## Model data frame generation
+a <- data.frame(x=seq(1, 30)+rnorm(mean=0, sd=1, n=30),
+                y=seq(1, 30)*rnorm(mean=1, sd=0.4, n=30))
+
+## Call to PBreg
+x <- PBreg(a)
+print(x)
+predict(x, interval="none")
+
+## Or the same using "Meth" object
+a <- Meth(a, y=1:2)
+x <- PBreg(a)
+print(x)
+predict(x)
+
+}
+\author{
+Michal J. Figurski \email{mfigrs@gmail.com}
 }

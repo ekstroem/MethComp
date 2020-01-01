@@ -146,7 +146,39 @@ PBreg <- function(x, y=NULL, conf.level=0.05, wh.meth=1:2) {
                         class="PBreg"))
 }
 
+
+
 #' Predict results from PBreg object
+#'
+#' A predict method for the \code{"PBreg"} class object, that is a result of Passing-Bablok regression.
+#'
+#' @param object an object of class \code{"PBreg"}.
+#' @param newdata an optional vector of new values of \code{x} to make predictions for. If omitted, the fitted values will be used.
+#' @param interval type of interval calculation - either \code{confidence} or \code{none}. The former is the default.
+#' @param level String. The type of interval to compute. Either "tolerance" or "confidence" (the default).
+#' @param ... Not used
+#'
+#' @returns If \code{interval} is \code{"confidence"} this function returns a data frame with three columns: "fit", "lwr" and "upr" - similarly to \code{predict.lm}.
+#'
+#' If \code{interval} is \code{"none"} a vector of predicted values is returned.
+#'
+#' @author Michal J. Figurski \email{mfigrs@gmail.com}
+#'
+#' @examples
+#' ## Model data frame generation
+#' a <- data.frame(x=seq(1, 30)+rnorm(mean=0, sd=1, n=30),
+#'                 y=seq(1, 30)*rnorm(mean=1, sd=0.4, n=30))
+#'
+#' ## Call to PBreg
+#' x <- PBreg(a)
+#' print(x)
+#' predict(x, interval="none")
+#'
+#' ## Or the same using "Meth" object
+#' a <- Meth(a, y=1:2)
+#' x <- PBreg(a)
+#' print(x)
+#' predict(x)
 #'
 #' @rdname predict
 #' @export
@@ -219,7 +251,7 @@ print.PBreg <- function(x,...) {
 #' plot subtype 4: "bars" is the bar background color, "dens" is the color of
 #' the density line, and "ref2" is a vector of two colors for lines indicating
 #' the median and confidence limits.
-#' @param list() other parameters as in \code{"plot"}, some of which are
+#' @param ... other parameters as in \code{"plot"}, some of which are
 #' pre-defined for improved appearance. This affects only the subtype 1 plot.
 #' @author Michal J. Figurski \email{mfigrs@@gmail.com}
 #' @seealso \code{\link{PBreg}, \link{Deming}}.

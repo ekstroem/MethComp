@@ -131,7 +131,8 @@
 #'          las=1, eqn=FALSE, dif.type="lin", pl.type="conv", sd.type="lin",
 #'          grid=1:9*10, digits=3,Transform="pctlogit")
 #' 
-#' @export BA.plot
+#' @rdname plot
+#' @export
 BA.plot <-
 function( y1, y2, meth.names = NULL,
                      wh.comp = 1:2,

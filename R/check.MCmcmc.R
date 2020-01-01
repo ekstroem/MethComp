@@ -20,7 +20,7 @@ post  <- function (obj, ...) UseMethod("post")
 #' densities of the parameters and \code{pairs} plots a scatter-plot matrix of
 #' bivariate marginal posterior distributions.
 #' 
-#' @aliases check.MCmcmc trace.MCmcmc post.MCmcmc pairs.MCmcmc
+#' @aliases check.MCmcmc trace.MCmcmc post.MCmcmc
 #' @param obj A \code{MCmcmc} object.
 #' @param what Character indicating what parameters to plot.  Possible values
 #' are \code{"sd"} or \code{"var"} which gives plots for the variance
@@ -291,8 +291,10 @@ lattice::densityplot( obj,
 }
 
 
-
-#' @export pairs.MCmcmc
+#' Create a pairs plot for an MCmcmc object
+#'
+#' @rdname pairs
+#' @export
 pairs.MCmcmc <-
 function( x, what = "sd",
            subset = NULL,
