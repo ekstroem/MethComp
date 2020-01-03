@@ -1,8 +1,43 @@
+#' Plot the posterior densities for variance components
+#' 
+#' When a method comparison model i fitted and stored in a \code{\link{MCmcmc}}
+#' object, then the posterior distributions of the variance components are
+#' plotted, in separate displays for method.
+#' 
+#' The function generates a series of plots, one for each method compared in
+#' the \code{MCmcmc} object supplied (or those chosen by \code{which=}).
+#' Therefore the user must take care to set \code{mfrow} or \code{mfcol} to
+#' capture all the plots.
+#' 
+#' @param x A \code{MCmcmc} object.
+#' @param which For which of the compared methods should the plot be made?
+#' @param lwd.line Line width for drawing the density.
+#' @param col.line Color for drawing the densities.
+#' @param lty.line Line type for drawing the densities.
+#' @param grid Logical. Should a vertical grid be set up? If numeric it is set
+#' up at the values specified. If \code{same.ax}, the range of the grid is
+#' taken to be the extent of the x-axis for all plots.
+#' @param col.grid The color of the grid.
+#' @param rug Should a small rug at the bottom show posterior quantiles?
+#' @param probs Numeric vector with numbers in the range from 0 to 100,
+#' indicating the posterior percentiles to be shown in the rug.
+#' @param tot.var Should the posterior of the total variance also be shown?
+#' @param same.ax Should the same axes be used for all methods?
+#' @param meth.names Should the names of the methods be put on the plots?
+#' @param VC.names Should the names of the variance components be put on the
+#' first plot (\code{"first"}), the last (\code{"last"}), all (\code{"all"}) or
+#' none (\code{"none"}). Only the first letter is needed.
+#' @param ... Parameters passed on the \code{\link{density}} furnction that
+#' does the smoothing of the posterior samples.
+#' @return A list with one element for each method.  Each element of this is a
+#' list of densities, i.e. of objects of class \code{density}, one for each
+#' variance component.
 #' @importFrom graphics mtext lines
 #' @importFrom grDevices grey
 #' @importFrom stats density 
+#'
 #' @rdname plot
-#' @export 
+#' @export
 plot.VarComp <-
 function( x,
         which,

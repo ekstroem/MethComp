@@ -29,7 +29,7 @@ trace.MCmcmc(sbp.MC,"beta")
 
 # A MCmcmc object also has class mcmc.list, so we can use the
 # standard coda functions for convergence diagnostics:
-acfplot( subset.MCmcmc(sbp.MC,subset="sigma") )
+# acfplot( subset.MCmcmc(sbp.MC,subset="sigma") )
 
 # Have a look at the correlation between the 9 variance parameters
 pairs.MCmcmc( sbp.MC )

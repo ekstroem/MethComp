@@ -98,7 +98,7 @@ BA.plot(
 length as \code{x}. Ignored if a \code{\link{Meth}} or a
 \code{\link{MethComp}} objects is given for \code{y1}.}
 
-\item{meth.names}{Label for the method names.}
+\item{meth.names}{Should the names of the methods be put on the plots?}
 
 \item{wh.comp}{Which methods should be compared. Either numerical or
 character.}
@@ -124,12 +124,13 @@ averages, but centered on 0 (see \code{diflim}).}
 
 \item{diflim}{The limits of the difference axis.}
 
-\item{grid}{Should a grid be drawn? If numeric it indicates the places where
-the grid is drawn.}
+\item{grid}{Logical. Should a vertical grid be set up? If numeric it is set
+up at the values specified. If \code{same.ax}, the range of the grid is
+taken to be the extent of the x-axis for all plots.}
 
 \item{N.grid}{How many grid-lines should be drawn.}
 
-\item{col.grid}{What should be the color of the grid?}
+\item{col.grid}{The color of the grid.}
 
 \item{points}{Logical. Should the observed points be drawn?}
 
@@ -179,11 +180,10 @@ axis.}
 is used for constructing prediction limits, otherwise a t-quantile with d.f.
 equal th number of items minus 1.}
 
-\item{...}{parameters passed on
-to both the panel function plotting methods against each other, as well as
-to those plotting differences against means.}
+\item{...}{Parameters passed on the \code{\link{density}} furnction that
+does the smoothing of the posterior samples.}
 
-\item{x}{A \code{Meth} object.}
+\item{x}{A \code{MCmcmc} object.}
 
 \item{pch}{Plot character for points.}
 
@@ -211,8 +211,7 @@ plot subtype 4: "bars" is the bar background color, "dens" is the color of
 the density line, and "ref2" is a vector of two colors for lines indicating
 the median and confidence limits.}
 
-\item{which}{A vector of indices or names of methods to plot. If \code{NULL}
-all methods in the object are plotted.}
+\item{which}{For which of the compared methods should the plot be made?}
 
 \item{col.LoA}{What color should be used for the limits of agreement.}
 
@@ -231,12 +230,35 @@ the variable names?. If character, then the values of the character will be
 used to label the methods.}
 
 \item{cex}{Plot charcter expansion for points.}
+
+\item{lwd.line}{Line width for drawing the density.}
+
+\item{col.line}{Color for drawing the densities.}
+
+\item{lty.line}{Line type for drawing the densities.}
+
+\item{rug}{Should a small rug at the bottom show posterior quantiles?}
+
+\item{probs}{Numeric vector with numbers in the range from 0 to 100,
+indicating the posterior percentiles to be shown in the rug.}
+
+\item{tot.var}{Should the posterior of the total variance also be shown?}
+
+\item{same.ax}{Should the same axes be used for all methods?}
+
+\item{VC.names}{Should the names of the variance components be put on the
+first plot (\code{"first"}), the last (\code{"last"}), all (\code{"all"}) or
+none (\code{"none"}). Only the first letter is needed.}
 }
 \value{
 An object of class \code{\link{MethComp}} and either \code{DA.reg}
 (if \code{model=NULL}) or \code{BA.est} (if \code{model} is character).
 
 A plot as a side effect
+
+A list with one element for each method.  Each element of this is a
+list of densities, i.e. of objects of class \code{density}, one for each
+variance component.
 }
 \description{
 For two vectors of equal length representing measurements of the same
@@ -247,6 +269,10 @@ with \code{\link{Meth}} and \code{\link{MethComp}} objects too.
 
 A plot method for the \code{"PBreg"} class object, that is a result of
 Passing-Bablok regression.
+
+When a method comparison model i fitted and stored in a \code{\link{MCmcmc}}
+object, then the posterior distributions of the variance components are
+plotted, in separate displays for method.
 }
 \details{
 A plot of the relationship between the methods is produced; either a
@@ -254,6 +280,11 @@ Bland-Altman plot of the differences versus averages, or a 45 degree
 rotation as a conversion between the methods. If \code{model=NULL} a simple
 regression of averages on differences is made by calling \code{DA.reg}, and
 the specified conversion plotted.
+
+The function generates a series of plots, one for each method compared in
+the \code{MCmcmc} object supplied (or those chosen by \code{which=}).
+Therefore the user must take care to set \code{mfrow} or \code{mfcol} to
+capture all the plots.
 }
 \examples{
 

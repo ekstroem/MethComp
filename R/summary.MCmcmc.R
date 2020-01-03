@@ -1,3 +1,11 @@
+#' Summary
+#'
+#'
+#' @param object An \code{MCmcmc} object
+#' @param alpha 1 minus the the confidence level
+#' @param ... Not used
+#'
+#' @rdname summary
 #' @export
 summary.MCmcmc <-
 function( object, alpha=0.05, ... )

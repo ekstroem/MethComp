@@ -3,20 +3,24 @@
 #' A model linking each of a number of methods of measurement linearly to the
 #' "true" value is set up in BUGS and run via the function
 #' \code{\link[R2WinBUGS]{bugs}} from the \code{R2WinBUGS} package.
-#' 
-#' The model set up for an observation \eqn{y_{mir}}{y_mir} is: 
-#' \deqn{y_{mir} = \alpha_m + \beta_m(\mu_i+b_{ir} + c_{mi}) + }{y_mir = alpha_m + beta_m*(mu_i+b_ir+c_mi) + e_mir}\deqn{ e_{mir}}{y_mir = alpha_m + beta_m*(mu_i+b_ir+c_mi) + e_mir} where \eqn{b_{ir}}{b_ir} is a random
-#' \code{item} by \code{repl} interaction (included if \code{"ir" %in% random})
+#'
+#' The model set up for an observation \eqn{y_{mir}}{y_mir} is: \deqn{y_{mir} =
+#' \alpha_m + \beta_m(\mu_i+b_{ir} + c_{mi}) + }{y_mir = alpha_m +
+#' beta_m*(mu_i+b_ir+c_mi) + e_mir}\deqn{ e_{mir}}{y_mir = alpha_m +
+#' beta_m*(mu_i+b_ir+c_mi) + e_mir} where \eqn{b_{ir}}{b_ir} is a random
+#' \code{item} by \code{repl} interaction (included if \code{"ir"} is in \code{random})
 #' and \eqn{c_{mi}}{c_mi} is a random \code{meth} by \code{item} interaction
-#' (included if \code{"mi" %in% random}). The \eqn{\mu_i}{mu_i}'s are
+#' (included if \code{"mi"} is in \code{random}). The \eqn{\mu_i}{mu_i}'s are
 #' parameters in the model but are not monitored --- only the
 #' \eqn{\alpha}{alpha}s, \eqn{\beta}{beta}s and the variances of
 #' \eqn{b_{ir}}{b_{ir}}, \eqn{c_{mi}}{c_{mi}} and \eqn{e_{mir}}{e_{mir}} are
 #' monitored and returned. The estimated parameters are only determined up to a
 #' linear transformation of the \eqn{\mu}{mu}s, but the linear functions
 #' linking methods are invariant. The identifiable conversion parameters are:
-#' \deqn{\alpha_{m\cdot k}=\alpha_m - \alpha_k \beta_m/\beta_k, \quad }{alpha_m|k=alpha_m-alpha_k beta_m/beta_k, beta_m|k=beta_m/beta_k}\deqn{\beta_{m\cdot k}=\beta_m/\beta_k}{alpha_m|k=alpha_m-alpha_k beta_m/beta_k, beta_m|k=beta_m/beta_k} 
-#' The posteriors of these are derived and included in
+#' \deqn{\alpha_{m\cdot k}=\alpha_m - \alpha_k \beta_m/\beta_k, \quad
+#' }{alpha_m|k=alpha_m-alpha_k beta_m/beta_k, beta_m|k=beta_m/beta_k}\deqn{
+#' \beta_{m\cdot k}=\beta_m/\beta_k}{alpha_m|k=alpha_m-alpha_k beta_m/beta_k,
+#' beta_m|k=beta_m/beta_k} The posteriors of these are derived and included in
 #' the \code{posterior}, which also will contain the posterior of the variance
 #' components (the SDs, that is).  Furthermore, the posterior of the point
 #' where the conversion lines intersects the identity as well as the prediction

@@ -139,7 +139,45 @@ A model linking each of a number of methods of measurement linearly to the
 \code{\link[R2WinBUGS]{bugs}} from the \code{R2WinBUGS} package.
 }
 \details{
+The model set up for an observation \eqn{y_{mir}}{y_mir} is: \deqn{y_{mir} =
+\alpha_m + \beta_m(\mu_i+b_{ir} + c_{mi}) + }{y_mir = alpha_m +
+beta_m*(mu_i+b_ir+c_mi) + e_mir}\deqn{ e_{mir}}{y_mir = alpha_m +
+beta_m*(mu_i+b_ir+c_mi) + e_mir} where \eqn{b_{ir}}{b_ir} is a random
+\code{item} by \code{repl} interaction (included if \code{"ir"} is in \code{random})
+and \eqn{c_{mi}}{c_mi} is a random \code{meth} by \code{item} interaction
+(included if \code{"mi"} is in \code{random}). The \eqn{\mu_i}{mu_i}'s are
+parameters in the model but are not monitored --- only the
+\eqn{\alpha}{alpha}s, \eqn{\beta}{beta}s and the variances of
+\eqn{b_{ir}}{b_{ir}}, \eqn{c_{mi}}{c_{mi}} and \eqn{e_{mir}}{e_{mir}} are
+monitored and returned. The estimated parameters are only determined up to a
+linear transformation of the \eqn{\mu}{mu}s, but the linear functions
+linking methods are invariant. The identifiable conversion parameters are:
+\deqn{\alpha_{m\cdot k}=\alpha_m - \alpha_k \beta_m/\beta_k, \quad
+}{alpha_m|k=alpha_m-alpha_k beta_m/beta_k, beta_m|k=beta_m/beta_k}\deqn{
+\beta_{m\cdot k}=\beta_m/\beta_k}{alpha_m|k=alpha_m-alpha_k beta_m/beta_k,
+beta_m|k=beta_m/beta_k} The posteriors of these are derived and included in
+the \code{posterior}, which also will contain the posterior of the variance
+components (the SDs, that is).  Furthermore, the posterior of the point
+where the conversion lines intersects the identity as well as the prediction
+SDs between any pairs of methods are included.
 
+The function \code{summary.MCmcmc} method gives estimates of the conversion
+parameters that are consistent. Clearly, \deqn{\mathrm{median}(\beta_{1\cdot
+2})= }{median(beta.1.2)=1/median(beta.2.1)}\deqn{
+1/\mathrm{median}(\beta_{2\cdot 1})}{median(beta.1.2)=1/median(beta.2.1)}
+because the inverse is a monotone transformation, but there is no guarantee
+that \deqn{\mathrm{median}(\alpha_{1\cdot 2})=
+\mathrm{median}(-\alpha_{2\cdot 1}/
+}{median(alpha.1.2)=median(-alpha.2.1/beta.2.1)}\deqn{ \beta_{2\cdot
+1})}{median(alpha.1.2)=median(-alpha.2.1/beta.2.1)} and hence no guarantee
+that the parameters derived as posterior medians produce conversion lines
+that are the same in both directions. Therefore, \code{summary.MCmcmc}
+computes the estimate for \eqn{\alpha_{2\cdot 1}}{alpha.2.1} as
+\deqn{(\mathrm{median}(\alpha_{1\cdot 2})-\mathrm{median}(\alpha_{2\cdot 1})
+}{(median(alpha.1.2)-median(alpha.2.1)/ median(beta.2.1))/2}\deqn{
+/\mathrm{median}(\beta_{2\cdot 1}))/2}{(median(alpha.1.2)-median(alpha.2.1)/
+median(beta.2.1))/2} and the estimate of \eqn{\alpha_{1\cdot 2}}{alpha.1.2}
+correspondingly. The resulting parameter estimates defines the same lines.
 }
 \examples{
 

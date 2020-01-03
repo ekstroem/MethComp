@@ -3,7 +3,6 @@
 #' Plots the pairwise conversion formulae between methods from a
 #' \code{\link{MCmcmc}} object.
 #' 
-#' 
 #' @param x A \code{\link{MCmcmc}} object
 #' @param axlim The limits for the axes in the panels
 #' @param wh.cmp Numeric vector or vector of method names.  Which of the

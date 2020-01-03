@@ -1,6 +1,6 @@
-#' Subset MCmcmc object
+#' Subset an MCmcmc object
 #'
-#' Subset MCmcmc object
+#' Subset an MCmcmc object
 #'
 #' @param x object to be subsetted.
 #' @param subset Numerical, character or list giving the variables to keep.

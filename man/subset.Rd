@@ -2,7 +2,7 @@
 % Please edit documentation in R/subset.MCmcmc.R
 \name{subset.MCmcmc}
 \alias{subset.MCmcmc}
-\title{Subset MCmcmc object}
+\title{Subset an MCmcmc object}
 \usage{
 \method{subset}{MCmcmc}(x, subset = NULL, allow.repl = FALSE, chains = NULL, ...)
 }
@@ -23,5 +23,5 @@ is used in turn, numerical and character elements can be mixed.}
 \item{...}{further arguments to be passed to or from other methods.}
 }
 \description{
-Subset MCmcmc object
+Subset an MCmcmc object
 }
