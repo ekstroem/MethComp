@@ -58,7 +58,7 @@ bivariate marginal posterior distributions.
 # Load a provided MCmcmc object
 data( ox.MC )
 trace.MCmcmc( ox.MC, what="beta" )
-pairs.MCmcmc( ox.MC, what="sd" )
+pairs( ox.MC, what="sd" )
 
 }
 \seealso{

@@ -47,7 +47,7 @@ post  <- function (obj, ...) UseMethod("post")
 #' # Load a provided MCmcmc object
 #' data( ox.MC )
 #' trace.MCmcmc( ox.MC, what="beta" )
-#' pairs.MCmcmc( ox.MC, what="sd" )
+#' pairs( ox.MC, what="sd" )
 #' 
 #' @export trace.MCmcmc
 trace.MCmcmc <-
@@ -293,13 +293,13 @@ lattice::densityplot( obj,
 
 #' Create a pairs plot for an MCmcmc object
 #'
-#' @param x A \code{MCmcmc} object.
+#' @param x An \code{MCmcmc} object.
 #' @param what Character indicating what parameters to plot.  Possible values
 #' are \code{"sd"} or \code{"var"} which gives plots for the variance
 #' components (on the sd. scale), \code{"beta"} or \code{"slope"}, which gives
 #' plots for slope parameters and \code{"alpha"} or \code{"int"}, which gives
 #' plots for the intercept parameters.
-
+#'
 #' @param subset Character or numerical indicating the columns of the posterior
 #' that should be plotted by \code{pairs}.
 #' @param col Color of the lines points used for plotting of the posterior

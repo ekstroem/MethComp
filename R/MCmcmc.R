@@ -95,8 +95,7 @@
 #' attribute, \code{original}, with the posterior of the parameters in the
 #' model actually simulated.
 #' @param program Which program should be used for the MCMC simulation.
-#' Possible values are "\code{BRugs}", "\code{openbugs}", "\code{ob}"
-#' (openBUGS/BRugs), "\code{winbugs}", "\code{wb}" (WinBUGS), "\code{jags}"
+#' Possible values are "\code{BRugs}", "\code{ob}", "\code{winbugs}", "\code{wb}" (WinBUGS), "\code{jags}"
 #' (JAGS). Case insensitive. Defaults to "\code{JAGS}" since: 1) JAGS is
 #' available on all platforms and 2) JAGS seems to be faster than BRugs on
 #' (some) windows machines.
@@ -193,11 +192,13 @@ slope <- substr(bias,1,3) %in% c("lin","pro")
 
 # Make program choice case-insensitive
 program <- tolower( program )
-program <- if(        program %in% c("brugs","openbugs","ob") ) "openbugs"
-           else { if( program %in% c(         "winbugs","wb") )  "winbugs"
+program <- #if(        program %in% c("brugs","openbugs","ob") ) "openbugs"
+           #else { 
+
+           if ( program %in% c(         "winbugs","wb") )  "winbugs"
            else { if( program %in% c(      "jags","jag","jg") )     "jags"
            else stop( "\n\nProgram '", program, "' not supported!" )
-           } }
+           }
 
 # Fill in the variance components arguments:
 if( missing(MxI) ) MxI <- matrix
@@ -313,9 +314,9 @@ if( !code.only & is.null( bugs.directory ) & program=="winbugs" ) stop(
 "\n    or by setting options(bugs.directory=...).",
 "\nThe latter will last you for the rest of your session.\n" )
 
-if( !Got.brugs & program=="openbugs" )
-  stop( "Using the MCmcmc function with BRugs / openbugs option requires",
-        "that the BRugs package is installed\n" )
+#if( !Got.brugs & program=="openbugs" )
+#  stop( "Using the MCmcmc function with BRugs / openbugs option requires",
+#        "that the BRugs package is installed\n" )
 
 # If we are using BRugs we only continue if on a windows system:
 if( .Platform$OS.type != "windows" & !Got.jags )
@@ -343,26 +344,26 @@ res <- rjags::coda.samples( m,
                  thin = n.thin )
 }
 
-if( program %in% c("winbugs","openbugs")  )
-res <- openbugs::bugs(  data = data.list,
-parameters.to.save = names( list.ini[[1]] ),
-             inits = list.ini,
-        model.file = bugs.code.file,
-          n.chains = n.chains,
-            n.iter = n.iter,
-          n.burnin = n.burnin,
-            n.thin = n.thin,
-    bugs.directory = bugs.directory,
-             debug = debug,
-           program = program,
-           codaPkg = TRUE )
+#if( program %in% c("winbugs","openbugs")  )
+#res <- openbugs::bugs(  data = data.list,
+#parameters.to.save = names( list.ini[[1]] ),
+#             inits = list.ini,
+#        model.file = bugs.code.file,
+#          n.chains = n.chains,
+#            n.iter = n.iter,
+#          n.burnin = n.burnin,
+#            n.thin = n.thin,
+#    bugs.directory = bugs.directory,
+#             debug = debug,
+#           program = program,
+#           codaPkg = TRUE )
 
 # and read the result into an mcmc.list object
 # --- different approach for WinBUGS and OpenBUGS
 #if( program == "winbugs"  )
 #  res <- read.bugs( res, quiet=TRUE )
-if( program == "openbugs" )
-  res <- sims.array.2.mcmc.list( res$sims.array )
+#if( program == "openbugs" )
+#  res <- sims.array.2.mcmc.list( res$sims.array )
 
 # Now produce a mcmc object with the relevant parameters
 

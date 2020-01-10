@@ -101,8 +101,7 @@ attribute, \code{original}, with the posterior of the parameters in the
 model actually simulated.}
 
 \item{program}{Which program should be used for the MCMC simulation.
-Possible values are "\code{BRugs}", "\code{openbugs}", "\code{ob}"
-(openBUGS/BRugs), "\code{winbugs}", "\code{wb}" (WinBUGS), "\code{jags}"
+Possible values are "\code{BRugs}", "\code{ob}", "\code{winbugs}", "\code{wb}" (WinBUGS), "\code{jags}"
 (JAGS). Case insensitive. Defaults to "\code{JAGS}" since: 1) JAGS is
 available on all platforms and 2) JAGS seems to be faster than BRugs on
 (some) windows machines.}

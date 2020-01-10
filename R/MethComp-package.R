@@ -619,18 +619,18 @@ NULL
 #' # acfplot( subset.MCmcmc(sbp.MC,subset="sigma") )
 #' 
 #' # Have a look at the correlation between the 9 variance parameters
-#' pairs.MCmcmc( sbp.MC )
+#' pairs( sbp.MC )
 #' 
 #' # Have a look at whether the MxI variance components are the same between methods:
 #' \dontrun{
-#' pairs.MCmcmc( sbp.MC, subset=c("mi"), eq=TRUE,
-#'               panel=function(x,y,...)
-#'                     {
-#'                     abline(0,1)
-#'                     abline(v=median(x),h=median(y),col="gray")
-#'                     points(x,y,...)
-#'                     }
-#'              ) }
+#' pairs( sbp.MC, subset=c("mi"), eq=TRUE,
+#'         panel=function(x,y,...)
+#'               {
+#'                abline(0,1)
+#'                abline(v=median(x),h=median(y),col="gray")
+#'                points(x,y,...)
+#'               }
+#'         ) }
 #' 
 NULL
 

@@ -16,7 +16,7 @@
 )
 }
 \arguments{
-\item{x}{A \code{MCmcmc} object.}
+\item{x}{An \code{MCmcmc} object.}
 
 \item{what}{Character indicating what parameters to plot.  Possible values
 are \code{"sd"} or \code{"var"} which gives plots for the variance
