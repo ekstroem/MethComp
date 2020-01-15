@@ -1,7 +1,7 @@
 Package: MethComp
 Version: 1.30.0
 Date: 2020-01-14
-Title: Functions for Analysis of Agreement in Method Comparison Studies
+Title: Analysis of Agreement in Method Comparison Studies
 Authors@R: c(person(given="Bendix", family="Carstensen", email="b@bxc.dk", role=c("aut")),
              person(given="Lyle", family="Gurrin", email="lgurrin@unimelb.edu.au", role=c("aut")),
              person(given="Claus Thorn", family="Ekstrøm", email="ekstrom@sund.ku.dk", role=c("aut", "cre")),
@@ -16,10 +16,11 @@ Suggests:
     rjags, 
     lattice, 
     lme4
-Description: Methods (standard and advanced) for analysis of agreement between measurement methods.
+Description: Methods (standard and advanced) for analysis of agreement between measurement methods. These cover Bland-Altman plots, Deming regression, Lin's Total deviation index, and difference-on-average regression
 License: GPL (>= 2)
 Encoding: UTF-8
 URL: http://BendixCarstensen.com/MethComp/
+References: Carstensen B. (2010) "Comparing Clinical Measurement Methods: A Practical Guide (Statistics in Practice)", Wiley.
 BugReports: https://github.com/ekstroem/MethComp/issues  
 NeedsCompilation: no
 Repository: CRAN
