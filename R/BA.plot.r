@@ -71,7 +71,7 @@
 #' @param ... Further parameters passed on to \code{\link{plot.MethComp}}
 #' @return An object of class \code{\link{MethComp}} and either \code{DA.reg}
 #' (if \code{model=NULL}) or \code{BA.est} (if \code{model} is character).
-#' @author Bendix Carstensen \email{bxc@@steno.dk},
+#' @author Bendix Carstensen \email{bendix.carstensen@@regionh.dk},
 #' \url{http://BendixCarstensen.com}.
 #' @seealso \code{\link{BA.est}}, \code{\link{DA.reg}}, \code{\link{MCmcmc}}.
 #' @references JM Bland and DG Altman: Statistical methods for assessing

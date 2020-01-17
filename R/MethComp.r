@@ -26,7 +26,7 @@
 #' 
 #' The methods \code{print}, \code{plot}, \code{lines} and \code{points} return
 #' nothing.
-#' @author Bendix Carstensen, Steno Diabetes Center, \email{bxc@@steno.dk}.
+#' @author Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@@regionh.dk }.
 #' @seealso \code{\link{BA.est}} \code{\link{AltReg}} \code{\link{MCmcmc}}
 #' @keywords design
 #' @examples
@@ -192,7 +192,7 @@ if( !is.null( x$VarComp ) )
 #' 
 #' The methods \code{print}, \code{plot}, \code{lines} and \code{points} return
 #' nothing.
-#' @author Bendix Carstensen, Steno Diabetes Center, \email{bxc@@steno.dk}.
+#' @author Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@@regionh.dk }.
 #' @seealso \code{\link{BA.est}} \code{\link{AltReg}} \code{\link{MCmcmc}}
 #' @keywords design
 #' @examples
@@ -589,7 +589,7 @@ else
 #' will correspond to no transformation.
 #' 
 #' @author Bendix Carstensen, Steno Diabetes Center,
-#' \url{http://www.biostat.ku.dk/~bxc}.
+#' \url{http://bendixcarstensen.com/}.
 #' @examples
 #' 
 #' choose.trans( "logit" )
@@ -654,7 +654,7 @@ invisible( ltr )
 #' 
 #' @return \code{check.trans} returns nothing.
 #' @author Bendix Carstensen, Steno Diabetes Center,
-#' \url{http://www.biostat.ku.dk/~bxc}.
+#' \url{http://bendixcarstensen.com/}.
 #' 
 #' @export check.trans
 check.trans <-

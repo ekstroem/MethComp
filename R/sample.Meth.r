@@ -14,7 +14,7 @@
 #' significant. See details for explanation.
 #' @param N How many observations should be sampled?
 #' @returns A meth object 
-#' @author Bendix Carstensen, \email{bxc@@steno.dk}
+#' @author Bendix Carstensen, \email{bendix.carstensen@@regionh.dk}
 #' @keywords manip
 #' @examples
 #' data(fat)

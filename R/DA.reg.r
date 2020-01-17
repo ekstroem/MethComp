@@ -63,7 +63,7 @@
 #' \code{y2DA} returns a 3-component vector with names
 #' \code{c("DA-int","DA-slope","DA-sd")}, referring to differences
 #' \code{D=y1-y2} as a linear function of \code{A=(y1+y2)/2}.
-#' @author Bendix Carstensen, Steno Diabetes Center, \code{bxc$steno.dk},
+#' @author Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@@regionh.dk},
 #' \url{http://BendixCarstensen.com/MethComp}
 #' @references B. Carstensen: Comparing methods of measurement: Extending the
 #' LoA by regression.  Stat Med, 29:401-410, 2010.
@@ -200,7 +200,7 @@ return( invisible( res ) )
 #' @return \code{DA2y} returns a 2 by 3 matrix with rownames \code{c("y1|2","y2|1")}
 #' and columnnames \code{c("int","slope","sd")}, calculated under the
 #' assumption that the differences were formed as \code{D <- y1 - y2}.
-#' @author Bendix Carstensen, Steno Diabetes Center, \code{bxc$steno.dk},
+#' @author Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@@regionh.dk},
 #' \url{http://BendixCarstensen.com/MethComp}
 #' @references B. Carstensen: Comparing methods of measurement: Extending the
 #' LoA by regression.  Stat Med, 29:401-410, 2010.
@@ -255,7 +255,7 @@ invisible( res )
 #' @return \code{y2DA} returns a 3-component vector with names
 #' \code{c("DA-int","DA-slope","DA-sd")}, referring to differences
 #' \code{D=y1-y2} as a linear function of \code{A=(y1+y2)/2}.
-#' @author Bendix Carstensen, Steno Diabetes Center, \code{bxc$steno.dk},
+#' @author Bendix Carstensen, Steno Diabetes Center, \emacs{bendix.carstensen@@regionh.dk},
 #' \url{http://BendixCarstensen.com/MethComp}
 #' @references B. Carstensen: Comparing methods of measurement: Extending the
 #' LoA by regression.  Stat Med, 29:401-410, 2010.

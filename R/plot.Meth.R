@@ -21,7 +21,7 @@
 #' to both the panel function plotting methods against each other, as well as
 #' to those plotting differences against means.
 #' @return A plot as a side effect
-#' @author Bendix Carstensen, \email{bxc@@steno.dk}
+#' @author Bendix Carstensen, \email{bendix.carstensen@@regionh.dk}
 #'
 #' @importFrom stats sd
 #' @importFrom graphics abline points text box axis plot par

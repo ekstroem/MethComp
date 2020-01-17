@@ -20,7 +20,7 @@
 #'  \item{TDI}{The approximate value of the TDI}
 #'  \item{Limits of Agreement}{Limits of agreement}
 #' @references LI Lin: Total deviation index for measuring individual agreement with applications in laboratory performance and bioequivalence, Statistics in Medicine, 19, 255-270 (2000)
-#' @author Bendix Carstensen, bxc@steno.dk
+#' @author Bendix Carstensen, \email{bendix.carstensen@@regionh.dk}
 #'
 #' @examples
 #'

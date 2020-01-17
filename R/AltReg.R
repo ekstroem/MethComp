@@ -88,7 +88,7 @@ list( intercept=int, slope=slp, location=int.loc )
 #' transformation was applied before analysis, an attribute "Transform" is
 #' present; a list with two elements \code{trans} and \code{inv}, both of which
 #' are functions, the first the transform, the last the inverse.
-#' @author Bendix Carstensen, Steno Diabetes Center, \email{bxc@@steno.dk},
+#' @author Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@@regionh.dk},
 #' \url{http://BendixCarstensen.com}.
 #' @seealso \code{\link{BA.est}}, \code{\link{DA.reg}}, \code{\link{Meth.sim}},
 #' \code{\link{MethComp}}

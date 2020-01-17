@@ -37,7 +37,7 @@ post  <- function (obj, ...) UseMethod("post")
 #' make a panels take up as much place as possible.
 #' @param \dots Further aruments passed on to the \code{\link{Lattice}}
 #' @return A \code{\link{Lattice}} plot.
-#' @author Bendix Carstensen, Steno Diabetes Center, \email{bxc@@steno.dk},
+#' @author Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@@regionh.dk },
 #' \url{http://BendixCarstensen.com}.
 #' @seealso \code{\link{MCmcmc}}, \code{\link{plot.MCmcmc}},
 #' \code{\link{ox.MC}}, \code{\link{sbp.MC}}
@@ -316,7 +316,7 @@ lattice::densityplot( obj,
 #' \code{coda} package, % \code{acf} calls \code{\link{acfplot}}, \code{pairs}
 #' calls \code{\link{pairs}} from the \code{graphics} package.
 #' @return A \code{\link{Lattice}} plot.
-#' @author Bendix Carstensen, Steno Diabetes Center, \email{bxc@@steno.dk},
+#' @author Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@@regionh.dk },
 #' \url{http://BendixCarstensen.com}.
 #' @seealso \code{\link{MCmcmc}}, \code{\link{plot.MCmcmc}},
 #' \code{\link{ox.MC}}, \code{\link{sbp.MC}}
