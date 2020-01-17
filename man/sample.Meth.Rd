@@ -66,6 +66,6 @@ hb2  <- with( subset(hba1c,type=="Cap"),
   
 }
 \author{
-Bendix Carstensen, \email{bxc@steno.dk}
+Bendix Carstensen, \email{bendix.carstensen@regionh.dk}
 }
 \keyword{manip}

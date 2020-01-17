@@ -53,6 +53,6 @@ plot( AR.ox ) }
 \code{\link{BA.est}} \code{\link{AltReg}} \code{\link{MCmcmc}}
 }
 \author{
-Bendix Carstensen, Steno Diabetes Center, \email{bxc@steno.dk}.
+Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@regionh.dk }.
 }
 \keyword{design}

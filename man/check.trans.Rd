@@ -23,5 +23,5 @@ Check whether two functions actually are each others inverse.
 }
 \author{
 Bendix Carstensen, Steno Diabetes Center,
-\url{http://www.biostat.ku.dk/~bxc}.
+\url{http://bendixcarstensen.com/}.
 }

@@ -32,5 +32,5 @@ choose.trans( "logit" )
 }
 \author{
 Bendix Carstensen, Steno Diabetes Center,
-\url{http://www.biostat.ku.dk/~bxc}.
+\url{http://bendixcarstensen.com/}.
 }

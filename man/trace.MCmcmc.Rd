@@ -66,7 +66,7 @@ pairs( ox.MC, what="sd" )
 \code{\link{ox.MC}}, \code{\link{sbp.MC}}
 }
 \author{
-Bendix Carstensen, Steno Diabetes Center, \email{bxc@steno.dk},
+Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@regionh.dk },
 \url{http://BendixCarstensen.com}.
 }
 \keyword{models}

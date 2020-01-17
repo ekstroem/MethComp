@@ -297,7 +297,7 @@ Got.r2win <-
 Got.brugs <-
 Got.jags  <-
 Got.pr    <- FALSE
-if( tolower(substr(program,1,1)) %in% c("b","o","w") ) Got.r2win <- requireNamespace( "R2WinBUGS", quietly=TRUE )
+# if( tolower(substr(program,1,1)) %in% c("b","o","w") ) Got.r2win <- requireNamespace( "R2WinBUGS", quietly=TRUE )
 #if( tolower(substr(program,1,1)) %in% c("b","o"    ) ) Got.brugs <- requireNamespace( "BRugs"    , quietly=TRUE )
 if( tolower(substr(program,1,1)) %in% c("j"        ) ) Got.jags  <- requireNamespace( "rjags"    , quietly=TRUE )
 if( !Got.coda |
@@ -308,11 +308,11 @@ if( !Got.coda |
         "(All installed packages are shown if you type 'library()'.)" )
 
 # Is the location of WinBUGS supplied if needed ?
-if( !code.only & is.null( bugs.directory ) & program=="winbugs" ) stop(
-"\nYou must supply the name of the folder where WinBUGS is installed,",
-"\neither by using the parameter bugs.directory=...,",
-"\n    or by setting options(bugs.directory=...).",
-"\nThe latter will last you for the rest of your session.\n" )
+#if( !code.only & is.null( bugs.directory ) & program=="winbugs" ) stop(
+#"\nYou must supply the name of the folder where WinBUGS is installed,",
+#"\neither by using the parameter bugs.directory=...,",
+#"\n    or by setting options(bugs.directory=...).",
+#"\nThe latter will last you for the rest of your session.\n" )
 
 #if( !Got.brugs & program=="openbugs" )
 #  stop( "Using the MCmcmc function with BRugs / openbugs option requires",

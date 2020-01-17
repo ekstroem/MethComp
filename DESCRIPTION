@@ -21,6 +21,7 @@ License: GPL (>= 2)
 Encoding: UTF-8
 URL: http://BendixCarstensen.com/MethComp/
 BugReports: https://github.com/ekstroem/MethComp/issues  
+SystemRequirements: JAGS (http://mcmc-jags.sourceforge.net)
 NeedsCompilation: no
 Repository: CRAN
 ByteCompile: true

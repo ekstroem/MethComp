@@ -374,12 +374,12 @@ Methods. \emph{Journal of Clinical Chemistry and Clinical Biochemistry},
 \code{\link{PBreg}, \link{Deming}}.
 }
 \author{
-Bendix Carstensen \email{bxc@steno.dk},
+Bendix Carstensen \email{bendix.carstensen@regionh.dk},
 \url{http://BendixCarstensen.com}.
 
 Michal J. Figurski \email{mfigrs@gmail.com}
 
-Bendix Carstensen, \email{bxc@steno.dk}
+Bendix Carstensen, \email{bendix.carstensen@regionh.dk}
 }
 \keyword{design}
 \keyword{models}

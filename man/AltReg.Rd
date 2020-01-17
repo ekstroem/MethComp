@@ -118,7 +118,7 @@ of measurement. Biostatistics (2004), 5, 3, pp. 399--413.
 \code{\link{MethComp}}
 }
 \author{
-Bendix Carstensen, Steno Diabetes Center, \email{bxc@steno.dk},
+Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@regionh.dk},
 \url{http://BendixCarstensen.com}.
 }
 \keyword{models}

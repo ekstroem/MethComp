@@ -255,7 +255,7 @@ invisible( res )
 #' @return \code{y2DA} returns a 3-component vector with names
 #' \code{c("DA-int","DA-slope","DA-sd")}, referring to differences
 #' \code{D=y1-y2} as a linear function of \code{A=(y1+y2)/2}.
-#' @author Bendix Carstensen, Steno Diabetes Center, \emacs{bendix.carstensen@@regionh.dk},
+#' @author Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@@regionh.dk},
 #' \url{http://BendixCarstensen.com/MethComp}
 #' @references B. Carstensen: Comparing methods of measurement: Extending the
 #' LoA by regression.  Stat Med, 29:401-410, 2010.

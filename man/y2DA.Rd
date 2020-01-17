@@ -48,6 +48,6 @@ B. Carstensen: Comparing methods of measurement: Extending the
 LoA by regression.  Stat Med, 29:401-410, 2010.
 }
 \author{
-Bendix Carstensen, Steno Diabetes Center, \code{bxc$steno.dk},
+Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@regionh.dk},
 \url{http://BendixCarstensen.com/MethComp}
 }
