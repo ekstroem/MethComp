@@ -4,12 +4,14 @@
 \name{ox}
 \alias{ox}
 \title{Measurement of oxygen saturation in blood}
-\format{A data frame with 354 observations on the following 4 variables.
+\format{
+A data frame with 354 observations on the following 4 variables.
 \describe{ \item{\code{meth}}{Measurement methods, factor with levels
 \code{CO}, \code{pulse}} \item{\code{item}}{Id for the child}
 \item{\code{repl}}{Replicate of measurements. There were 3 measurements for
 most children, 4 had only 2 replicates with each method, one only 1}
-\item{\code{y}}{Oxygen saturation in percent.} }}
+\item{\code{y}}{Oxygen saturation in percent.} }
+}
 \description{
 61 children had their blood oxygen content measured at the Children's
 Hospital in Melbourne, either with a chemical method analysing gases in the

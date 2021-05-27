@@ -4,13 +4,15 @@
 \name{Enzyme}
 \alias{Enzyme}
 \title{Enzyme activity data}
-\format{A data frame with 72 observations on the following 3 variables.
+\format{
+A data frame with 72 observations on the following 3 variables.
 \describe{ \item{\code{meth}}{a factor with levels \code{SucHom}
 \code{SucPel} \code{Alkphos}, representing three different measurements,
 i.e.  homogenate and pellet values of sucrase, as well as homogenate values
 of alkaline.} \item{\code{item}}{a numeric vector, the person ID for the 24
 patients} \item{\code{y}}{a numeric vector, the measurements on the enzyme
-activity.} }}
+activity.} }
+}
 \source{
 R. L. Carter; Restricted Maximum Likelihood Estimation of Bias and
 Reliability in the Comparison of Several Measuring Methods; Biometrics,

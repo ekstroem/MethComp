@@ -4,7 +4,8 @@
 \name{glucose}
 \alias{glucose}
 \title{Glucose measurements by different methods}
-\format{A data frame with 1302 observations on the following 6 variables.
+\format{
+A data frame with 1302 observations on the following 6 variables.
 \describe{ \item{\code{meth}}{Method of measurement. A factor with 11
 levels: \code{n.plas1} \code{n.plas2} \code{h.cap} \code{h.blood}
 \code{h.plas} \code{h.serum} \code{m.plas} \code{m.serum} \code{o.cap}
@@ -14,7 +15,8 @@ factor with 4 levels: \code{blood} \code{plasma} \code{serum} \code{capil}}
 Minutes since glucose load.} \item{\code{cent}}{Center of sampling. Except
 for the two first methods, \code{n.plas1} and \code{n.plas2}, samples were
 analyzed at the centres too} \item{\code{y}}{Glucose measurement in
-mmol/l.} }}
+mmol/l.} }
+}
 \source{
 The study was conducted at the National Public Health Institute in
 Helsinki by Jaana Lindstrom.

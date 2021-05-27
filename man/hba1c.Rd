@@ -4,13 +4,15 @@
 \name{hba1c}
 \alias{hba1c}
 \title{Measurements of HbA1c from Steno Diabetes Center}
-\format{A data frame with 835 observations on the following 6 variables.
+\format{
+A data frame with 835 observations on the following 6 variables.
 \describe{ \item{\code{dev}}{Type of machine used.  A factor with levels
 \code{BR.V2}, \code{BR.VC} and \code{Tosoh}.} \item{\code{type}}{Type of
 blood analysed (capillary or venous).  A factor with levels \code{Cap}
 \code{Ven}} \item{\code{item}}{Person-id. A numeric vector}
 \item{\code{d.samp}}{Day of sampling.} \item{\code{d.ana}}{Day of
-laboratory analysis.} \item{\code{y}}{The measured value of HbA1c.} }}
+laboratory analysis.} \item{\code{y}}{The measured value of HbA1c.} }
+}
 \source{
 Bendix Carstensen, Steno Diabetes Center.
 }

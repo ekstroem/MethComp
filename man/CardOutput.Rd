@@ -4,14 +4,16 @@
 \name{CardOutput}
 \alias{CardOutput}
 \title{Measurements of Cardiac output.}
-\format{A data frame with 15 observations on the following 8 variables.
+\format{
+A data frame with 15 observations on the following 8 variables.
 \describe{ \item{\code{Age}}{Patient age} \item{\code{Diag}}{Diagnosis, a
 factor with levels \code{sepsis}, \code{cardiogenic}, \code{hypothermia}}
 \item{\code{VO2}}{Oxygen consumption} \item{\code{Svo2}}{Mixed venous O2
 saturation} \item{\code{Scvo2}}{Central venous oxygen saturation}
 \item{\code{TCO}}{Thermodilution-derived cardiac output}
 \item{\code{FCO}}{Fick-derived cardiac output.} \item{\code{Sex}}{Sex, a
-factor with levels \code{F}, \code{M}} }}
+factor with levels \code{F}, \code{M}} }
+}
 \source{
 Avi A. Weinbroum, Philippe Biderman, Dror Soffer, Joseph M. Klausner
 & Oded Szold:

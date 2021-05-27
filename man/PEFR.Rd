@@ -5,7 +5,8 @@
 \alias{PEFR}
 \title{Peak Expiratory Flow Rate (PEFR) measurements with Wright peak flow and mini
 Wright peak flow meter.}
-\format{A data frame with 68 observations on the following 3 variables.
+\format{
+A data frame with 68 observations on the following 3 variables.
 \describe{ \item{\code{meth}}{a factor with levels \code{Wright} and
 \code{Mini}, representing measurements by a Wright peak flow meter and a
 mini Wright meter respectively, in random order.}
@@ -13,7 +14,8 @@ mini Wright meter respectively, in random order.}
 vector, the measurements, i.e. PEFR for the two measurements with a Wright
 peak flow meter and a mini Wright meter respectively. The measurement unit
 is l/min.} \item{\code{repl}}{Numeric vector, replicate number. Replicates
-are exchangeable within item.} }}
+are exchangeable within item.} }
+}
 \source{
 J. M. Bland and D. G. Altman (1986) Statistical Methods for
 Assessing Agreement Between Two Methods of Clinical Measurement, Lancet.

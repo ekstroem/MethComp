@@ -4,12 +4,14 @@
 \name{scint}
 \alias{scint}
 \title{Relative renal function by Scintigraphy}
-\format{A data frame with 222 observations on the following 5 variables:
+\format{
+A data frame with 222 observations on the following 5 variables:
 \describe{ \item{\code{meth}}{Measurement method, a factor with levels
 \code{DMSA}, \code{DTPA}, \code{EC}.} \item{\code{item}}{Patient
 identification.} \item{\code{y}}{Percentage of total kidney function in the
 left kidney.} \item{\code{age}}{Age of the patient.} \item{\code{sex}}{Sex
-of the patient, a factor with levels \code{F}, \code{M}.} }}
+of the patient, a factor with levels \code{F}, \code{M}.} }
+}
 \source{
 F. C. Domingues, G. Y. Fujikawa, H. Decker, G. Alonso, J. C.
 Pereira, P. S. Duarte: Comparison of Relative Renal Function Measured with

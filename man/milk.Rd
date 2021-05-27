@@ -4,10 +4,12 @@
 \name{milk}
 \alias{milk}
 \title{Measurement of fat content of human milk by two different methods.}
-\format{A data frame with 90 observations on the following 3 variables.
+\format{
+A data frame with 90 observations on the following 3 variables.
 \describe{ \item{\code{meth}}{a factor with levels \code{Gerber}
 \code{Trig}} \item{\code{item}}{sample id} \item{\code{y}}{a numeric
-vector} }}
+vector} }
+}
 \source{
 The dataset is adapted from table 3 in: JM Bland and DG Altman:
 Measuring agreement in method comparison studies. Statistical Methods in

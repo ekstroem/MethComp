@@ -5,7 +5,8 @@
 \alias{VitCap}
 \title{Merits of two instruments designed to measure certain aspects of human lung
 function (Vital Capacity)}
-\format{A data frame with 288 observations on the following 5 variables.
+\format{
+A data frame with 288 observations on the following 5 variables.
 \describe{ \item{\code{meth}}{a factor with levels \code{StNew},
 \code{StSkil}, \code{ExpNew} and \code{ExpSkil}, representing the instrument
 by user combinations. See below.} \item{\code{item}}{a numeric vector, the
@@ -13,7 +14,8 @@ person ID, i.e. the 72 patients} \item{\code{y}}{a numeric vector, the
 measurements, i.e. vital capacity.} \item{\code{user}}{a factor with levels
 \code{New} \code{Skil}, for the new user and the skilled user}
 \item{\code{instrument}}{a factor with levels \code{Exp} and \code{St}, for
-the experimental instrument and the standard one.} }}
+the experimental instrument and the standard one.} }
+}
 \source{
 V. D. Barnett, Simultaneous Pairwise Linear Structural
 Relationships, Biometrics, Mar. 1969, Vol. 25, No. 1, pp. 129-142.

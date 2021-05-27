@@ -4,7 +4,9 @@
 \name{ox.MC}
 \alias{ox.MC}
 \title{A MCmcmc object from the oximetry data.}
-\format{The format is a \code{\link{MCmcmc}} object.}
+\format{
+The format is a \code{\link{MCmcmc}} object.
+}
 \description{
 This object is included for illustrative purposes. It is a result of using
 \code{\link{MCmcmc}}, with \code{n.iter=20000}.

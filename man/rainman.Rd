@@ -4,12 +4,14 @@
 \name{rainman}
 \alias{rainman}
 \title{Perception of points in a swarm}
-\format{A data frame with 30 observations on the following 6 variables.
+\format{
+A data frame with 30 observations on the following 6 variables.
 \describe{ \item{\code{SAND}}{The true number of points in the swarm. Each
 picture is replicated thrice} \item{\code{ME}}{Ratings from judge 1}
 \item{\code{TM}}{Ratings from judge 2} \item{\code{AJ}}{Ratings from judge
 3} \item{\code{BM}}{Ratings from judge 4} \item{\code{LO}}{Ratings from
-judge 5} }}
+judge 5} }
+}
 \source{
 Collected by Claus Ekstrom.
 }

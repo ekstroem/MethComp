@@ -4,7 +4,9 @@
 \name{hba.MC}
 \alias{hba.MC}
 \title{A MCmcmc object from the hba1c data}
-\format{The format is a \code{\link{MCmcmc}} object.}
+\format{
+The format is a \code{\link{MCmcmc}} object.
+}
 \description{
 This object is included for illustrative purposes. It is a result of a
 5-hour run using MCmcmc, with \code{n.iter=100000}.

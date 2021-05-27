@@ -4,7 +4,9 @@
 \name{sbp.MC}
 \alias{sbp.MC}
 \title{A MCmcmc object from the sbp data}
-\format{The format is a \code{\link{MCmcmc}} object.}
+\format{
+The format is a \code{\link{MCmcmc}} object.
+}
 \description{
 This object is included for illustrative purposes. It is a result of using
 \code{\link{MCmcmc}}, with \code{n.iter=100000} on the dataset

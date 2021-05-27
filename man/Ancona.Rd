@@ -4,12 +4,14 @@
 \name{Ancona}
 \alias{Ancona}
 \title{Data from a rating experiment of recorgnizing point counts.}
-\format{A data frame with 510 observations on the following 4 variables.
+\format{
+A data frame with 510 observations on the following 4 variables.
 \describe{ \item{\code{rater}}{a factor with 17 levels}
 \item{\code{item}}{a numeric vector indicating the pictures shown. The
 value is the actual number of points.} \item{\code{repl}}{a numeric vector,
 replicate number} \item{\code{score}}{a numeric vector, the number of
-points in \code{item}} }}
+points in \code{item}} }
+}
 \source{
 The course "Statsitical Analysis of Method Comparison Studies" ai
 the SISMEC conference in Ancona, on 28 September 2011.

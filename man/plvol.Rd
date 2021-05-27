@@ -4,10 +4,12 @@
 \name{plvol}
 \alias{plvol}
 \title{Measurements of plasma volume measured by two different methods.}
-\format{A data frame with 198 observations on the following 3 variables.
+\format{
+A data frame with 198 observations on the following 3 variables.
 \describe{ \item{\code{meth}}{a factor with levels \code{Hurley} and
 \code{Nadler}} \item{\code{item}}{a numeric vector} \item{\code{y}}{a
-numeric vector} }}
+numeric vector} }
+}
 \source{
 The datset is adapted from table 2 in: JM Bland and DG Altman:
 Measuring agreement in method comparison studies. Statistical Methods in
