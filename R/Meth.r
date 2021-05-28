@@ -152,7 +152,7 @@ else
   if( is.numeric(item) & length(item)==1 )
     {
     taken <- c(taken,item.col<-item)
-    item <- data[,item]
+    item <- data[[item]]
     }
   else item <- rows
   if( is.na(item)[1] ) stop( "\nitem not properly specified.")
@@ -165,7 +165,7 @@ else
   if( is.numeric(repl) & length(repl)==1 )
     {
     taken <- c(taken,repl.col<-repl)
-    repl <- data[,repl]
+    repl <- data[[repl]]
     }
   else repl <- rep(1,nrow(data))
 
