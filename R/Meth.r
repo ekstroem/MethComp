@@ -117,8 +117,8 @@ if( methods.in.y )
     repl <- match( repl, dfr.nam )
   if( is.numeric(repl) & length(repl)==1 )
     {
-    repl <- data[,repl]
     taken <- c(taken,repl.col<-repl)
+    repl <- data[,repl]
     }
   else repl <- make.repl( data.frame(meth=rep(1,Nr),item=item) )$repl
 
