@@ -108,7 +108,7 @@ if( methods.in.y )
   if( is.numeric(item) & length(item)==1 )
     {
     taken <- c(taken,item.col<-item)
-    item <- data[,item]
+    item <- data[[item]]
     }
   else item <- rows
 
@@ -118,7 +118,7 @@ if( methods.in.y )
   if( is.numeric(repl) & length(repl)==1 )
     {
     taken <- c(taken,repl.col<-repl)
-    repl <- data[,repl]
+    repl <- data[[repl]]
     }
   else repl <- make.repl( data.frame(meth=rep(1,Nr),item=item) )$repl
 
