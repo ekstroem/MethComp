@@ -22,30 +22,32 @@
 #' 
 #' @importFrom stats reshape
 #' @export to.wide
-to.wide <-
-function( data, warn=TRUE )
+to.wide <- 
+function (data, warn = TRUE) 
 {
-if( !inherits(data,"data.frame") )
-stop( "The argument must be a dataframe\n--- you supplied a ", class(data) )
-if( !inherits(data,"Meth") ) data <- Meth( data, print=FALSE )
+  
+  data$meth <- factor(data$meth)  # Added this line to ensure encoding of the meth variable
+  
+  if (!inherits(data, "data.frame")) 
+    stop("The argument must be a dataframe\n--- you supplied a ", 
+         class(data))
+  if (!inherits(data, "Meth")) 
+    data <- Meth(data, print = FALSE)
+  if (has.repl(data)) 
+    data$id <- interaction(data$item, data$repl)
+  else data$id <- data$item
+  res <- reshape(data, direction = "wide", v.names = c("y", 
+                                                       if ("mean.y" %in% names(data)) "mean.y"), timevar = "meth", 
+                 idvar = "id")
+  names(res) <- gsub("y\\.", "", names(res))
+  attr(res, "reshapeWide")$varying <- gsub("y\\.", "", attr(res, 
+                                                            "reshapeWide")$varying)
+  class(res) <- "data.frame"
+  onam <- c("item", "repl", levels(data$meth), if (length(grep("mean", 
+                                                               names(data))) > 0) paste("mean", levels(data$meth), sep = "."))
 
-# Are replicates present ?
-if( has.repl(data) ) data$id <- interaction( data$item, data$repl )
-else                 data$id <- data$item
-
-res <- reshape( data, direction = "wide",
-                        v.names = c("y", if("mean.y" %in% names(data) ) "mean.y" ),
-                        timevar = "meth",
-                          idvar = "id" )
-names( res ) <- gsub( "y\\.", "", names( res ) )
-attr( res, "reshapeWide" )$varying <- gsub( "y\\.", "",
-                                            attr( res, "reshapeWide" )$varying )
-class( res ) <- "data.frame"
-onam <- c("item","repl", levels(data$meth),
-          if( length(grep("mean",names(data))) > 0 )
-          paste("mean",levels(data$meth),sep=".") )
-res <- res[,onam]
-res
+  res <- res[, onam]
+  res
 }
 
 
