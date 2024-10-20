@@ -36,16 +36,16 @@ by method, if \code{"row"} they are displayed row-wise.}
 \item{aspect}{How should the panels be scaled. Default (\code{"fill"}) is to
 make a panels take up as much place as possible.}
 
-\item{\dots}{Further aruments passed on to the \code{\link{Lattice}}}
+\item{\dots}{Further aruments passed on to the \code{\link[lattice]{Lattice}} package}
 }
 \value{
-A \code{\link{Lattice}} plot.
+A \code{\link[lattice]{Lattice}} plot.
 }
 \description{
 These functions display traces for the relevant subset of the parameters in a MCmcmc object.
 }
 \details{
-A \code{Lattice} plot is returned, which means that it must \code{print}ed
+A \code{lattice} plot is returned, which means that it must \code{print}ed
 when these functions are called in a batch program or inside another
 function or for-loop.
 
@@ -67,6 +67,6 @@ pairs( ox.MC, what="sd" )
 }
 \author{
 Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@regionh.dk },
-\url{http://BendixCarstensen.com}.
+\url{https://BendixCarstensen.com}.
 }
 \keyword{models}

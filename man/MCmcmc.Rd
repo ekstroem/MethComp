@@ -204,8 +204,8 @@ of measurement, Biostatistics, 5, pp 399-413, 2004
 }
 \author{
 Bendix Carstensen, Steno Diabetes Center,
-\url{http://BendixCarstensen.com}, Lyle Gurrin, University of Melbourne,
-\url{http://www.epi.unimelb.edu.au/about/staff/gurrin-lyle}.
+\url{https://BendixCarstensen.com}, Lyle Gurrin, University of Melbourne,
+\url{https://mspgh.unimelb.edu.au/centres-institutes/centre-for-epidemiology-and-biostatistics}.
 }
 \keyword{design}
 \keyword{models}

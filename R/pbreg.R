@@ -207,6 +207,7 @@ predict.PBreg <- function(object, newdata = object$model$x, interval="confidence
     else { return(as.vector(y.ci$fit)) }
 }
 
+#' @export
 print.PBreg <- function(x,...) {
     cat("\nPassing-Bablok linear regression of", x$meths[2], "on", x$meths[1], "\n\n")
     cat(paste("Observations read: ", x$n[1], ", used: ", x$n[2],"\n", sep=""))

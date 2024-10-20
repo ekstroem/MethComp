@@ -264,6 +264,7 @@ invisible( res )
 }
 
 # Calculation of mean/median/min/max over replicates
+#' @export
 mean.Meth <-
 function( x, na.rm=TRUE, simplify=TRUE, ... )
 {
@@ -285,6 +286,7 @@ else
 return( invisible( Meth( tmp, print=FALSE ) ) )
 }
 
+#' @export
 sort.Meth <-
 function( x, ... )
 {
@@ -295,6 +297,7 @@ return( invisible( Meth( tmp, print=FALSE ) ) )
 }
 
 # Utilities needed to preserve the Meth attribute
+#' @export
 subset.Meth <-
 function( x, ... )
 {
@@ -303,6 +306,7 @@ y <- base::subset.data.frame(x, ...)
 return( Meth(y,keep.vars=TRUE,print=FALSE) )
 }
 
+#' @export
 transform.Meth <-
 function( `_data`, ...)
 {

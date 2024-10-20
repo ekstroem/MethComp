@@ -51,9 +51,9 @@
 #' \code{meth}, \code{item}, \code{repl} and \code{y}, representing results
 #' from a method comparison study.
 #' @author Lyle Gurrin, University of Melbourne,
-#' \url{http://www.epi.unimelb.edu.au/about/staff/gurrin-lyle}
+#' \url{https://mspgh.unimelb.edu.au/centres-institutes/centre-for-epidemiology-and-biostatistics}
 #' 
-#' Bendix Carstensen, Steno Diabetes Center, \url{http://BendixCarstensen.com}
+#' Bendix Carstensen, Steno Diabetes Center, \url{https://BendixCarstensen.com}
 #' @seealso \code{\link{summary.Meth}}, \code{\link{plot.Meth}},
 #' \code{\link{MCmcmc}}
 #' @keywords datagen manip

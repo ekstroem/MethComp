@@ -13,7 +13,7 @@ numeric vector} }
 \source{
 The datset is adapted from table 2 in: JM Bland and DG Altman:
 Measuring agreement in method comparison studies. Statistical Methods in
-Medical Research, 8:136-160, 1999. Originally supplied to Bland \& Altman by
+Medical Research, 8:136-160, 1999. Originally supplied to Bland & Altman by
 C Dore, see: Cotes PM, Dore CJ, Liu Yin JA, Lewis SM, Messinezy M, Pearson
 TC, Reid C.  Determination of serum immunoreactive erythropoietin in the
 investigation of erythrocytosis. New England Journal of Medicine 1986; 315:

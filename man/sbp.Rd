@@ -15,7 +15,7 @@ masurement, a numeric vector} }
 \source{
 The dataset is adapted from table 1 in: JM Bland and DG Altman:
 Measuring agreement in method comparison studies. Statistical Methods in
-Medical Research, 8:136-160, 1999. Originally supplied to Bland \& Altman by
+Medical Research, 8:136-160, 1999. Originally supplied to Bland & Altman by
 E. O'Brien, see: Altman DG, Bland JM. The analysis of blood pressure data.
 In O'Brien E, O'Malley K eds. Blood pressure measurement. Amsterdam:
 Elsevier, 1991: 287-314.

@@ -122,8 +122,8 @@
 #' \code{code.only==TRUE}, a list containing the initial values is generated.
 #'
 #' @author Bendix Carstensen, Steno Diabetes Center,
-#' \url{http://BendixCarstensen.com}, Lyle Gurrin, University of Melbourne,
-#' \url{http://www.epi.unimelb.edu.au/about/staff/gurrin-lyle}.
+#' \url{https://BendixCarstensen.com}, Lyle Gurrin, University of Melbourne,
+#' \url{https://mspgh.unimelb.edu.au/centres-institutes/centre-for-epidemiology-and-biostatistics}.
 #' @seealso \code{\link{BA.plot}}, \code{\link{plot.MCmcmc}},
 #' \code{\link{print.MCmcmc}}, \code{\link{check.MCmcmc}}
 #' @references B Carstensen: Comparing and predicting between several methods

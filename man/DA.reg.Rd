@@ -105,7 +105,7 @@ LoA by regression.  Stat Med, 29:401-410, 2010.
 }
 \author{
 Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@regionh.dk},
-\url{http://BendixCarstensen.com/MethComp}
+\url{https://BendixCarstensen.com/MethComp/}
 }
 \keyword{models}
 \keyword{regression}

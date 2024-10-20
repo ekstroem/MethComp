@@ -1,3 +1,8 @@
+Version 1.30.2
+
+* Updated the documentation for some of the functions to concur with CRAN's requests and added @export tags for functions where it was missing.
+
+
 Version 1.22
 
 o Platform checking in MCmcmc updated, and checks for platform and

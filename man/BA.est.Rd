@@ -119,7 +119,7 @@ var(c_mi)=tau_m^2, var(a_ir)=omega^2, var(e_mir)=sigma_m^2}\deqn{ \quad
 var(c_mi)=tau_m^2, var(a_ir)=omega^2, var(e_mir)=sigma_m^2}\deqn{ \quad
 \mathrm{var}(e_{mir})=\sigma_m^2, }{y=alpha_m + mu_i + c_mi + a_ir + e_ir,
 var(c_mi)=tau_m^2, var(a_ir)=omega^2, var(e_mir)=sigma_m^2}\deqn{
-}{y=alpha_m + mu_i + c_mi + a_ir + e_ir, var(c_mi)=tau_m^2,
+y=alpha_m + mu_i + c_mi + a_ir + e_ir, var(c_mi)=tau_m^2,
 var(a_ir)=omega^2, var(e_mir)=sigma_m^2} We can only fit separate variances
 for the \eqn{\tau s}{tau's} if more than two methods are compared (i.e.
 \code{nM} > 2), hence varMxI is ignored when \code{nM}==2.
@@ -155,7 +155,7 @@ str( VC.est( sbp ) )}
 Carstensen, Simpson & Gurrin: Statistical models for assessing
 agreement in method comparison studies with replicate measurements, The
 International Journal of Biostatistics: Vol. 4 : Iss. 1, Article 16.
-\url{http://www.bepress.com/ijb/vol4/iss1/16}.
+\url{https://bepress.com}.
 }
 \seealso{
 \code{\link{BA.plot}}, \code{\link{perm.repl}}

@@ -39,7 +39,7 @@
 #'  
 #'  WE Deming: Statistical adjustment of data, New York: Wiley, 1943.
 #'
-#' @author Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@@regionh.dk}, \url{http://BendixCarstensen.com}
+#' @author Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@@regionh.dk}, \url{https://BendixCarstensen.com}
 #'
 #' @examples
 #'

@@ -57,6 +57,6 @@ of measurement, Biostatistics, 5, pp 399-413, 2004
 }
 \author{
 Bendix Carstensen, Steno Diabetes Center,
-\url{http://BendixCarstensen.com}
+\url{https://BendixCarstensen.com}
 }
 \keyword{design}

@@ -74,6 +74,7 @@ mcmc <-
 function( x, ... )
 UseMethod("mcmc")
 
+#' @export
 mcmc.MCmcmc <-
 function( x, ... )
 {

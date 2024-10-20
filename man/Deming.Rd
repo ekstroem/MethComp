@@ -91,5 +91,5 @@ Peter Sprent: Models in Regression, Methuen & Co., London 1969, ch.3.4.
  WE Deming: Statistical adjustment of data, New York: Wiley, 1943.
 }
 \author{
-Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@regionh.dk}, \url{http://BendixCarstensen.com}
+Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@regionh.dk}, \url{https://BendixCarstensen.com}
 }

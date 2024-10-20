@@ -79,8 +79,7 @@ NULL
 #' \item{\code{TCO}}{Thermodilution-derived cardiac output}
 #' \item{\code{FCO}}{Fick-derived cardiac output.} \item{\code{Sex}}{Sex, a
 #' factor with levels \code{F}, \code{M}} }
-#' @source Avi A. Weinbroum, Philippe Biderman, Dror Soffer, Joseph M. Klausner
-#' & Oded Szold:
+#' @source Avi A. Weinbroum, Philippe Biderman, Dror Soffer, Joseph M. Klausner & Oded Szold:
 #' 
 #' Reliability of cardiac output calculation by the fick principle and central
 #' venous oxygen saturation in emergency conditions.
@@ -352,7 +351,7 @@ NULL
 #' @seealso \code{\link{sbp.MC}}
 #' @source The dataset is adapted from table 1 in: JM Bland and DG Altman:
 #' Measuring agreement in method comparison studies. Statistical Methods in
-#' Medical Research, 8:136-160, 1999. Originally supplied to Bland \& Altman by
+#' Medical Research, 8:136-160, 1999. Originally supplied to Bland & Altman by
 #' E. O'Brien, see: Altman DG, Bland JM. The analysis of blood pressure data.
 #' In O'Brien E, O'Malley K eds. Blood pressure measurement. Amsterdam:
 #' Elsevier, 1991: 287-314.
@@ -389,7 +388,7 @@ NULL
 #' \item{\code{y}}{the measuremnts of cardiac output.} }
 #' @source The dataset is adapted from table 4 in: JM Bland and DG Altman:
 #' Measuring agreement in method comparison studies. Statistical Methods in
-#' Medical Research, 8:136-160, 1999. Originally supplied to Bland \& Altman by
+#' Medical Research, 8:136-160, 1999. Originally supplied to Bland & Altman by
 #' Dr LS Bowling, see: Bowling LS, Sageman WS, O'Connor SM, Cole R, Amundson
 #' DE.  Lack of agreement between measurement of ejection fraction by impedance
 #' cardiography versus radionuclide ventriculography. Critical Care Medicine
@@ -650,7 +649,7 @@ NULL
 #' numeric vector} }
 #' @source The datset is adapted from table 2 in: JM Bland and DG Altman:
 #' Measuring agreement in method comparison studies. Statistical Methods in
-#' Medical Research, 8:136-160, 1999. Originally supplied to Bland \& Altman by
+#' Medical Research, 8:136-160, 1999. Originally supplied to Bland & Altman by
 #' C Dore, see: Cotes PM, Dore CJ, Liu Yin JA, Lewis SM, Messinezy M, Pearson
 #' TC, Reid C.  Determination of serum immunoreactive erythropoietin in the
 #' investigation of erythrocytosis. New England Journal of Medicine 1986; 315:

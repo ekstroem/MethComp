@@ -24,7 +24,7 @@
 #' (\code{meth},\code{item}), and subsequently ordered by
 #' (\code{meth},\code{item},\code{repl}).
 #' @author Bendix Carstensen, Steno Diabetes Center,
-#' \url{http://bendixcarstensen.com/}
+#' \url{https://bendixcarstensen.com/}
 #' @seealso \code{\link{perm.repl}}
 #' @keywords manip datagen design
 #' @examples

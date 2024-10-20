@@ -14,7 +14,7 @@ A data frame with 120 observations on the following 4 variables.
 \source{
 The dataset is adapted from table 4 in: JM Bland and DG Altman:
 Measuring agreement in method comparison studies. Statistical Methods in
-Medical Research, 8:136-160, 1999. Originally supplied to Bland \& Altman by
+Medical Research, 8:136-160, 1999. Originally supplied to Bland & Altman by
 Dr LS Bowling, see: Bowling LS, Sageman WS, O'Connor SM, Cole R, Amundson
 DE.  Lack of agreement between measurement of ejection fraction by impedance
 cardiography versus radionuclide ventriculography. Critical Care Medicine

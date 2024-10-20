@@ -53,8 +53,8 @@ BA.plot(
   xlab = x$meths[1],
   ylab = x$meths[2],
   subtype = 1,
-  colors = list(CI = "#ccaaff50", fit = "blue", ref = "#99999955", bars = "gray", dens
-    = "#8866aaa0", ref2 = c("#1222bb99", "#bb221299")),
+  colors = list(CI = "#ccaaff50", fit = "blue", ref = "#99999955", bars = "gray", dens =
+    "#8866aaa0", ref2 = c("#1222bb99", "#bb221299")),
   ...
 )
 
@@ -375,7 +375,7 @@ Methods. \emph{Journal of Clinical Chemistry and Clinical Biochemistry},
 }
 \author{
 Bendix Carstensen \email{bendix.carstensen@regionh.dk},
-\url{http://BendixCarstensen.com}.
+\url{https://BendixCarstensen.com}.
 
 Michal J. Figurski \email{mfigrs@gmail.com}
 

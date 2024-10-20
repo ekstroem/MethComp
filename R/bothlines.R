@@ -16,7 +16,7 @@
 #' does the actual plotting.
 #' @return None.
 #' @author Bendix Carstensen, Steno Diabetes Center,
-#' \url{http://BendixCarstensen.com}
+#' \url{https://BendixCarstensen.com}
 #' @seealso \code{\link{abline}}.
 #' @keywords manip
 #' @examples
@@ -36,7 +36,7 @@ bothlines <-
 function( x, y, Dem=FALSE, sdr=1, col="black", ... )
 {
 clr <- rep( col, 3 )
-if( class( x )=="lm" )
+if( inherits( x, "lm" ))
   {
   y <- x$model[[1]]
   x <- x$model[[2]]

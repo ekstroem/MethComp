@@ -64,7 +64,7 @@
 #' \code{c("DA-int","DA-slope","DA-sd")}, referring to differences
 #' \code{D=y1-y2} as a linear function of \code{A=(y1+y2)/2}.
 #' @author Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@@regionh.dk},
-#' \url{http://BendixCarstensen.com/MethComp}
+#' \url{https://BendixCarstensen.com/MethComp/}
 #' @references B. Carstensen: Comparing methods of measurement: Extending the
 #' LoA by regression.  Stat Med, 29:401-410, 2010.
 #' @keywords models regression
@@ -201,7 +201,7 @@ return( invisible( res ) )
 #' and columnnames \code{c("int","slope","sd")}, calculated under the
 #' assumption that the differences were formed as \code{D <- y1 - y2}.
 #' @author Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@@regionh.dk},
-#' \url{http://BendixCarstensen.com/MethComp}
+#' \url{https://BendixCarstensen.com/MethComp/}
 #' @references B. Carstensen: Comparing methods of measurement: Extending the
 #' LoA by regression.  Stat Med, 29:401-410, 2010.
 #'
@@ -256,7 +256,7 @@ invisible( res )
 #' \code{c("DA-int","DA-slope","DA-sd")}, referring to differences
 #' \code{D=y1-y2} as a linear function of \code{A=(y1+y2)/2}.
 #' @author Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@@regionh.dk},
-#' \url{http://BendixCarstensen.com/MethComp}
+#' \url{https://BendixCarstensen.com/MethComp/}
 #' @references B. Carstensen: Comparing methods of measurement: Extending the
 #' LoA by regression.  Stat Med, 29:401-410, 2010.
 #'

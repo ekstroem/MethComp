@@ -15,8 +15,7 @@ saturation} \item{\code{Scvo2}}{Central venous oxygen saturation}
 factor with levels \code{F}, \code{M}} }
 }
 \source{
-Avi A. Weinbroum, Philippe Biderman, Dror Soffer, Joseph M. Klausner
-& Oded Szold:
+Avi A. Weinbroum, Philippe Biderman, Dror Soffer, Joseph M. Klausner & Oded Szold:
 
 Reliability of cardiac output calculation by the fick principle and central
 venous oxygen saturation in emergency conditions.

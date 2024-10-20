@@ -100,9 +100,9 @@ in a range specified by \code{mu.range}.
 }
 \author{
 Lyle Gurrin, University of Melbourne,
-\url{http://www.epi.unimelb.edu.au/about/staff/gurrin-lyle}
+\url{https://mspgh.unimelb.edu.au/centres-institutes/centre-for-epidemiology-and-biostatistics}
 
-Bendix Carstensen, Steno Diabetes Center, \url{http://BendixCarstensen.com}
+Bendix Carstensen, Steno Diabetes Center, \url{https://BendixCarstensen.com}
 }
 \keyword{datagen}
 \keyword{manip}

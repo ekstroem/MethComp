@@ -48,6 +48,6 @@ bothlines( CO, pulse, Dem=TRUE, col=c(rep("transparent",2),"black"), lwd=2 )
 }
 \author{
 Bendix Carstensen, Steno Diabetes Center,
-\url{http://BendixCarstensen.com}
+\url{https://BendixCarstensen.com}
 }
 \keyword{manip}

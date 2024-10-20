@@ -12,7 +12,7 @@ post  <- function (obj, ...) UseMethod("post")
 #' 
 #' These functions display traces for the relevant subset of the parameters in a MCmcmc object.
 #' 
-#' A \code{Lattice} plot is returned, which means that it must \code{print}ed
+#' A \code{lattice} plot is returned, which means that it must \code{print}ed
 #' when these functions are called in a batch program or inside another
 #' function or for-loop.
 #' 
@@ -35,10 +35,10 @@ post  <- function (obj, ...) UseMethod("post")
 #' by method, if \code{"row"} they are displayed row-wise.
 #' @param aspect How should the panels be scaled. Default (\code{"fill"}) is to
 #' make a panels take up as much place as possible.
-#' @param \dots Further aruments passed on to the \code{\link{Lattice}}
-#' @return A \code{\link{Lattice}} plot.
+#' @param \dots Further aruments passed on to the \code{\link[lattice]{Lattice}} package
+#' @return A \code{\link[lattice]{Lattice}} plot.
 #' @author Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@@regionh.dk },
-#' \url{http://BendixCarstensen.com}.
+#' \url{https://BendixCarstensen.com}.
 #' @seealso \code{\link{MCmcmc}}, \code{\link{plot.MCmcmc}},
 #' \code{\link{ox.MC}}, \code{\link{sbp.MC}}
 #' @keywords models
@@ -145,6 +145,8 @@ if( is.character(layout) )
 return( list( sb=sb, layout=layout ) )
 }
 
+
+#' @export
 trace.sd <-
 function( obj,
        scales = c("free","free"),
@@ -164,6 +166,8 @@ lattice::xyplot( subset( obj, fv$sb ),
                       ... )
 }
 
+
+#' @export
 trace.mean <-
 function( obj,
        scales = c("free","free"),
@@ -186,6 +190,7 @@ lattice::xyplot( subset.MCmcmc( obj, fm$sb ),
 
 post <- function( obj, ... ) UseMethod("post")
 
+#' @export
 post.MCmcmc <-
 function( obj, what="sd",
         check = TRUE,
@@ -230,6 +235,7 @@ res <- post.mean( obj,
 return( res )
 }
 
+#' @export
 post.sd <-
 function( obj,
         check = TRUE,
@@ -310,14 +316,14 @@ lattice::densityplot( obj,
 #' "free", indicating whether x- and y-axes of the plots should be constrained
 #' to be the same across panels. For \code{pairs} only the first element is
 #' used to decide whether all panles should have the same axes.
-#' @param \dots Further aruments passed on to the \code{\link{Lattice}}
-#' function called: \code{trace} calls \code{\link{xyplot}} from the
-#' \code{coda} package, \code{post} calls \code{\link{densityplot}} from the
+#' @param \dots Further aruments passed on to the \code{\link[lattice]{Lattice}}
+#' function called: \code{trace} calls \code{\link[coda]{xyplot.mcmc}} from the
+#' \code{coda} package, \code{post} calls \code{\link[coda]{densityplot.mcmc}} from the
 #' \code{coda} package, % \code{acf} calls \code{\link{acfplot}}, \code{pairs}
-#' calls \code{\link{pairs}} from the \code{graphics} package.
-#' @return A \code{\link{Lattice}} plot.
+#' calls \code{\link[graphics]{pairs}} from the \code{graphics} package.
+#' @return A \code{\link[lattice]{Lattice}} plot.
 #' @author Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@@regionh.dk },
-#' \url{http://BendixCarstensen.com}.
+#' \url{https://BendixCarstensen.com}.
 #' @seealso \code{\link{MCmcmc}}, \code{\link{plot.MCmcmc}},
 #' \code{\link{ox.MC}}, \code{\link{sbp.MC}}
 #' @keywords models

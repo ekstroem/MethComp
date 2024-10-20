@@ -527,6 +527,7 @@ if( pl.type=="BA" &
 ################################################################################
 ## points.MethComp
 ################################################################################
+#' @export
 points.MethComp <-
 function( x,
       wh.comp = getOption("MethComp.wh.comp"),
@@ -589,7 +590,7 @@ else
 #' will correspond to no transformation.
 #' 
 #' @author Bendix Carstensen, Steno Diabetes Center,
-#' \url{http://bendixcarstensen.com/}.
+#' \url{https://bendixcarstensen.com/}.
 #' @examples
 #' 
 #' choose.trans( "logit" )
@@ -654,7 +655,7 @@ invisible( ltr )
 #' 
 #' @return \code{check.trans} returns nothing.
 #' @author Bendix Carstensen, Steno Diabetes Center,
-#' \url{http://bendixcarstensen.com/}.
+#' \url{https://bendixcarstensen.com/}.
 #' 
 #' @export check.trans
 check.trans <-

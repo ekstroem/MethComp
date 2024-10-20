@@ -24,7 +24,7 @@
 #' conversion from method 1 to method 2, and the value where the conversion is
 #' the identity.
 #' @author Bendix Carstensen, Steno Diabetes Center,
-#' \url{http://BendixCarstensen.com}
+#' \url{https://BendixCarstensen.com}
 #' @seealso \code{\link{BA.plot}}, \code{\link{MCmcmc}}
 #' @references B Carstensen: Comparing and predicting between several methods
 #' of measurement, Biostatistics, 5, pp 399-413, 2004

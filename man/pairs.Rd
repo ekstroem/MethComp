@@ -39,14 +39,14 @@ densities.}
 to be the same across panels. For \code{pairs} only the first element is
 used to decide whether all panles should have the same axes.}
 
-\item{\dots}{Further aruments passed on to the \code{\link{Lattice}}
-function called: \code{trace} calls \code{\link{xyplot}} from the
-\code{coda} package, \code{post} calls \code{\link{densityplot}} from the
+\item{\dots}{Further aruments passed on to the \code{\link[lattice]{Lattice}}
+function called: \code{trace} calls \code{\link[coda]{xyplot.mcmc}} from the
+\code{coda} package, \code{post} calls \code{\link[coda]{densityplot.mcmc}} from the
 \code{coda} package, % \code{acf} calls \code{\link{acfplot}}, \code{pairs}
-calls \code{\link{pairs}} from the \code{graphics} package.}
+calls \code{\link[graphics]{pairs}} from the \code{graphics} package.}
 }
 \value{
-A \code{\link{Lattice}} plot.
+A \code{\link[lattice]{Lattice}} plot.
 }
 \description{
 Create a pairs plot for an MCmcmc object
@@ -57,6 +57,6 @@ Create a pairs plot for an MCmcmc object
 }
 \author{
 Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@regionh.dk },
-\url{http://BendixCarstensen.com}.
+\url{https://BendixCarstensen.com}.
 }
 \keyword{models}

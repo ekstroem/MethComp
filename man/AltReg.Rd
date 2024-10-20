@@ -119,7 +119,7 @@ of measurement. Biostatistics (2004), 5, 3, pp. 399--413.
 }
 \author{
 Bendix Carstensen, Steno Diabetes Center, \email{bendix.carstensen@regionh.dk},
-\url{http://BendixCarstensen.com}.
+\url{https://BendixCarstensen.com}.
 }
 \keyword{models}
 \keyword{regression}

@@ -58,7 +58,7 @@ methods, the inference should be independent of this permutation.
 }
 \author{
 Bendix Carstensen, Steno Diabetes Center,
-\url{http://bendixcarstensen.com/}
+\url{https://bendixcarstensen.com/}
 }
 \keyword{datagen}
 \keyword{design}
