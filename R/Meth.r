@@ -108,7 +108,7 @@ if( methods.in.y )
   if( is.numeric(item) & length(item)==1 )
     {
     taken <- c(taken,item.col<-item)
-    item <- data[,item]
+    item <- data[[item]]
     }
   else item <- rows
 
@@ -117,8 +117,8 @@ if( methods.in.y )
     repl <- match( repl, dfr.nam )
   if( is.numeric(repl) & length(repl)==1 )
     {
-    repl <- data[,repl]
     taken <- c(taken,repl.col<-repl)
+    repl <- data[[repl]]
     }
   else repl <- make.repl( data.frame(meth=rep(1,Nr),item=item) )$repl
 
@@ -152,7 +152,7 @@ else
   if( is.numeric(item) & length(item)==1 )
     {
     taken <- c(taken,item.col<-item)
-    item <- data[,item]
+    item <- data[[item]]
     }
   else item <- rows
   if( is.na(item)[1] ) stop( "\nitem not properly specified.")
@@ -165,7 +165,7 @@ else
   if( is.numeric(repl) & length(repl)==1 )
     {
     taken <- c(taken,repl.col<-repl)
-    repl <- data[,repl]
+    repl <- data[[repl]]
     }
   else repl <- rep(1,nrow(data))
 
